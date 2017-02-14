@@ -11,6 +11,11 @@
 		8D0687031E537C2E00FBAA55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0687011E537C2E00FBAA55 /* Main.storyboard */; };
 		8D0687051E537C2E00FBAA55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0687041E537C2E00FBAA55 /* Assets.xcassets */; };
 		8D0687081E537C2E00FBAA55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0687061E537C2E00FBAA55 /* LaunchScreen.storyboard */; };
+		8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6AF1E538408004FA6E3 /* HabitController.swift */; };
+		8D89C6B91E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */; };
+		8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */; };
+		8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */; };
+		8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		8D0687041E537C2E00FBAA55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D0687071E537C2E00FBAA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D0687091E537C2E00FBAA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
+		8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habit-Tracker.xcdatamodel"; sourceTree = "<group>"; };
+		8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Habit + Convience .swift"; sourceTree = "<group>"; };
+		8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DailyCompletion + Convience .swift"; sourceTree = "<group>"; };
+		8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +63,57 @@
 			isa = PBXGroup;
 			children = (
 				8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */,
+				8D89C6C01E538891004FA6E3 /* CoreData */,
+				8D89C6B11E53840B004FA6E3 /* Model */,
+				8D89C6B21E538416004FA6E3 /* Model Controller */,
+				8D89C6C11E53B4BF004FA6E3 /* View Controllers */,
+				8D89C6B31E538427004FA6E3 /* Resources */,
+			);
+			path = "Habit Tracker";
+			sourceTree = "<group>";
+		};
+		8D89C6B11E53840B004FA6E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */,
+				8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */,
+				8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8D89C6B21E538416004FA6E3 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8D89C6AF1E538408004FA6E3 /* HabitController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
+		8D89C6B31E538427004FA6E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				8D0687011E537C2E00FBAA55 /* Main.storyboard */,
 				8D0687041E537C2E00FBAA55 /* Assets.xcassets */,
 				8D0687061E537C2E00FBAA55 /* LaunchScreen.storyboard */,
 				8D0687091E537C2E00FBAA55 /* Info.plist */,
 			);
-			path = "Habit Tracker";
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8D89C6C01E538891004FA6E3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		8D89C6C11E53B4BF004FA6E3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,7 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */,
+				8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */,
+				8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */,
+				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
+				8D89C6B91E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +356,22 @@
 				8D06870E1E537C2E00FBAA55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */,
+			);
+			currentVersion = 8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */;
+			path = "Habit-Tracker.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8D0686F21E537C2E00FBAA55 /* Project object */;
 }
