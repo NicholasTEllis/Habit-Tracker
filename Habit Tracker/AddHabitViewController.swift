@@ -29,8 +29,6 @@ class AddHabitViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     }
     
-    var index: Int = 0
-    
     
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
         
@@ -87,6 +85,16 @@ class AddHabitViewController: UIViewController, UICollectionViewDelegate, UIColl
         indexIncreasing()
     }
     
+    
+    
+    
+    // MARK: - Properties
+    
+    var index: Int = 0
+    
+    var icons: [UIImage] = []
+
+    
 }
 
 // MARK: - Helper Methods
@@ -114,7 +122,7 @@ extension AddHabitViewController {
 extension AddHabitViewController {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
