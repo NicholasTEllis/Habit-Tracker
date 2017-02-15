@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var morningFirstTextField: UITextField!
     @IBOutlet weak var morningSecondTextField: UITextField!
@@ -21,9 +21,58 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }    
-
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        
+        morningFirstTextField.delegate = self
+        morningSecondTextField.delegate = self
+        morningFirstTextField.inputView = timePicker
+        morningSecondTextField.inputView = timePicker
+        
+        afternoonFirstTextField.delegate = self
+        afternoonSecondTextField.delegate = self
+        afternoonFirstTextField.inputView = timePicker
+        afternoonSecondTextField.inputView = timePicker
+        
+        eveningFirstTextField.delegate = self
+        eveningSecondTextField.delegate = self
+        eveningFirstTextField.inputView = timePicker
+        eveningSecondTextField.inputView = timePicker
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        textField.inputView = timePicker
+        timePicker.addTarget(self, action: #selector(SettingsViewController.dateValueChanged), for: .valueChanged)
+    }
+    
+    func dateValueChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        
+        if sender == morningFirstTextField.inputView {
+            morningFirstTextField.text = formatter.string(from: sender.date)
+        } else if sender == morningSecondTextField.inputView {
+            morningSecondTextField.text = formatter.string(from: sender.date)
+        } else if sender == afternoonFirstTextField.inputView {
+            afternoonFirstTextField.text = formatter.string(from: sender.date)
+        } else if sender == afternoonSecondTextField.inputView {
+            afternoonSecondTextField.text = formatter.string(from: sender.date)
+        } else if sender == eveningFirstTextField.inputView {
+            eveningFirstTextField.text = formatter.string(from: sender.date)
+        } else if sender == eveningSecondTextField.inputView {
+            eveningSecondTextField.text = formatter.string(from: sender.date)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
