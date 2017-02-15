@@ -26,18 +26,18 @@ class HabitListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return HabitController.shared.habits.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as? HabitTableViewCell
 
-        // Configure the cell...
+        cell?.habit = HabitController.shared.habits[indexPath.row]
 
-        return cell
+        return cell ?? HabitTableViewCell()
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
