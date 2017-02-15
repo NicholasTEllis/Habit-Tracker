@@ -19,7 +19,7 @@ class HabitController {
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
 
-    func addHabit(name: String, image: UIImage, startDate: NSDate, timeOfNotification: NSDate) {
+    func addHabit(name: String, image: UIImage, startDate: NSDate, timeOfNotification: String) {
         guard let imageData = UIImageJPEGRepresentation(image, 1.0) as NSData?  else { return }
         _ = Habit(name: name, icon: imageData, startDate: startDate, timeOfNotification: timeOfNotification)
     }
