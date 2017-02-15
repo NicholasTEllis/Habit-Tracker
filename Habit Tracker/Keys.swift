@@ -23,4 +23,6 @@ class Keys {
     
     let cellBackground = UIColor(colorLiteralRed: 26 / 255, green: 26 / 255, blue: 26 / 255, alpha: 1)
     let background = UIColor(colorLiteralRed: 65 / 255, green: 65 / 255, blue: 65 / 255, alpha: 1)
+    
+    let textColor = UIColor.white
 }
