@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53933E881E54BFB900BECC3F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E871E54BFB900BECC3F /* Keys.swift */; };
+		53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
+		53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53933E8B1E54CE8A00BECC3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		8D0686F11E537C2E00FBAA55 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 				FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */,
 				FDAB6C2F1E53CD6900EC946B /* Main.storyboard */,
 				8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */,
+				53933E8B1E54CE8A00BECC3F /* Views */,
 			);
 			name = "Storyboards ";
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */,
 				FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */,
 				53933E881E54BFB900BECC3F /* Keys.swift in Sources */,
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
