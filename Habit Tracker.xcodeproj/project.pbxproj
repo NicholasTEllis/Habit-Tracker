@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53933E881E54BFB900BECC3F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E871E54BFB900BECC3F /* Keys.swift */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */,
+				53933E871E54BFB900BECC3F /* Keys.swift */,
 				FDAB6C321E53CD7A00EC946B /* LaunchScreen.storyboard */,
 				8DB8C2241E53CCB80048EA67 /* Info.plist */,
 			);
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */,
+				53933E881E54BFB900BECC3F /* Keys.swift in Sources */,
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
 				8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */,
