@@ -9,15 +9,37 @@
 import UIKit
 
 class AddHabitViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeRight = UISwipeGestureRecognizer()
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
+
+        
+        let swipeLeft = UISwipeGestureRecognizer()
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
 
     }
     
-    
-    
     var index: Int = 0
+    
+    
+    func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
+        
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.left:
+            indexIncreasing()
+        case UISwipeGestureRecognizerDirection.right:
+            indexDecreasing()
+        default:
+            return
+        }
+    }
     
     
     func selectTime(index: Int) {
@@ -33,7 +55,7 @@ class AddHabitViewController: UIViewController {
         case 4:
             timeOfDayLabel.text = "Night"
         default:
-            break
+            return
         }
     }
     
@@ -55,13 +77,33 @@ class AddHabitViewController: UIViewController {
     }
     
     @IBAction func leftToDButtonTapped(_ sender: Any) {
-        if(index >= 0 && index <= 4) {
-            index -= 1
-        }
+        indexDecreasing()
     }
     
     @IBAction func rightToDButtonTapped(_ sender: Any) {
-        
+        indexIncreasing()
+    }
+    
+}
+
+
+
+// MARK: - Helper Methods
+
+extension AddHabitViewController {
+    
+    func indexDecreasing() {
+        if(index > 0 && index <= 4) {
+            index -= 1
+        }
+        selectTime(index: index)
+    }
+    
+    func indexIncreasing() {
+        if(index >= 0 && index < 4) {
+            index += 1
+        }
+        selectTime(index: index)
     }
     
 }
