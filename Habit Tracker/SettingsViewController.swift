@@ -9,11 +9,19 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var morningFirstTextField: UITextField!
+    @IBOutlet weak var morningSecondTextField: UITextField!
+    
+    @IBOutlet weak var afternoonFirstTextField: UITextField!
+    @IBOutlet weak var afternoonSecondTextField: UITextField!
+    
+    @IBOutlet weak var eveningFirstTextField: UITextField!
+    @IBOutlet weak var eveningSecondTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }    
 
     /*
