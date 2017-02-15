@@ -12,7 +12,7 @@
         <!--Item-->
         <scene sceneID="L24-z0-XOZ">
             <objects>
-                <tableViewController id="Qw4-0F-e00" sceneMemberID="viewController">
+                <tableViewController id="Qw4-0F-e00" customClass="HabitStatsTableViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cg0-q3-3rv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
