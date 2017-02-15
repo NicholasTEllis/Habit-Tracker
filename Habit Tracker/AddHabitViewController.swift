@@ -14,12 +14,6 @@ class AddHabitViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
-
-    
-    
-    
-    
     
     // MARK: - Outlets
     
