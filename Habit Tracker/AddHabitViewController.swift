@@ -8,10 +8,13 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController {
+class AddHabitViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        iconCollectionView.delegate = self
         
         let swipeRight = UISwipeGestureRecognizer()
         swipeRight.direction = .right
@@ -65,7 +68,7 @@ class AddHabitViewController: UIViewController {
     @IBOutlet var habitNameTextField: UITextField!
     @IBOutlet var timeOfDayLabel: UILabel!
     @IBOutlet var timeDetailLabel: UILabel!
-    
+    @IBOutlet var iconCollectionView: UICollectionView!
     
     // MARK: - Actions
     
@@ -86,8 +89,6 @@ class AddHabitViewController: UIViewController {
     
 }
 
-
-
 // MARK: - Helper Methods
 
 extension AddHabitViewController {
@@ -106,4 +107,20 @@ extension AddHabitViewController {
         selectTime(index: index)
     }
     
+}
+
+// MARK: - Collection View Data Source 
+
+extension AddHabitViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as UICollectionViewCell
+        
+        
+        return cell
+    }
 }

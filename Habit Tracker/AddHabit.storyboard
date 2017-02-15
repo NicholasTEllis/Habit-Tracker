@@ -82,11 +82,33 @@
                                     <action selector="leftToDButtonTapped:" destination="ku1-3y-29J" eventType="touchUpInside" id="ctR-oo-aFb"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JDi-3x-DuN">
+                                <rect key="frame" x="36" y="280" width="303" height="328"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SR7-Sz-P3N">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="iconCell" id="Ra4-I8-ExP">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.39796884786671072" green="0.40927813040412575" blue="0.40938293147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="habitNameTextField" destination="O2R-zg-JOv" id="Svs-qf-phz"/>
+                        <outlet property="iconCollectionView" destination="JDi-3x-DuN" id="Srg-6d-zn0"/>
                         <outlet property="timeDetailLabel" destination="z3I-kx-HSp" id="kSo-WK-XFx"/>
                         <outlet property="timeOfDayLabel" destination="2sF-Pt-iql" id="9e7-pG-33k"/>
                     </connections>
