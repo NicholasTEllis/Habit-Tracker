@@ -15,6 +15,29 @@ class AddHabitViewController: UIViewController {
 
     }
     
+    
+    
+    var index: Int = 0
+    
+    
+    func selectTime(index: Int) {
+        switch index {
+        case 0:
+            timeOfDayLabel.text = "Indefinitely"
+        case 1:
+            timeOfDayLabel.text = "Morning"
+        case 2:
+            timeOfDayLabel.text = "Noon"
+        case 3:
+            timeOfDayLabel.text = "Evening"
+        case 4:
+            timeOfDayLabel.text = "Night"
+        default:
+            break
+        }
+    }
+    
+    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
@@ -32,7 +55,13 @@ class AddHabitViewController: UIViewController {
     }
     
     @IBAction func leftToDButtonTapped(_ sender: Any) {
+        if(index >= 0 && index <= 4) {
+            index -= 1
+        }
     }
     
+    @IBAction func rightToDButtonTapped(_ sender: Any) {
+        
+    }
     
 }
