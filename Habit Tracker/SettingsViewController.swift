@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     
+    //  MARK: - Properties
+    
     @IBOutlet weak var morningFirstTextField: UITextField!
     @IBOutlet weak var morningSecondTextField: UITextField!
     
@@ -47,6 +49,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     }
     
+    // MARK: - Keyboard
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -58,6 +62,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         timePicker.addTarget(self, action: #selector(SettingsViewController.dateValueChanged), for: .valueChanged)
     }
     
+    //  MARK: - Date
+    
     func dateValueChanged(sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -68,30 +74,35 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             morningWindow.append(morningFirst)
+            
         } else if sender == morningSecondTextField.inputView {
             morningSecondTextField.text = formatter.string(from: sender.date)
             guard let morningSecond = morningSecondTextField.text else {
                 return
             }
             morningWindow.append(morningSecond)
+            
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             guard let afternoonFirst = afternoonFirstTextField.text else {
                 return
             }
             afternoonWindow.append(afternoonFirst)
+            
         } else if sender == afternoonSecondTextField.inputView {
             afternoonSecondTextField.text = formatter.string(from: sender.date)
             guard let afternoonSecond = afternoonSecondTextField.text else {
                 return
             }
             afternoonWindow.append(afternoonSecond)
+            
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
             guard let eveningFirst = eveningFirstTextField.text else {
                 return
             }
             eveningWindow.append(eveningFirst)
+            
         } else if sender == eveningSecondTextField.inputView {
             eveningSecondTextField.text = formatter.string(from: sender.date)
             guard let eveningSecond = eveningSecondTextField.text else {
@@ -100,15 +111,4 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             eveningWindow.append(eveningSecond)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
