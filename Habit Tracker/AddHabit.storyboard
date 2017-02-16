@@ -94,15 +94,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U3R-Kt-6MU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="4" y="4" width="42" height="42"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" id="5Pi-48-1gm"/>
-                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" id="EyE-cE-h2T"/>
-                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="leading" secondItem="Ra4-I8-ExP" secondAttribute="leading" id="Npa-V0-84a"/>
-                                            <constraint firstAttribute="trailing" secondItem="U3R-Kt-6MU" secondAttribute="trailing" id="sNW-Fa-iqb"/>
+                                            <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" constant="4" id="5Pi-48-1gm"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" constant="4" id="EyE-cE-h2T"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="leading" secondItem="Ra4-I8-ExP" secondAttribute="leading" constant="4" id="Npa-V0-84a"/>
+                                            <constraint firstAttribute="trailing" secondItem="U3R-Kt-6MU" secondAttribute="trailing" constant="4" id="sNW-Fa-iqb"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="iconImage" destination="U3R-Kt-6MU" id="5Ax-ch-vNU"/>
