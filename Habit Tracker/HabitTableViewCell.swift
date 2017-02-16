@@ -33,8 +33,10 @@ class HabitTableViewCell: UITableViewCell {
         guard let habit = habit else { return }
         self.backgroundColor = Keys.shared.cellBackground
         self.habitNameLabel.text = habit.name
-        let habitIcon = UIImage(data: habit.icon as! Data)
-        self.habitIcon.image = habitIcon
+        self.habitNameLabel.textColor = Keys.shared.textColor
+        guard let habitIcon = habit.icon else { return }
+        self.habitIcon.image = UIImage(named:habitIcon)
+        self.habitIcon.backgroundColor = Keys.shared.cellBackground
         self.strike1Image.image = #imageLiteral(resourceName: "Strike")
         self.strike2Image.image = #imageLiteral(resourceName: "Strike")
         self.strike3Image.image = #imageLiteral(resourceName: "Strike")
