@@ -11,9 +11,7 @@ import UIKit
 class HabitListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        HabitController.shared.addHabit(name: "test", imageName: "teapot", timeOfNotification: "night")
-        
+        super.viewDidLoad()        
     }
 
     // MARK: - Table view data source
