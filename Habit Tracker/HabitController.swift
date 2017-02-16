@@ -19,8 +19,7 @@ class HabitController {
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
 
-    func addHabit(name: String, image: UIImage, startDate: NSDate = NSDate(), timeOfNotification: String) {
-        guard let imageName = image.accessibilityIdentifier else { return }
+    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) {
         _ = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
     }
     
