@@ -89,7 +89,6 @@ class AddHabitViewController: UIViewController {
         
         HabitController.shared.addHabit(name: name, imageName: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
         dismiss(animated: true, completion: nil)
-        HabitListTableViewController.shared.tableView.reloadData() // We may want to change the way we're doing this to avoid singleton abuse
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {

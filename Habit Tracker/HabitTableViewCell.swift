@@ -15,6 +15,8 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var strike2Image: UIImageView!
     @IBOutlet weak var strike3Image: UIImageView!
     @IBOutlet weak var habitNameLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -40,6 +42,15 @@ class HabitTableViewCell: UITableViewCell {
         self.strike1Image.image = #imageLiteral(resourceName: "Strike")
         self.strike2Image.image = #imageLiteral(resourceName: "Strike")
         self.strike3Image.image = #imageLiteral(resourceName: "Strike")
+        
+        // MARK: - This will probably break depending how we decide to add the daily isComplete object to the progress array.
+        guard let completedDays = habit.habitProgress?.count else { return }
+        self.progressLabel.text = "\(completedDays)/21"
+        self.progressLabel.textColor = Keys.shared.textColor
+        
+        self.progressBar.setProgress(Float(completedDays / 21), animated: true)
+        self.progressBar.progressTintColor = self.habitIcon.tintColor
+        self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
         var strikes = 0

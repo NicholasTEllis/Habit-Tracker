@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,20 +81,40 @@
                                                 <constraint firstAttribute="width" constant="57" id="FaY-8O-pKk"/>
                                             </constraints>
                                         </stackView>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bvt-VQ-bJn">
+                                            <rect key="frame" x="73" y="50" width="268" height="2"/>
+                                        </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16/21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4X-b7-nue">
+                                            <rect key="frame" x="344" y="41" width="23" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="XxJ-Xw-b3w"/>
+                                                <constraint firstAttribute="width" constant="23" id="fwO-CZ-csn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bvt-VQ-bJn" secondAttribute="bottom" constant="2" id="3qD-qS-rCG"/>
                                         <constraint firstItem="3nx-nA-DI7" firstAttribute="top" secondItem="xUf-hN-jDk" secondAttribute="top" id="7EB-fy-F9d"/>
+                                        <constraint firstItem="bvt-VQ-bJn" firstAttribute="leading" secondItem="RKT-0n-y8g" secondAttribute="trailing" constant="8" id="CWy-Dq-adT"/>
+                                        <constraint firstAttribute="bottom" secondItem="n4X-b7-nue" secondAttribute="bottom" id="LtF-a5-RkI"/>
                                         <constraint firstAttribute="bottom" secondItem="3nx-nA-DI7" secondAttribute="bottom" constant="20" id="NpP-cv-zYY"/>
                                         <constraint firstItem="RKT-0n-y8g" firstAttribute="leading" secondItem="xUf-hN-jDk" secondAttribute="leading" constant="8" id="RCd-Ac-j0o"/>
                                         <constraint firstItem="3nx-nA-DI7" firstAttribute="leading" secondItem="RKT-0n-y8g" secondAttribute="trailing" constant="8" id="X8M-Ed-mX5"/>
                                         <constraint firstAttribute="trailing" secondItem="3nx-nA-DI7" secondAttribute="trailing" constant="8" id="Y0f-zP-bvT"/>
                                         <constraint firstAttribute="bottom" secondItem="RKT-0n-y8g" secondAttribute="bottom" constant="2" id="dKp-Od-OfZ"/>
                                         <constraint firstItem="RKT-0n-y8g" firstAttribute="top" secondItem="xUf-hN-jDk" secondAttribute="top" constant="2" id="gHf-N7-iB3"/>
+                                        <constraint firstAttribute="trailing" secondItem="n4X-b7-nue" secondAttribute="trailing" constant="8" id="k8S-zi-dYX"/>
+                                        <constraint firstItem="n4X-b7-nue" firstAttribute="leading" secondItem="bvt-VQ-bJn" secondAttribute="trailing" constant="3" id="lAJ-XE-krZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="habitIcon" destination="7Kw-vI-NFC" id="ZRc-tM-geM"/>
                                     <outlet property="habitNameLabel" destination="3nx-nA-DI7" id="Ers-tv-d1Q"/>
+                                    <outlet property="progressBar" destination="bvt-VQ-bJn" id="Ian-Se-RZj"/>
+                                    <outlet property="progressLabel" destination="n4X-b7-nue" id="HL5-h3-ym4"/>
                                     <outlet property="strike1Image" destination="s00-ia-qIs" id="ymy-rt-Gex"/>
                                     <outlet property="strike2Image" destination="SCA-DO-5U8" id="2AY-Na-9Jy"/>
                                     <outlet property="strike3Image" destination="VoF-X0-ekW" id="wpT-e5-4cz"/>
