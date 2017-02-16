@@ -9,9 +9,14 @@
 import UIKit
 
 class HabitListTableViewController: UITableViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
     }
 
     // MARK: - Table view data source

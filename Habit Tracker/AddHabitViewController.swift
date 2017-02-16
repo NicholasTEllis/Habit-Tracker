@@ -22,6 +22,7 @@ class AddHabitViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
 
+        
         let swipeLeft = UISwipeGestureRecognizer()
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -56,22 +57,17 @@ class AddHabitViewController: UIViewController {
     func selectTime(index: Int) {
         switch index {
         case 0:
-            timeOfDayLabel.text = "Indefinitely"
+            timeOfDayLabel.text = "Any"
         case 1:
             timeOfDayLabel.text = "Morning"
         case 2:
-            timeOfDayLabel.text = "Noon"
-        case 3:
             timeOfDayLabel.text = "Afternoon"
-        case 4:
+        case 3:
             timeOfDayLabel.text = "Evening"
-        case 5:
-            timeOfDayLabel.text = "Night"
         default:
             return
         }
     }
-    
     
     // MARK: - Outlets
     
@@ -140,7 +136,6 @@ extension AddHabitViewController {
         }
         selectTime(index: index)
     }
-    
 }
 
 // MARK: - Collection View Data Source 
@@ -164,6 +159,7 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         let icon = imageIcon[indexPath.row]
         self.icon = icon
     }
+
 }
 
 

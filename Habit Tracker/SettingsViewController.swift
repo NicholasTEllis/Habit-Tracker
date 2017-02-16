@@ -21,9 +21,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var eveningSecondTextField: UITextField!
     
-    var morningWindow: [String] = []
-    var afternoonWindow: [String] = []
-    var eveningWindow: [String] = []
+    static var morningWindow: [String] = []
+    static var afternoonWindow: [String] = []
+    static var eveningWindow: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,42 +73,42 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             guard let morningFirst = morningFirstTextField.text else {
                 return
             }
-            morningWindow.append(morningFirst)
+            SettingsViewController.morningWindow.append(morningFirst)
             
         } else if sender == morningSecondTextField.inputView {
             morningSecondTextField.text = formatter.string(from: sender.date)
             guard let morningSecond = morningSecondTextField.text else {
                 return
             }
-            morningWindow.append(morningSecond)
+            SettingsViewController.morningWindow.append(morningSecond)
             
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             guard let afternoonFirst = afternoonFirstTextField.text else {
                 return
             }
-            afternoonWindow.append(afternoonFirst)
+            SettingsViewController.afternoonWindow.append(afternoonFirst)
             
         } else if sender == afternoonSecondTextField.inputView {
             afternoonSecondTextField.text = formatter.string(from: sender.date)
             guard let afternoonSecond = afternoonSecondTextField.text else {
                 return
             }
-            afternoonWindow.append(afternoonSecond)
+            SettingsViewController.afternoonWindow.append(afternoonSecond)
             
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
             guard let eveningFirst = eveningFirstTextField.text else {
                 return
             }
-            eveningWindow.append(eveningFirst)
+            SettingsViewController.eveningWindow.append(eveningFirst)
             
         } else if sender == eveningSecondTextField.inputView {
             eveningSecondTextField.text = formatter.string(from: sender.date)
             guard let eveningSecond = eveningSecondTextField.text else {
                 return
             }
-            eveningWindow.append(eveningSecond)
+            SettingsViewController.eveningWindow.append(eveningSecond)
         }
     }
     
