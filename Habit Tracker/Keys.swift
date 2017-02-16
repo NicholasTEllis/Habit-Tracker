@@ -13,17 +13,32 @@ class Keys {
     
     static let shared = Keys()
     
-    let iconTeal = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 160 / 255, alpha: 1)
-    let iconPink = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 138 / 255, alpha: 1)
-    let iconPurple = UIColor(colorLiteralRed: 110 / 255, green: 23 / 255, blue: 181 / 255, alpha: 1)
-    let iconGreen = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 28 / 255, alpha: 1)
-    let iconRed = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 23 / 255, alpha: 1)
-    let iconYellow = UIColor(colorLiteralRed: 178 / 255, green: 181 / 255, blue: 23 / 255, alpha: 1)
-    let iconBlue = UIColor(colorLiteralRed: 23 / 255, green: 58 / 255, blue: 181 / 255, alpha: 1)
+    // teal
+    let icon1 = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 160 / 255, alpha: 1)
+    // pink
+    let icon2 = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 138 / 255, alpha: 1)
+    // purple
+    let icon3 = UIColor(colorLiteralRed: 110 / 255, green: 23 / 255, blue: 181 / 255, alpha: 1)
+    // green
+    let icon4 = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 28 / 255, alpha: 1)
+    // red
+    let icon5 = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 23 / 255, alpha: 1)
+    // yeller
+    let icon6 = UIColor(colorLiteralRed: 178 / 255, green: 181 / 255, blue: 23 / 255, alpha: 1)
+    // blue
+    let icon7 = UIColor(colorLiteralRed: 23 / 255, green: 58 / 255, blue: 181 / 255, alpha: 1)
     
+    // Pick a color any color
+    // let icon8 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
+    // let icon9 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
+    
+    // VVV Let's pick these here now
     let cellBackground = UIColor(colorLiteralRed: 26 / 255, green: 26 / 255, blue: 26 / 255, alpha: 1)
     let background = UIColor(colorLiteralRed: 65 / 255, green: 65 / 255, blue: 65 / 255, alpha: 1)
     
+    let primaryAccent = UIColor.cyan
+    
+    // textStyle? celltextStyle?
     let textColor = UIColor.white
     
     
