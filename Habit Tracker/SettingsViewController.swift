@@ -111,4 +111,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             eveningWindow.append(eveningSecond)
         }
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

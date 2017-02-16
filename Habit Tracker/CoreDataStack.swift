@@ -11,7 +11,7 @@ import CoreData
 
 enum CoreDataStack {
     static let container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Habit-Tracker")
+        let container = NSPersistentContainer(name: "HabitTracker")
         container.loadPersistentStores(completionHandler: { (description, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error)")

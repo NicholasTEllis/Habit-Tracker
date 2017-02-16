@@ -106,7 +106,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6pd-sh-7Bk">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="AHO-PI-Dgz"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="AHO-PI-Dgz">
+                            <connections>
+                                <segue destination="4MS-0h-RPM" kind="show" identifier="toSettingsPage" action="showDetailViewController:sender:" id="AHN-kM-ne9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9S-Yc-89I" userLabel="First Responder" sceneMemberID="firstResponder"/>

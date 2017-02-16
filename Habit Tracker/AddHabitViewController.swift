@@ -15,6 +15,7 @@ class AddHabitViewController: UIViewController {
         super.viewDidLoad()
         
         iconCollectionView.delegate = self
+        iconCollectionView.dataSource = self
         
         let swipeRight = UISwipeGestureRecognizer()
         swipeRight.direction = .right
@@ -62,8 +63,10 @@ class AddHabitViewController: UIViewController {
         case 2:
             timeOfDayLabel.text = "Noon"
         case 3:
-            timeOfDayLabel.text = "Evening"
+            timeOfDayLabel.text = "Afternoon"
         case 4:
+            timeOfDayLabel.text = "Evening"
+        case 5:
             timeOfDayLabel.text = "Night"
         default:
             return
@@ -110,7 +113,6 @@ class AddHabitViewController: UIViewController {
         }
         return icons
     }
-    
 }
 
 // MARK: - Helper Methods
@@ -150,9 +152,9 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        
+//    }
 }
 
 

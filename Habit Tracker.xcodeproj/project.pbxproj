@@ -15,7 +15,7 @@
 		8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */; };
 		8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */; };
 		8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6AF1E538408004FA6E3 /* HabitController.swift */; };
-		8D89C6B91E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */; };
+		8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6B71E5385FE004FA6E3 /* HabitTracker.xcdatamodeld */; };
 		8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */; };
 		8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */; };
 		8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */; };
@@ -40,7 +40,7 @@
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitStatsTableViewController.swift; path = ../HabitStatsTableViewController.swift; sourceTree = "<group>"; };
 		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
-		8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habit-Tracker.xcdatamodel"; sourceTree = "<group>"; };
+		8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
 		8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Habit + Convience .swift"; sourceTree = "<group>"; };
 		8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DailyCompletion + Convience .swift"; sourceTree = "<group>"; };
 		8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		8D89C6B11E53840B004FA6E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */,
+				8D89C6B71E5385FE004FA6E3 /* HabitTracker.xcdatamodeld */,
 				8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */,
 				8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */,
 			);
@@ -255,7 +255,7 @@
 				8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */,
 				8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */,
 				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
-				8D89C6B91E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld in Sources */,
+				8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */,
 				8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */,
 				FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */,
 			);
@@ -433,13 +433,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8D89C6B71E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld */ = {
+		8D89C6B71E5385FE004FA6E3 /* HabitTracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */,
+				8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */,
 			);
-			currentVersion = 8D89C6B81E5385FE004FA6E3 /* Habit-Tracker.xcdatamodel */;
-			path = "Habit-Tracker.xcdatamodeld";
+			currentVersion = 8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */;
+			path = HabitTracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -12,7 +12,8 @@ class HabitListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        HabitController.shared.addHabit(name: "test", image: #imageLiteral(resourceName: "teapot"), timeOfNotification: "night")
+        
     }
 
     override func didReceiveMemoryWarning() {
