@@ -25,5 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+ 
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        <#code#>
+    }
 }
 
