@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddHabitViewController: UIViewController {
     
     
     override func viewDidLoad() {
@@ -26,10 +26,18 @@ class AddHabitViewController: UIViewController, UICollectionViewDelegate, UIColl
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
         swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
+        
+        
+        var imageIcon: [UIImage?] {
+            var icons: [UIImage?] = []
+            let imageNames = Keys.shared.iconNames
+            for image in imageNames {
+                icons.append(UIImage(named: image))
+            }
+            return icons
+        }
 
     }
-    
-    var index: Int = 0
     
     
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
@@ -87,6 +95,22 @@ class AddHabitViewController: UIViewController, UICollectionViewDelegate, UIColl
         indexIncreasing()
     }
     
+    
+    // MARK: - Properties
+    
+    var index: Int = 0
+    
+    
+    var imageIcon: [UIImage] {
+        var icons: [UIImage] = []
+        let imageNames = Keys.shared.iconNames
+        for image in imageNames {
+            guard let image = UIImage(named: image) else { return [] }
+            icons.append(image)
+        }
+        return icons
+    }
+    
 }
 
 // MARK: - Helper Methods
@@ -111,16 +135,30 @@ extension AddHabitViewController {
 
 // MARK: - Collection View Data Source 
 
-extension AddHabitViewController {
+extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return imageIcon.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as UICollectionViewCell
-        
-        
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
+        let icon = imageIcon[indexPath.row]
+        cell?.iconImage.image = icon
+        return cell ?? UICollectionViewCell()
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
     }
 }
+
+
+
+
+
+
+
+
