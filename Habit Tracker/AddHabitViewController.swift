@@ -28,16 +28,7 @@ class AddHabitViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
         swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
         
-        
-        var imageIcon: [UIImage?] {
-            var icons: [UIImage?] = []
-            let imageNames = Keys.shared.iconNames
-            for image in imageNames {
-                icons.append(UIImage(named: image))
-            }
-            return icons
-        }
-
+        iconCollectionView.backgroundColor = .clear
     }
     
     
@@ -108,15 +99,6 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
-//    var imageIcon: [UIImage] {
-//        var icons: [UIImage] = []
-//        let imageNames = Keys.shared.iconNames
-//        for image in imageNames {
-//            guard let image = UIImage(named: image) else { return [] }
-//            icons.append(image)
-//        }
-//        return icons
-//    }
 }
 
 // MARK: - Helper Methods
