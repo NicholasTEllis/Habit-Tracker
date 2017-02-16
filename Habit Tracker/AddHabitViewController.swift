@@ -69,7 +69,6 @@ class AddHabitViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
@@ -85,6 +84,7 @@ class AddHabitViewController: UIViewController {
             let image = icon else { return }
         
         HabitController.shared.addHabit(name: name, image: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
@@ -133,7 +133,6 @@ extension AddHabitViewController {
         }
         selectTime(index: index)
     }
-    
 }
 
 // MARK: - Collection View Data Source 
