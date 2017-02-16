@@ -51,14 +51,14 @@ class HabitTableViewCell: UITableViewCell {
         // change the color of the strike images to properly reflect the number of strikes
         switch strikes {
         case 1:
-            strike1Image.tintColor = Keys.shared.iconRed
+            strike1Image.tintColor = Keys.shared.icon5
         case 2:
-            strike1Image.tintColor = Keys.shared.iconRed
-            strike2Image.tintColor = Keys.shared.iconRed
+            strike1Image.tintColor = Keys.shared.icon5
+            strike2Image.tintColor = Keys.shared.icon5
         case 3:
-            strike1Image.tintColor = Keys.shared.iconRed
-            strike2Image.tintColor = Keys.shared.iconRed
-            strike3Image.tintColor = Keys.shared.iconRed
+            strike1Image.tintColor = Keys.shared.icon5
+            strike2Image.tintColor = Keys.shared.icon5
+            strike3Image.tintColor = Keys.shared.icon5
         default:
             return
         }
