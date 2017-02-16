@@ -9,6 +9,8 @@
 import UIKit
 
 class HabitListTableViewController: UITableViewController {
+    
+    static let shared = HabitListTableViewController() // We may want to find a way to avoid using a singleton here
 
     override func viewDidLoad() {
         super.viewDidLoad()
