@@ -27,6 +27,7 @@
 		FDBB28FA1E53BA1E00B3687D /* StatsStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDBB28F81E53BA1E00B3687D /* StatsStoryBoard.storyboard */; };
 		FDBB28FC1E53BDAC00B3687D /* AddHabit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */; };
 		FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */; };
+		FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		FDBB28F91E53BA1E00B3687D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Habit Tracker/Base.lproj/StatsStoryBoard.storyboard"; sourceTree = "<group>"; };
 		FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddHabit.storyboard; sourceTree = "<group>"; };
 		FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
+		FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		53933E8B1E54CE8A00BECC3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */,
 				53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */,
 			);
 			name = Views;
@@ -254,6 +257,7 @@
 				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
 				8D89C6B91E5385FE004FA6E3 /* Habit-Tracker.xcdatamodeld in Sources */,
 				8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */,
+				FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

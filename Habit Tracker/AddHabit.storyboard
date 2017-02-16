@@ -93,15 +93,33 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="iconCell" id="Ra4-I8-ExP">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="iconCell" id="Ra4-I8-ExP" customClass="IconsCollectionViewCell" customModule="Habit_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U3R-Kt-6MU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" id="5Pi-48-1gm"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" id="EyE-cE-h2T"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="leading" secondItem="Ra4-I8-ExP" secondAttribute="leading" id="Npa-V0-84a"/>
+                                            <constraint firstAttribute="trailing" secondItem="U3R-Kt-6MU" secondAttribute="trailing" id="sNW-Fa-iqb"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="iconImage" destination="U3R-Kt-6MU" id="5Ax-ch-vNU"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ku1-3y-29J" id="Fmw-hN-hX8"/>
+                                    <outlet property="delegate" destination="ku1-3y-29J" id="u9g-P7-Jjd"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.39796884786671072" green="0.40927813040412575" blue="0.40938293147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
