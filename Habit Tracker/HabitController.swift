@@ -20,8 +20,8 @@ class HabitController {
     }
 
     func addHabit(name: String, image: UIImage, startDate: NSDate = NSDate(), timeOfNotification: String) {
-        guard let imageData = UIImageJPEGRepresentation(image, 1.0) as NSData?  else { return }
-        _ = Habit(name: name, icon: imageData, startDate: startDate, timeOfNotification: timeOfNotification)
+        guard let imageName = image.accessibilityIdentifier else { return }
+        _ = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
     }
     
     //this will be to choose 21 then onto 66 days
