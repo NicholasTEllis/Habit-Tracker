@@ -87,7 +87,8 @@ class AddHabitViewController: UIViewController {
             let timeOfNotification = timeOfDayLabel.text,
             let image = icon else { return }
         
-        HabitController.shared.addHabit(name: name, image: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        HabitController.shared.addHabit(name: name, imageName: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
@@ -107,17 +108,19 @@ class AddHabitViewController: UIViewController {
     
     var index: Int = 0
     
-    var icon: UIImage?
+    var icon: String?
     
-    var imageIcon: [UIImage] {
-        var icons: [UIImage] = []
-        let imageNames = Keys.shared.iconNames
-        for image in imageNames {
-            guard let image = UIImage(named: image) else { return [] }
-            icons.append(image)
-        }
-        return icons
-    }
+    let imageIcon = Keys.shared.iconNames
+    
+//    var imageIcon: [UIImage] {
+//        var icons: [UIImage] = []
+//        let imageNames = Keys.shared.iconNames
+//        for image in imageNames {
+//            guard let image = UIImage(named: image) else { return [] }
+//            icons.append(image)
+//        }
+//        return icons
+//    }
 }
 
 // MARK: - Helper Methods
@@ -152,7 +155,7 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
         let icon = imageIcon[indexPath.row]
-        cell?.iconImage.image = icon
+        cell?.iconImage.image = UIImage(named:icon)
         return cell ?? UICollectionViewCell()
     }
     

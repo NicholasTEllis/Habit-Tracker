@@ -12,17 +12,11 @@ class HabitListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        HabitController.shared.addHabit(name: "test", image: #imageLiteral(resourceName: "teapot"), timeOfNotification: "night")
+//        HabitController.shared.addHabit(name: "test", imageName: "teapot", timeOfNotification: "night")
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
-
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
