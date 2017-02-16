@@ -21,7 +21,6 @@ class AddHabitViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRight)
         swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
 
-        
         let swipeLeft = UISwipeGestureRecognizer()
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -81,15 +80,23 @@ class AddHabitViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let name = habitNameTextField.text,
+            let timeOfNotification = timeOfDayLabel.text,
+            let image = icon else { return }
+        
+        HabitController.shared.addHabit(name: name, image: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
     }
+    
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    
     @IBAction func leftToDButtonTapped(_ sender: Any) {
         indexDecreasing()
     }
+    
     
     @IBAction func rightToDButtonTapped(_ sender: Any) {
         indexIncreasing()
@@ -100,6 +107,7 @@ class AddHabitViewController: UIViewController {
     
     var index: Int = 0
     
+    var icon: UIImage?
     
     var imageIcon: [UIImage] {
         var icons: [UIImage] = []
@@ -112,6 +120,7 @@ class AddHabitViewController: UIViewController {
     }
     
 }
+
 
 // MARK: - Helper Methods
 
@@ -133,6 +142,7 @@ extension AddHabitViewController {
     
 }
 
+
 // MARK: - Collection View Data Source 
 
 extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -151,7 +161,8 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let icon = imageIcon[indexPath.row]
+        self.icon = icon
     }
 }
 
