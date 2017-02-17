@@ -25,52 +25,52 @@ class ColorMenuView: UIView {
         
         switch index {
         case 0:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.blackColorButtonOutlet.center.x }, completion: nil)
         case 1:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.redColorButtonOutlet.center.x }, completion: nil)
         case 2:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.greenColorButtonOutlet.center.x }, completion: nil)
         case 3:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.purpleColorButtonOutlet.center.x }, completion: nil)
         case 4:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.pinkColorButtonOutlet.center.x }, completion: nil)
         case 5:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.yellowColorButtonOutlet.center.x }, completion: nil)
         default:
-            UIView.animate(withDuration: 0.75,
+            UIView.animate(withDuration: 0.35,
                            delay: 0,
-                           usingSpringWithDamping: 0.75,
-                           initialSpringVelocity: 0.75,
+                           usingSpringWithDamping: 0.9,
+                           initialSpringVelocity: 0.9,
                            options: .allowAnimatedContent,
                            animations: { self.selectionView.center.x = self.orangeColorButtonOutlet.center.x }, completion: nil)
         }
