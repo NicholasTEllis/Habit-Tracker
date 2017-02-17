@@ -30,6 +30,8 @@ class AddHabitViewController: UIViewController {
         
         iconCollectionView.backgroundColor = .clear
         iconCollectionView.allowsMultipleSelection = false
+        
+        self.setupColorMenu()
     }
     
     
@@ -68,6 +70,9 @@ class AddHabitViewController: UIViewController {
     @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
     
+    @IBOutlet var colorsForIconView: ColorMenuView!
+    
+    
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -75,7 +80,11 @@ class AddHabitViewController: UIViewController {
             let timeOfNotification = timeOfDayLabel.text,
             let image = icon else { return }
         
-        HabitController.shared.addHabit(name: name, imageName: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        HabitController.shared.addHabit(name: name,
+                                        imageName: image,
+                                        startDate: NSDate(),
+                                        timeOfNotification: timeOfNotification)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -102,26 +111,40 @@ class AddHabitViewController: UIViewController {
     
 }
 
-// MARK: - Helper Methods
+// MARK: - EXTENSION: Helper Methods
 
 extension AddHabitViewController {
     
     func indexDecreasing() {
-        if(index > 0 && index <= 4) {
-            index -= 1
-        }
+        if(index > 0 && index <= 4) { index -= 1 }
         selectTime(index: index)
     }
     
     func indexIncreasing() {
-        if(index >= 0 && index < 4) {
-            index += 1
-        }
+        if(index >= 0 && index < 4) { index += 1 }
         selectTime(index: index)
     }
+    
+    
+    func setupColorMenu() {
+        self.view.addSubview(self.colorMenuView)
+        UIView.animate(withDuration: 0.75,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.7,
+                       options: [],
+                       animations: {
+                        
+            self.colorMenuView.center.x = self.view.center.x
+            self.colorMenuView.frame.origin.y = self.view.frame.height - self.colorMenuView.frame.height
+        }, completion: nil)
+    }
+    
+    
 }
 
-// MARK: - Collection View Data Source 
+
+// MARK: - EXTENSION: Collection View Data Source
 
 extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
