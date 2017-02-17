@@ -31,6 +31,7 @@ class AddHabitViewController: UIViewController {
         iconCollectionView.backgroundColor = .clear
         iconCollectionView.allowsMultipleSelection = false
         
+        colorsForIconView.delegate = self
         self.setupColorMenu()
     }
     
@@ -109,6 +110,19 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
+    var color: UIColor = .black
+    
+}
+
+
+// MARK: - EXTENSION: ColorMenuDelegate Methods
+
+extension AddHabitViewController: ColorMenuDelegate {
+    
+    func colorMenuButtonTapped(at index: Int, with color: UIColor) {
+        self.color = color
+        self.colorsForIconView.select(index: index)
+    }
 }
 
 // MARK: - EXTENSION: Helper Methods
@@ -127,7 +141,8 @@ extension AddHabitViewController {
     
     
     func setupColorMenu() {
-        self.view.addSubview(self.colorMenuView)
+        self.view.addSubview(self.colorsForIconView)
+        let frame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 26)
         UIView.animate(withDuration: 0.75,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
@@ -135,8 +150,7 @@ extension AddHabitViewController {
                        options: [],
                        animations: {
                         
-            self.colorMenuView.center.x = self.view.center.x
-            self.colorMenuView.frame.origin.y = self.view.frame.height - self.colorMenuView.frame.height
+            self.colorsForIconView.frame = frame
         }, completion: nil)
     }
     

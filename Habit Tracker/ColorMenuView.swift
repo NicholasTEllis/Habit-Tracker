@@ -8,11 +8,20 @@
 
 import UIKit
 
-class ColorMenuView: UIView {
+protocol ColorMenuDelegate: class {
+    func colorMenuButtonTapped(at index: Int, with color: UIColor)
+}
 
+class ColorMenuView: UIView {
     
+    weak var delegate: ColorMenuDelegate?
+
+
     func select(index: Int) {
         
+         self.circularButtons(buttons: [blackColorButtonOutlet, redColorButtonOutlet, greenColorButtonOutlet, purpleColorButtonOutlet, pinkColorButtonOutlet, yellowColorButtonOutlet, orangeColorButtonOutlet])
+        
+        selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
         
         switch index {
         case 0:
@@ -85,6 +94,9 @@ class ColorMenuView: UIView {
     
     // MARK: - Actions
     @IBAction func colorButtonTapped(_ sender: UIButton) {
+        guard let color: UIColor = sender.backgroundColor else { return }
+        delegate?.colorMenuButtonTapped(at: sender.tag, with: color)
+        
     }
     
    
@@ -97,7 +109,7 @@ extension ColorMenuView {
     
     func circularButtons(buttons: [UIButton]) {
         for button in buttons {
-            button.layer.cornerRadius = 0.5 * button.layer.bounds.width
+            button.layer.cornerRadius = 0.5 * button.bounds.width
         }
     }
     

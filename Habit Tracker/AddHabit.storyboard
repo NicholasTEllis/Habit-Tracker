@@ -134,16 +134,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-Sa-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="BzY-yC-3DE" customClass="ColorMenuView" customModule="Habit_Tracker" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="26"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ho6-dX-qpi">
-                            <rect key="frame" x="13.5" y="0.0" width="25" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="76" y="0.0" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZV5-zd-F46">
-                            <rect key="frame" x="16" y="3" width="218" height="20"/>
+                            <rect key="frame" x="78.5" y="3" width="218" height="20"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqY-Cf-SLB">
                                     <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
