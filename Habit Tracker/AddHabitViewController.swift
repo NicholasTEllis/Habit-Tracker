@@ -30,6 +30,9 @@ class AddHabitViewController: UIViewController {
         
         iconCollectionView.backgroundColor = .clear
         iconCollectionView.allowsMultipleSelection = false
+        
+        colorsForIconView.delegate = self
+        self.setupColorMenu()
     }
     
     
@@ -68,6 +71,9 @@ class AddHabitViewController: UIViewController {
     @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
     
+    @IBOutlet var colorsForIconView: ColorMenuView!
+    
+    
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -75,7 +81,11 @@ class AddHabitViewController: UIViewController {
             let timeOfNotification = timeOfDayLabel.text,
             let image = icon else { return }
         
-        HabitController.shared.addHabit(name: name, imageName: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        HabitController.shared.addHabit(name: name,
+                                        imageName: image,
+                                        startDate: NSDate(),
+                                        timeOfNotification: timeOfNotification)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -100,28 +110,55 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
+    var color: UIColor?
+    
 }
 
-// MARK: - Helper Methods
+
+// MARK: - EXTENSION: ColorMenuDelegate Methods
+
+extension AddHabitViewController: ColorMenuDelegate {
+    
+    func colorMenuButtonTapped(at index: Int, with color: UIColor) {
+        self.color = color
+        self.colorsForIconView.select(index: index)
+    }
+}
+
+// MARK: - EXTENSION: Helper Methods
 
 extension AddHabitViewController {
     
     func indexDecreasing() {
-        if(index > 0 && index <= 4) {
-            index -= 1
-        }
+        if(index > 0 && index <= 4) { index -= 1 }
         selectTime(index: index)
     }
     
     func indexIncreasing() {
-        if(index >= 0 && index < 4) {
-            index += 1
-        }
+        if(index >= 0 && index < 4) { index += 1 }
         selectTime(index: index)
     }
+    
+    
+    func setupColorMenu() {
+        self.view.addSubview(self.colorsForIconView)
+        let frame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 26)
+        UIView.animate(withDuration: 0.75,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.7,
+                       options: [],
+                       animations: {
+                        
+            self.colorsForIconView.frame = frame
+        }, completion: nil)
+    }
+    
+    
 }
 
-// MARK: - Collection View Data Source 
+
+// MARK: - EXTENSION: Collection View Data Source
 
 extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
