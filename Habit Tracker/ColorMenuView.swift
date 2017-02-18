@@ -15,14 +15,22 @@ protocol ColorMenuDelegate: class {
 class ColorMenuView: UIView {
     
     weak var delegate: ColorMenuDelegate?
-
-
-    func select(index: Int) {
-        
-         self.circularButtons(buttons: [blackColorButtonOutlet, redColorButtonOutlet, greenColorButtonOutlet, purpleColorButtonOutlet, pinkColorButtonOutlet, yellowColorButtonOutlet, orangeColorButtonOutlet])
+    
+    override func draw(_ rect: CGRect) {
+        self.circularButtons(buttons: [blackColorButtonOutlet,
+                                       redColorButtonOutlet,
+                                       greenColorButtonOutlet,
+                                       purpleColorButtonOutlet,
+                                       pinkColorButtonOutlet,
+                                       yellowColorButtonOutlet,
+                                       orangeColorButtonOutlet])
         
         selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
-        
+    }
+
+    
+    func select(index: Int) {
+
         switch index {
         case 0:
             UIView.animate(withDuration: 0.35,
@@ -75,7 +83,7 @@ class ColorMenuView: UIView {
                            animations: { self.selectionView.center.x = self.orangeColorButtonOutlet.center.x }, completion: nil)
         }
     }
-  
+    
     
     
     
@@ -99,7 +107,7 @@ class ColorMenuView: UIView {
         
     }
     
-   
+    
 }
 
 

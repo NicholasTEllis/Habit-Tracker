@@ -110,7 +110,7 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
-    var color: UIColor = .black
+    var color: UIColor?
     
 }
 
