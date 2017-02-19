@@ -27,60 +27,25 @@ class ColorMenuView: UIView {
         
         selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
     }
-
+    
     
     func select(index: Int) {
-
+        
         switch index {
         case 0:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.blackColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: blackColorButtonOutlet)
         case 1:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.redColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: redColorButtonOutlet)
         case 2:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.greenColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: greenColorButtonOutlet)
         case 3:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.purpleColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: purpleColorButtonOutlet)
         case 4:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.pinkColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: pinkColorButtonOutlet)
         case 5:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.yellowColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: yellowColorButtonOutlet)
         default:
-            UIView.animate(withDuration: 0.35,
-                           delay: 0,
-                           usingSpringWithDamping: 0.9,
-                           initialSpringVelocity: 0.9,
-                           options: .allowAnimatedContent,
-                           animations: { self.selectionView.center.x = self.orangeColorButtonOutlet.center.x }, completion: nil)
+            selectColor(button: orangeColorButtonOutlet)
         }
     }
     
@@ -119,6 +84,16 @@ extension ColorMenuView {
         for button in buttons {
             button.layer.cornerRadius = 0.5 * button.bounds.width
         }
+    }
+    
+    func selectColor(button: UIButton) {
+        UIView.animate(withDuration: 0.35,
+                       delay: 0,
+                       usingSpringWithDamping: 0.9,
+                       initialSpringVelocity: 0.9,
+                       options: .allowAnimatedContent,
+                       animations: { self.selectionView.center.x = button.center.x },
+                       completion: nil)
     }
     
 }
