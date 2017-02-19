@@ -182,9 +182,11 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         let icon = imageIcon[indexPath.row]
         self.icon = icon
        
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.6, options: [], animations: {
-            cell?.layer.backgroundColor = UIColor.white.cgColor
-        }, completion: nil)
+        UIView.animate(withDuration: 0.25, delay: 0,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.6,
+                       options: [], animations: { cell?.layer.backgroundColor = UIColor.white.cgColor },
+                       completion: nil)
     }
     
     
