@@ -110,7 +110,11 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
-    var color: UIColor?
+    var color: UIColor? {
+        didSet {
+            self.iconCollectionView.reloadData()
+        }
+    }
     
 }
 
@@ -170,7 +174,11 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
         cell?.backgroundColor = UIColor.clear
+        cell?.iconImage.tintColor = .black
         let icon = imageIcon[indexPath.row]
+        
+        if let color = self.color { cell?.iconImage.tintColor = color }
+        
         cell?.iconImage.image = UIImage(named:icon)
         return cell ?? UICollectionViewCell()
     }
