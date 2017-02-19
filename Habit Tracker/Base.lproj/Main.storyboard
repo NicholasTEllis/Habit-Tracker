@@ -18,6 +18,14 @@
             </objects>
             <point key="canvasLocation" x="2393" y="-409"/>
         </scene>
+        <!--HabitDetail-->
+        <scene sceneID="Pdf-W8-Noi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HabitDetail" id="M8o-Cf-kHZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZkQ-hD-jBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2515" y="-133"/>
+        </scene>
         <!--Habit List Table View Controller-->
         <scene sceneID="Bkn-E0-CwV">
             <objects>
@@ -118,6 +126,7 @@
                                     <outlet property="strike1Image" destination="s00-ia-qIs" id="ymy-rt-Gex"/>
                                     <outlet property="strike2Image" destination="SCA-DO-5U8" id="2AY-Na-9Jy"/>
                                     <outlet property="strike3Image" destination="VoF-X0-ekW" id="wpT-e5-4cz"/>
+                                    <segue destination="M8o-Cf-kHZ" kind="show" id="rpY-nJ-T0L"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
