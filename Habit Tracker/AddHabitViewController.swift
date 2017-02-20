@@ -64,6 +64,7 @@ class AddHabitViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
@@ -128,6 +129,7 @@ extension AddHabitViewController: ColorMenuDelegate {
         self.colorsForIconView.select(index: index)
     }
 }
+
 
 // MARK: - EXTENSION: Helper Methods
 
