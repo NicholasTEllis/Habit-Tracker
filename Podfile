@@ -12,5 +12,8 @@ pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+use_frameworks!
+pod 'Fabric'
+pod 'TwitterKit'
 
 end
