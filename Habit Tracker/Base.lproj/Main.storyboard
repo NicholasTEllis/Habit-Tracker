@@ -168,6 +168,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="vJC-tq-jhB" kind="show" identifier="toHomeScreen" id="sOG-rv-lfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3r-Ip-tRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

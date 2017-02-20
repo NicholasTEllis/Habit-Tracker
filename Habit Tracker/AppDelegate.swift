@@ -43,5 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return handled
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if ((FBSDKAccessToken.current()) != nil) {
+            print("user is logged in")
+        }else{
+            print("user is not ")
+        }
+    }
 }
 

@@ -30,6 +30,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["email", "public_profile"]
     }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+//            
+//            _ = result.token
+//            
+//            let accessToken = FBSDKAccessToken.current()
+//            
+//            print(accessToken as Any)
+//            
+//            dismiss(animated: true) { 
+//                self.performSegue(withIdentifier: "toHomeScreen", sender: self.view)
+//            }
+//            
+//            
+//        }
+//    }
+    
     func setupTwitterButton() {
         let twitterButton = TWTRLogInButton { (session, error) in
             if let err = error {
@@ -39,6 +56,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         view.addSubview(twitterButton)
         twitterButton.frame = CGRect(x: 16, y: 250 + 66, width: view.frame.width - 32, height: 50)
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -51,6 +69,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         showEmailAddress()
+        performSegue(withIdentifier: "toHomeScreen", sender: self)
     }
     
     
