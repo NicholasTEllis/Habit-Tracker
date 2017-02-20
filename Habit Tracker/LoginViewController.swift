@@ -53,6 +53,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("Failed to log in to Twitter.", err)
             }
             print("Successfully logged into Twitter.")
+            self.performSegue(withIdentifier: "toHomeScreen", sender: self)
         }
         view.addSubview(twitterButton)
         twitterButton.frame = CGRect(x: 16, y: 250 + 66, width: view.frame.width - 32, height: 50)
