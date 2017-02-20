@@ -12,9 +12,8 @@ class DailyCompletionController {
     
     static let shared = DailyCompletionController()
     
-    func completeDay(isComplete: Bool, habit: Habit) {
+    func createCompletion(isComplete: Bool, habit: Habit) {
         _ = DailyCompletion(isComplete: isComplete, habit: habit)
     }
-    
     
 }

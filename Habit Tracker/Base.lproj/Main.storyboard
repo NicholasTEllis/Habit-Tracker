@@ -126,7 +126,7 @@
                                     <outlet property="strike1Image" destination="s00-ia-qIs" id="ymy-rt-Gex"/>
                                     <outlet property="strike2Image" destination="SCA-DO-5U8" id="2AY-Na-9Jy"/>
                                     <outlet property="strike3Image" destination="VoF-X0-ekW" id="wpT-e5-4cz"/>
-                                    <segue destination="M8o-Cf-kHZ" kind="show" id="1wy-qZ-A9m"/>
+                                    <segue destination="M8o-Cf-kHZ" kind="show" identifier="toHabitDetail" id="1wy-qZ-A9m"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

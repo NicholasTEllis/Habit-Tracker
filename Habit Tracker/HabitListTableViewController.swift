@@ -19,6 +19,9 @@ class HabitListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        <#code#>
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -43,10 +46,11 @@ class HabitListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let completeAction = UITableViewRowAction(style: .default, title: "Complete Habit") { (_, indexPath) in
+        var completeAction = UITableViewRowAction(style: .default, title: "Complete Habit") { (_, indexPath) in
             self.isEditing = false
             DailyCompletionController.shared.completeDay(isComplete: true, habit: HabitController.shared.habits[indexPath.row])
         }
+        completeAction.backgroundColor = HabitController.shared.habits[indexPath.row].iconColor // TODO: -  fix this with whatever Sohail names the color property on the habit model
         return [completeAction]
     }
 
@@ -65,16 +69,18 @@ class HabitListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toHabitDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let destinationVC = segue.destination as? HabitDetailViewController {
+                    let habit = HabitController.shared.habits[indexPath.row]
+                    destinationVC.habit = habit
+                }
+            }
+        }
     }
-    */
-    
-    
-
 }

@@ -49,7 +49,7 @@ class HabitTableViewCell: UITableViewCell {
         self.progressLabel.textColor = Keys.shared.textColor
         
         self.progressBar.setProgress(Float(completedDays / 21), animated: true)
-        self.progressBar.progressTintColor = self.habitIcon.tintColor
+        self.progressBar.progressTintColor = habit.iconColor
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
