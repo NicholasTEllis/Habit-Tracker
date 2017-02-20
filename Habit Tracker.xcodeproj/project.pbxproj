@@ -26,6 +26,7 @@
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
 		FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */; };
+		FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */; };
 		FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */; };
 		FDAB6C311E53CD6900EC946B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAB6C2F1E53CD6900EC946B /* Main.storyboard */; };
 		FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAB6C321E53CD7A00EC946B /* LaunchScreen.storyboard */; };
@@ -59,6 +60,7 @@
 		E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
 		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
+		FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		FDAB6C301E53CD6900EC946B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDAB6C331E53CD7A00EC946B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Habit Tracker/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -176,9 +178,10 @@
 				C05C72831E5A183D000DFF91 /* LoginViewController.swift */,
 				FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */,
 				8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */,
-				8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */,
 				FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */,
 				8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */,
+				FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */,
+				8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */,
 				FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */,
 				53933E881E54BFB900BECC3F /* Keys.swift in Sources */,
+				FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */,
 				C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */,
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
