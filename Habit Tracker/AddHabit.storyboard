@@ -77,7 +77,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JDi-3x-DuN">
                                 <rect key="frame" x="36" y="280" width="303" height="328"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SR7-Sz-P3N">
                                     <size key="itemSize" width="50" height="50"/>
@@ -94,15 +94,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U3R-Kt-6MU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="4" y="4" width="42" height="42"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" id="5Pi-48-1gm"/>
-                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" id="EyE-cE-h2T"/>
-                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="leading" secondItem="Ra4-I8-ExP" secondAttribute="leading" id="Npa-V0-84a"/>
-                                            <constraint firstAttribute="trailing" secondItem="U3R-Kt-6MU" secondAttribute="trailing" id="sNW-Fa-iqb"/>
+                                            <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" constant="4" id="5Pi-48-1gm"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" constant="4" id="EyE-cE-h2T"/>
+                                            <constraint firstItem="U3R-Kt-6MU" firstAttribute="leading" secondItem="Ra4-I8-ExP" secondAttribute="leading" constant="4" id="Npa-V0-84a"/>
+                                            <constraint firstAttribute="trailing" secondItem="U3R-Kt-6MU" secondAttribute="trailing" constant="4" id="sNW-Fa-iqb"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="iconImage" destination="U3R-Kt-6MU" id="5Ax-ch-vNU"/>
@@ -115,9 +115,9 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Any" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sF-Pt-iql">
-                                <rect key="frame" x="80" y="218" width="215" height="21"/>
+                                <rect key="frame" x="80" y="218" width="215" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -125,6 +125,7 @@
                         <color key="backgroundColor" red="0.39796884786671072" green="0.40927813040412575" blue="0.40938293147208127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="colorsForIconView" destination="BzY-yC-3DE" id="Tf1-z9-izt"/>
                         <outlet property="habitNameTextField" destination="O2R-zg-JOv" id="Svs-qf-phz"/>
                         <outlet property="iconCollectionView" destination="JDi-3x-DuN" id="Srg-6d-zn0"/>
                         <outlet property="timeDetailLabel" destination="z3I-kx-HSp" id="kSo-WK-XFx"/>
@@ -132,6 +133,84 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDb-Sa-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="BzY-yC-3DE" customClass="ColorMenuView" customModule="Habit_Tracker" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ho6-dX-qpi">
+                            <rect key="frame" x="76" y="0.0" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqY-Cf-SLB">
+                            <rect key="frame" x="79" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="nSV-kl-9bR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJo-gH-SO6">
+                            <rect key="frame" x="112" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="1" green="0.37900549173355103" blue="0.36835679411888123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="6AJ-5T-PUn"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPk-eV-Lit">
+                            <rect key="frame" x="145" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="0.35039794445037842" green="1" blue="0.61815571784973145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="bN6-6r-J5c"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-ee-Qf2">
+                            <rect key="frame" x="178" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="0.59454268217086792" green="0.56851178407669067" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="Rmn-jc-7Im"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zc-m2-oq4">
+                            <rect key="frame" x="211" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="1" green="0.57057517766952515" blue="0.87552708387374878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="cH5-30-7hK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvV-G5-27B">
+                            <rect key="frame" x="244" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="1" green="0.858367919921875" blue="0.56189054250717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="prr-8i-rU4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmV-UU-aS2">
+                            <rect key="frame" x="277" y="3" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <color key="backgroundColor" red="1" green="0.61230367422103882" blue="0.41105735301971436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="colorButtonTapped:" destination="BzY-yC-3DE" eventType="touchUpInside" id="aq5-kb-ILE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="blackColorButtonOutlet" destination="tqY-Cf-SLB" id="Ygz-L5-pGO"/>
+                        <outlet property="greenColorButtonOutlet" destination="oPk-eV-Lit" id="ZJr-5y-82h"/>
+                        <outlet property="orangeColorButtonOutlet" destination="KmV-UU-aS2" id="lpf-oc-mMD"/>
+                        <outlet property="pinkColorButtonOutlet" destination="2zc-m2-oq4" id="bsy-0f-k8X"/>
+                        <outlet property="purpleColorButtonOutlet" destination="2ta-ee-Qf2" id="Cb7-9l-wwI"/>
+                        <outlet property="redColorButtonOutlet" destination="YJo-gH-SO6" id="w69-jq-Z80"/>
+                        <outlet property="selectionView" destination="Ho6-dX-qpi" id="gdB-pL-mfp"/>
+                        <outlet property="yellowColorButtonOutlet" destination="cvV-G5-27B" id="8dV-Sn-DQ9"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="500" y="-238.83058470764618"/>
         </scene>

@@ -28,16 +28,11 @@ class AddHabitViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
         swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
         
+        iconCollectionView.backgroundColor = .clear
+        iconCollectionView.allowsMultipleSelection = false
         
-        var imageIcon: [UIImage?] {
-            var icons: [UIImage?] = []
-            let imageNames = Keys.shared.iconNames
-            for image in imageNames {
-                icons.append(UIImage(named: image))
-            }
-            return icons
-        }
-
+        colorsForIconView.delegate = self
+        self.setupColorMenu()
     }
     
     
@@ -69,12 +64,16 @@ class AddHabitViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
     @IBOutlet var timeOfDayLabel: UILabel!
     @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
+    
+    @IBOutlet var colorsForIconView: ColorMenuView!
+    
     
     // MARK: - Actions
     
@@ -83,7 +82,11 @@ class AddHabitViewController: UIViewController {
             let timeOfNotification = timeOfDayLabel.text,
             let image = icon else { return }
         
-        HabitController.shared.addHabit(name: name, imageName: image, startDate: NSDate(), timeOfNotification: timeOfNotification)
+        HabitController.shared.addHabit(name: name,
+                                        imageName: image,
+                                        startDate: NSDate(),
+                                        timeOfNotification: timeOfNotification)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -108,37 +111,60 @@ class AddHabitViewController: UIViewController {
     
     let imageIcon = Keys.shared.iconNames
     
-//    var imageIcon: [UIImage] {
-//        var icons: [UIImage] = []
-//        let imageNames = Keys.shared.iconNames
-//        for image in imageNames {
-//            guard let image = UIImage(named: image) else { return [] }
-//            icons.append(image)
-//        }
-//        return icons
-//    }
+    var color: UIColor? {
+        didSet {
+            self.iconCollectionView.reloadData()
+        }
+    }
+    
 }
 
-// MARK: - Helper Methods
+
+// MARK: - EXTENSION: ColorMenuDelegate Methods
+
+extension AddHabitViewController: ColorMenuDelegate {
+    
+    func colorMenuButtonTapped(at index: Int, with color: UIColor) {
+        self.color = color
+        self.colorsForIconView.select(index: index)
+    }
+}
+
+
+// MARK: - EXTENSION: Helper Methods
 
 extension AddHabitViewController {
     
     func indexDecreasing() {
-        if(index > 0 && index <= 4) {
-            index -= 1
-        }
+        if(index > 0 && index <= 4) { index -= 1 }
         selectTime(index: index)
     }
     
     func indexIncreasing() {
-        if(index >= 0 && index < 4) {
-            index += 1
-        }
+        if(index >= 0 && index < 4) { index += 1 }
         selectTime(index: index)
     }
+    
+    
+    func setupColorMenu() {
+        self.view.addSubview(self.colorsForIconView)
+        let frame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 26)
+        UIView.animate(withDuration: 0.75,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.7,
+                       options: [],
+                       animations: {
+                        
+            self.colorsForIconView.frame = frame
+        }, completion: nil)
+    }
+    
+    
 }
 
-// MARK: - Collection View Data Source 
+
+// MARK: - EXTENSION: Collection View Data Source
 
 extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -149,15 +175,36 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
+        cell?.backgroundColor = UIColor.clear
+        cell?.iconImage.tintColor = .black
         let icon = imageIcon[indexPath.row]
+        
+        if let color = self.color { cell?.iconImage.tintColor = color }
+        
         cell?.iconImage.image = UIImage(named:icon)
         return cell ?? UICollectionViewCell()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.cornerRadius = 5
         let icon = imageIcon[indexPath.row]
         self.icon = icon
+       
+        UIView.animate(withDuration: 0.25, delay: 0,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.6,
+                       options: [], animations: { cell?.layer.backgroundColor = UIColor.white.cgColor },
+                       completion: nil)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.35) { 
+            cell?.layer.backgroundColor = UIColor.clear.cgColor
+        }
     }
 
 }

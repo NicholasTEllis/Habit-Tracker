@@ -24,6 +24,9 @@
 		8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2241E53CCB80048EA67 /* Info.plist */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
+		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
+		FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */; };
+		FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */; };
 		FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */; };
 		FDAB6C311E53CD6900EC946B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAB6C2F1E53CD6900EC946B /* Main.storyboard */; };
 		FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAB6C321E53CD7A00EC946B /* LaunchScreen.storyboard */; };
@@ -55,6 +58,9 @@
 		C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
+		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
+		FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		FDAB6C301E53CD6900EC946B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDAB6C331E53CD7A00EC946B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Habit Tracker/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -81,6 +87,7 @@
 			children = (
 				FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */,
 				53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */,
+				FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -171,9 +178,10 @@
 				C05C72831E5A183D000DFF91 /* LoginViewController.swift */,
 				FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */,
 				8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */,
-				8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */,
 				FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */,
 				8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */,
+				FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */,
+				8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 				FDBB28F81E53BA1E00B3687D /* StatsStoryBoard.storyboard */,
 				FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */,
 				FDAB6C2F1E53CD6900EC946B /* Main.storyboard */,
+				FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */,
 				8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */,
 				53933E8B1E54CE8A00BECC3F /* Views */,
 			);
@@ -235,6 +244,7 @@
 				TargetAttributes = {
 					8D0686F91E537C2E00FBAA55 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XSV88KY8NF;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -273,6 +283,7 @@
 				FDBB28FC1E53BDAC00B3687D /* AddHabit.storyboard in Resources */,
 				C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */,
 				8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */,
+				FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */,
 				FDAB6C311E53CD6900EC946B /* Main.storyboard in Resources */,
 				FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */,
 				FDBB28FA1E53BA1E00B3687D /* StatsStoryBoard.storyboard in Resources */,
@@ -352,6 +363,7 @@
 				53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */,
 				FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */,
 				53933E881E54BFB900BECC3F /* Keys.swift in Sources */,
+				FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */,
 				C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */,
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
@@ -362,6 +374,7 @@
 				8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */,
 				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
 				8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */,
+				FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */,
 				8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */,
 				FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */,
 			);
@@ -494,8 +507,7 @@
 			baseConfigurationReference = 5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicholasEllis.Habit-Tracker";
@@ -509,8 +521,7 @@
 			baseConfigurationReference = D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicholasEllis.Habit-Tracker";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="guQ-Pc-fpG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vJC-tq-jhB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,6 +17,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPA-sI-0E6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2393" y="-409"/>
+        </scene>
+        <!--HabitDetail-->
+        <scene sceneID="Pdf-W8-Noi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HabitDetail" id="M8o-Cf-kHZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZkQ-hD-jBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2603" y="59"/>
         </scene>
         <!--Habit List Table View Controller-->
         <scene sceneID="Bkn-E0-CwV">
@@ -118,6 +126,7 @@
                                     <outlet property="strike1Image" destination="s00-ia-qIs" id="ymy-rt-Gex"/>
                                     <outlet property="strike2Image" destination="SCA-DO-5U8" id="2AY-Na-9Jy"/>
                                     <outlet property="strike3Image" destination="VoF-X0-ekW" id="wpT-e5-4cz"/>
+                                    <segue destination="M8o-Cf-kHZ" kind="show" id="1wy-qZ-A9m"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
