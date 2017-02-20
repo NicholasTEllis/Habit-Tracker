@@ -22,7 +22,6 @@
 		8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */; };
 		8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */; };
 		8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */; };
-		8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2241E53CCB80048EA67 /* Info.plist */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
@@ -224,6 +223,7 @@
 				8D0686F81E537C2E00FBAA55 /* Resources */,
 				3EF42DDF12FF9DB99FFC7CD7 /* [CP] Embed Pods Frameworks */,
 				C5EF63C36435D8A7A21AA46B /* [CP] Copy Pods Resources */,
+				C05C72891E5B8E1F000DFF91 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,6 +249,9 @@
 						DevelopmentTeam = XSV88KY8NF;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -281,7 +284,6 @@
 			files = (
 				FDBB28FC1E53BDAC00B3687D /* AddHabit.storyboard in Resources */,
 				C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */,
-				8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */,
 				FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */,
 				FDAB6C311E53CD6900EC946B /* Main.storyboard in Resources */,
 				FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */,
@@ -323,6 +325,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		C05C72891E5B8E1F000DFF91 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 6333de592e3f6a634ea666bb5ddc3cac4de13064 a7fe9dfb8c32d87517b10c599d55f95e2356938cf7a5a1f5e3bae1a3bf1034e1";
 		};
 		C5EF63C36435D8A7A21AA46B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

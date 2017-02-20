@@ -10,19 +10,35 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseCore
 import FirebaseAuth
+import TwitterKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTwitterButton()
+        
         let loginButton = FBSDKLoginButton()
+        
+        self.view.backgroundColor = .gray
         
         view.addSubview(loginButton)
         loginButton.frame = CGRect(x: 16, y: 250, width: view.frame.width - 32, height: 50)
         
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
+    }
+    
+    func setupTwitterButton() {
+        let twitterButton = TWTRLogInButton { (session, error) in
+            if let err = error {
+                print("Failed to log in to Twitter.", err)
+            }
+            print("Successfully logged into Twitter.")
+        }
+        view.addSubview(twitterButton)
+        twitterButton.frame = CGRect(x: 16, y: 250 + 66, width: view.frame.width - 32, height: 50)
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {

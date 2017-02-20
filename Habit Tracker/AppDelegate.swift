@@ -10,6 +10,8 @@ import UIKit
 import UserNotifications
 import FBSDKCoreKit
 import Firebase
+import Fabric
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Fabric.with([Twitter.self])
         
         FIRApp.configure()
         
