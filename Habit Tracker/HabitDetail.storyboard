@@ -44,7 +44,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6DP-8b-jtK">
-                                <rect key="frame" x="12" y="137" width="350" height="120"/>
+                                <rect key="frame" x="12" y="105" width="350" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBg-RA-fM5">
@@ -85,6 +85,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="daysCompletedLabel" destination="ak8-Ts-C1g" id="jzn-HS-nDH"/>
+                        <outlet property="daysRemainingLabel" destination="BhA-Wq-Ihw" id="O09-Uc-lc1"/>
+                        <outlet property="habitIcon" destination="QBg-RA-fM5" id="EF0-tq-Mjh"/>
+                        <outlet property="progressView" destination="W4q-JT-S2y" id="RGe-GZ-eKZ"/>
+                        <outlet property="strikeOne" destination="Cs6-qE-Jhd" id="dPA-HD-man"/>
+                        <outlet property="strikeThree" destination="cRM-4y-yjr" id="3FZ-Vw-IOS"/>
+                        <outlet property="strikeTwo" destination="aRg-2R-saw" id="kJf-j6-SkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StP-QV-Jfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

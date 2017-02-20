@@ -198,11 +198,11 @@
 		FDBB28FF1E53C14600B3687D /* Storyboards  */ = {
 			isa = PBXGroup;
 			children = (
-				FDBB28F81E53BA1E00B3687D /* StatsStoryBoard.storyboard */,
-				FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */,
 				FDAB6C2F1E53CD6900EC946B /* Main.storyboard */,
-				FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */,
 				8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */,
+				FDBB28FB1E53BDAC00B3687D /* AddHabit.storyboard */,
+				FDBB28F81E53BA1E00B3687D /* StatsStoryBoard.storyboard */,
+				FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */,
 				53933E8B1E54CE8A00BECC3F /* Views */,
 			);
 			name = "Storyboards ";
