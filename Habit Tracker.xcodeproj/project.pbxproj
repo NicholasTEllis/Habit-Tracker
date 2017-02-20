@@ -21,7 +21,6 @@
 		8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */; };
 		8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BE1E53888D004FA6E3 /* CoreDataStack.swift */; };
 		8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */; };
-		8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2241E53CCB80048EA67 /* Info.plist */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
@@ -282,7 +281,6 @@
 			files = (
 				FDBB28FC1E53BDAC00B3687D /* AddHabit.storyboard in Resources */,
 				C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */,
-				8DB8C2251E53CCB80048EA67 /* Info.plist in Resources */,
 				FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */,
 				FDAB6C311E53CD6900EC946B /* Main.storyboard in Resources */,
 				FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */,
