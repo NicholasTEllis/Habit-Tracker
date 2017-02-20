@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningSecondTextField: UITextField!
     
     static var morningWindow: [String] = []
+    static var morning = ""
     static var afternoonWindow: [String] = []
     static var eveningWindow: [String] = []
     
@@ -73,6 +74,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             guard let morningFirst = morningFirstTextField.text else {
                 return
             }
+            SettingsViewController.morning = morningFirst
             SettingsViewController.morningWindow.append(morningFirst)
             
         } else if sender == morningSecondTextField.inputView {
