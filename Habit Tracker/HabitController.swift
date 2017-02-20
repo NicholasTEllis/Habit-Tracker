@@ -36,12 +36,4 @@ class HabitController {
             NSLog("There was a problem saving to coredata: \(error)")
         }
     }
-    
-    func completeDay(habit: Habit) {
-        DailyCompletionController.createCompletion(isComplete: true, habit: habit)
-    }
-    
-    func completeDayWithFailure(habit: Habit) {
-        DailyCompletionController.createCompletion(isComplete: false, habit: habit)
-    }
 }

@@ -38,6 +38,17 @@ class HabitListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let completeAction = UITableViewRowAction(style: .default, title: "Complete Habit") { (_, indexPath) in
+            self.isEditing = false
+            DailyCompletionController.shared.completeDay(isComplete: true, habit: HabitController.shared.habits[indexPath.row])
+        }
+        return [completeAction]
+    }
 
     /*
     // Override to support rearranging the table view.
