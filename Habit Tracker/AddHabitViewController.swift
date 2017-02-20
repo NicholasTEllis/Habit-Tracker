@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController {
+class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     
     
     override func viewDidLoad() {
@@ -34,7 +34,6 @@ class AddHabitViewController: UIViewController {
         colorsForIconView.delegate = self
         self.setupColorMenu()
     }
-    
     
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
         
@@ -82,10 +81,12 @@ class AddHabitViewController: UIViewController {
             let timeOfNotification = timeOfDayLabel.text,
             let image = icon else { return }
         
-        HabitController.shared.addHabit(name: name,
+        let habit = HabitController.shared.addHabit(name: name,
                                         imageName: image,
                                         startDate: NSDate(),
                                         timeOfNotification: timeOfNotification)
+        
+        scheduleLocalNotifications(habit)
         
         dismiss(animated: true, completion: nil)
     }
