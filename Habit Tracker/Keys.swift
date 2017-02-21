@@ -42,5 +42,11 @@ class Keys {
     let textColor = UIColor.white
     
     
+    // Strings and such
+    
+    let swipeToCompleteString = "Complete Habit"
+    let swipeToUndoCompletion = "I didn't do that yet!"
+    
+    
     let iconNames = ["app window", "audio mixer", "bomb", "book", "briefcase", "chaplin", "bullseye", "chef hat", "clock", "coffee machine", "cooking pot", "crop circle", "cycle", "desktop 1", "desktop 2", "desktop 3", "download book", "edit", "envelope", "fountain pen 1", "fountain pen 2", "fountain pen", "globe", "grill", "hashhashtag", "headphones", "heart speach", "heart", "hot dog", "house", "ipad", "iphone", "ipod", "laptop 1", "laptop 2", "layers", "lazy boy", "link chain", "locked", "luggage", "magic wand", "magnet", "marker", "martini", "microphone", "note", "paint pallete", "paint roller", "paintbrush", "person speaking", "person", "photo", "pin", "pooring bucket", "popsicle", "quil", "robot", "scroll", "settings", "shield cross", "shopping cart", "silverware", "skull", "smiley", "speach bubble", "speedometer", "stamp", "syringe", "teapot", "trash can", "tv", "umbrella", "unlocked", "video camera", "wrench x"]
 }
