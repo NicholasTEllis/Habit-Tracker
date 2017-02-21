@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ColorMenuDelegate: class {
-    func colorMenuButtonTapped(at index: Int, with color: UIColor, colorKey: String)
+    func colorMenuButtonTapped(at index: Int, with color: UIColor)
 }
 
 class ColorMenuView: UIView {
@@ -17,7 +17,7 @@ class ColorMenuView: UIView {
     // MARK: -  Properties
     
     var colorKey: String = "iconColor1"
-
+    
     weak var delegate: ColorMenuDelegate?
     
     override func draw(_ rect: CGRect) {
@@ -30,7 +30,8 @@ class ColorMenuView: UIView {
                                        orangeColorButtonOutlet])
         
         selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
-        selectionView.center.x = blackColorButtonOutlet.center.x
+        selectionView.center.x = blackColorButtonOutlet.center.x - 200
+        selectionView.alpha = 0
     }
     
     
@@ -58,11 +59,9 @@ class ColorMenuView: UIView {
         default:
             selectColor(button: orangeColorButtonOutlet)
             self.colorKey = "iconColor7"
-
+            
         }
     }
-    
-    
     
     
     // MARK: - Outlet
@@ -81,7 +80,7 @@ class ColorMenuView: UIView {
     // MARK: - Actions
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         guard let color: UIColor = sender.backgroundColor else { return }
-        delegate?.colorMenuButtonTapped(at: sender.tag, with: color, colorKey: colorKey)
+        delegate?.colorMenuButtonTapped(at: sender.tag, with: color)
     }
 }
 
@@ -96,15 +95,20 @@ extension ColorMenuView {
         }
     }
     
+    
     func selectColor(button: UIButton) {
         UIView.animate(withDuration: 0.35,
                        delay: 0,
                        usingSpringWithDamping: 0.9,
                        initialSpringVelocity: 0.9,
                        options: .allowAnimatedContent,
-                       animations: { self.selectionView.center.x = button.center.x },
+                       animations: {
+                        self.selectionView.center.x = button.center.x
+                        self.selectionView.alpha = 1
+        },
                        completion: nil)
     }
+    
     
     func setColorKey() -> String {
         return self.colorKey
