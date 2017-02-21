@@ -13,10 +13,11 @@ import FirebaseAuth
 import TwitterKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isLoggedIn()
         setupTwitterButton()
         
         let loginButton = FBSDKLoginButton()
@@ -46,6 +47,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 //            
 //        }
 //    }
+    
+    func isLoggedIn() {
+        if ((FBSDKAccessToken.current()) != nil) {
+            print(FBSDKAccessToken.current())
+            performSegue(withIdentifier: "toHomeScreen", sender: self)
+        }else{
+            print("user is not ")
+        }
+    }
     
     func setupTwitterButton() {
         let twitterButton = TWTRLogInButton { (session, error) in

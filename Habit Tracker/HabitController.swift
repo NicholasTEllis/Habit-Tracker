@@ -59,17 +59,17 @@ protocol HabitNotificationScheduler {
 extension HabitNotificationScheduler {
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name else {
+        guard let name = habit.name, let fireDate = HabitController.fireDateFromTimeOfNotification else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
         content.categoryIdentifier = "message"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
         let calendar = Calendar.current
-        //let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: HabitController.fireDateFromTimeOfNotification)
-        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
