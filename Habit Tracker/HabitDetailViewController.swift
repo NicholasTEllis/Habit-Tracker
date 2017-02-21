@@ -28,9 +28,13 @@ class HabitDetailViewController: UIViewController {
             let daysCompleted = habit.habitProgress?.count,
             let progress = habit.habitProgress?.array as? [DailyCompletion] else { return }
         
+        guard let colorKey = habit.color else { return }
         
         
         habitIcon.image = UIImage(named: icon)
+        self.habitIcon.backgroundColor = .clear
+        habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
+        
         daysCompletedLabel.text = "\(daysCompleted) / 21"
         daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted))"
         self.title = habit.name
@@ -91,6 +95,27 @@ extension HabitDetailViewController {
             return
         }
     }
+    
+    
+    func colorFrom(colorKey: String) -> UIColor {
+        switch colorKey {
+        case "iconColor1":
+            return Keys.shared.iconColor1
+        case "iconColor2" :
+            return Keys.shared.iconColor2
+        case "iconColor3" :
+            return Keys.shared.iconColor3
+        case "iconColor4" :
+            return Keys.shared.iconColor4
+        case "iconColor5" :
+            return Keys.shared.iconColor5
+        case "iconColor6" :
+            return Keys.shared.iconColor6
+        default:
+            return Keys.shared.iconColor7
+        }
+    }
+
     
     
 }
