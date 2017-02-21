@@ -12,8 +12,26 @@ class DailyCompletionController {
     
     static let shared = DailyCompletionController()
     
-    func createCompletion(isComplete: Bool, habit: Habit) {
-        _ = DailyCompletion(isComplete: isComplete, habit: habit)
+    func createCompletion(habit: Habit) {
+        _ = DailyCompletion(isComplete: false, habit: habit)
+    }
+    
+    func completeHabitForDay(habit: Habit) {
+        let today = habit.habitProgress?.lastObject as? DailyCompletion
+        today?.isComplete = true
+        habit.isCompleteToday = true
+    }
+    
+    // TODO: - fail remaining habits, check for failed & completed habits, and do whatever it is we do with non completed array
+    func endOfDayCompletions() {
+        for habit in HabitController.shared.habits {
+            if habit.habitProgress?.count == 21 {
+                // TODO: - prompt extension, congratulate, etc
+            } else {
+            createCompletion(habit: habit)
+            }
+        }
+        // TODO: - reload habitListTableViewController somewhere
     }
     
 }

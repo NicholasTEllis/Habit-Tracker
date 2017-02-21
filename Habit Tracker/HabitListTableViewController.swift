@@ -7,32 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
-class HabitListTableViewController: UITableViewController {
+class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = Keys.shared.background
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            NSLog("Error starting fetched results controller: \(error)")
+        }
+        fetchedResultsController.delegate = self
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        <#code#>
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return HabitController.shared.habits.count
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        return sections[section].numberOfObjects
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as? HabitTableViewCell
 
-        cell?.habit = HabitController.shared.habits[indexPath.row]
+        cell?.habit = fetchedResultsController.object(at: indexPath)
 
         return cell ?? HabitTableViewCell()
     }
@@ -46,11 +54,11 @@ class HabitListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var completeAction = UITableViewRowAction(style: .default, title: "Complete Habit") { (_, indexPath) in
+        let completeAction = UITableViewRowAction(style: .default, title: "Complete Habit") { (_, indexPath) in
             self.isEditing = false
-            DailyCompletionController.shared.completeDay(isComplete: true, habit: HabitController.shared.habits[indexPath.row])
+            DailyCompletionController.shared.completeHabitForDay(habit: self.fetchedResultsController.object(at: indexPath))
         }
-        completeAction.backgroundColor = HabitController.shared.habits[indexPath.row].iconColor // TODO: -  fix this with whatever Sohail names the color property on the habit model
+//        completeAction.backgroundColor = HabitController.shared.habits[indexPath.row].iconColor // TODO: -  fix this with whatever Sohail names the color property on the habit model
         return [completeAction]
     }
 
@@ -78,9 +86,64 @@ class HabitListTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let destinationVC = segue.destination as? HabitDetailViewController {
                     let habit = HabitController.shared.habits[indexPath.row]
-                    destinationVC.habit = habit
+//                    destinationVC.habit = habit
                 }
             }
         }
+    }
+    
+    // MARK: - NSFetchedResultsController stuff
+    let fetchedResultsController: NSFetchedResultsController<Habit> = {
+        let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
+        let sortDescriptors = [NSSortDescriptor(key: "isCompleteToday", ascending: true), NSSortDescriptor(key: "startDate", ascending: true)]
+            fetchRequest.sortDescriptors = sortDescriptors
+            return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "isCompleteToday", cacheName: nil)
+    }()
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            // TODO: - We need to decide which of these cases we need.
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+        case .move:
+            guard let indexPath = indexPath, let newIndexPath = newIndexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+        case .update:
+            guard let indexPath = indexPath, let newIndexPath = newIndexPath else {return}
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultsController.sections, let index = Int(sections[section].name) else { return nil }
+        return index == 0 ? "To Do" : "Completed Today"
     }
 }

@@ -24,6 +24,7 @@ class HabitController {
 
     func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
+        DailyCompletionController.shared.createCompletion(habit: habit)
         return habit
     }
     
@@ -59,7 +60,7 @@ extension HabitNotificationScheduler {
         content.categoryIdentifier = "message"
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([], from: <#T##Date#>)
+//        let dateComponents = calendar.dateComponents([], from: <#T##Date#>)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }

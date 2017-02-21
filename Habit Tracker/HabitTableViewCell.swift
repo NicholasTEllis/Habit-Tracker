@@ -48,8 +48,8 @@ class HabitTableViewCell: UITableViewCell {
         self.progressLabel.text = "\(completedDays)/21"
         self.progressLabel.textColor = Keys.shared.textColor
         
-        self.progressBar.setProgress(Float(completedDays / 21), animated: true)
-        self.progressBar.progressTintColor = habit.iconColor
+        self.progressBar.setProgress(Float(Float(completedDays) / 21), animated: true)
+//        self.progressBar.progressTintColor = habit.iconColor
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
@@ -62,13 +62,16 @@ class HabitTableViewCell: UITableViewCell {
         }
         
         // change the color of the strike images to properly reflect the number of strikes
+        // TODO: - fix this to account for the current day's completion status
         switch strikes {
         case 1:
-            strike1Image.tintColor = Keys.shared.iconColor5
+            return
         case 2:
             strike1Image.tintColor = Keys.shared.iconColor5
-            strike2Image.tintColor = Keys.shared.iconColor5
         case 3:
+            strike1Image.tintColor = Keys.shared.iconColor5
+            strike2Image.tintColor = Keys.shared.iconColor5
+        case 4:
             strike1Image.tintColor = Keys.shared.iconColor5
             strike2Image.tintColor = Keys.shared.iconColor5
             strike3Image.tintColor = Keys.shared.iconColor5
