@@ -7,6 +7,7 @@
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleteToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="timeOfNotification" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +15,6 @@
     </entity>
     <elements>
         <element name="DailyCompletion" positionX="135" positionY="-27" width="128" height="73"/>
-        <element name="Habit" positionX="-54" positionY="-9" width="128" height="30"/>
+        <element name="Habit" positionX="-54" positionY="-9" width="128" height="135"/>
     </elements>
 </model>
