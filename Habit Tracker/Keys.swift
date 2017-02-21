@@ -13,21 +13,22 @@ class Keys {
     
     static let shared = Keys()
     
-    // teal
-    let iconColor1 = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 160 / 255, alpha: 1)
-    // pink
-    let iconColor2 = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 138 / 255, alpha: 1)
-    // purple
-    let iconColor3 = UIColor(colorLiteralRed: 110 / 255, green: 23 / 255, blue: 181 / 255, alpha: 1)
+    // black
+    let iconColor1 = UIColor(colorLiteralRed: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+    // salmon-ey
+    let iconColor2 = UIColor(colorLiteralRed: 255 / 255, green: 97 / 255, blue: 94 / 255, alpha: 1)
     // green
-    let iconColor4 = UIColor(colorLiteralRed: 23 / 255, green: 181 / 255, blue: 28 / 255, alpha: 1)
-    // red
-    let iconColor5 = UIColor(colorLiteralRed: 181 / 255, green: 23 / 255, blue: 23 / 255, alpha: 1)
+    let iconColor3 = UIColor(colorLiteralRed: 89 / 255, green: 255 / 255, blue: 158 / 255, alpha: 1)
+    // lilac
+    let iconColor4 = UIColor(colorLiteralRed: 152 / 255, green: 145 / 255, blue: 255 / 255, alpha: 1)
+    // pink
+    let iconColor5 = UIColor(colorLiteralRed: 255 / 255, green: 145 / 255, blue: 223 / 255, alpha: 1)
     // yeller
-    let iconColor6 = UIColor(colorLiteralRed: 178 / 255, green: 181 / 255, blue: 23 / 255, alpha: 1)
-    // blue
-    let iconColor7 = UIColor(colorLiteralRed: 23 / 255, green: 58 / 255, blue: 181 / 255, alpha: 1)
+    let iconColor6 = UIColor(colorLiteralRed: 255 / 255, green: 219 / 255, blue: 143 / 255, alpha: 1)
+    // naranja
+    let iconColor7 = UIColor(colorLiteralRed: 255 / 255, green: 156 / 255, blue: 105 / 255, alpha: 1)
     
+
     // Pick a color any color
     // let icon8 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
     // let icon9 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)

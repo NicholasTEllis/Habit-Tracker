@@ -9,6 +9,8 @@
 import UIKit
 
 class HabitTableViewCell: UITableViewCell {
+   
+    // MARK: - Outlets
     
     @IBOutlet weak var habitIcon: UIImageView!
     @IBOutlet weak var strike1Image: UIImageView!
@@ -19,11 +21,6 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     var habit: Habit? {
         didSet {
             updateCell()
@@ -33,12 +30,20 @@ class HabitTableViewCell: UITableViewCell {
     // setup what the cell will display
     func updateCell() {
         guard let habit = habit else { return }
+        
         self.backgroundColor = Keys.shared.cellBackground
+        
         self.habitNameLabel.text = habit.name
         self.habitNameLabel.textColor = Keys.shared.textColor
+        
+        guard let colorKey = habit.color else { return }
+        let color = self.colorFrom(colorKey: colorKey)
+        
         guard let habitIcon = habit.icon else { return }
         self.habitIcon.image = UIImage(named:habitIcon)
         self.habitIcon.backgroundColor = Keys.shared.cellBackground
+        self.habitIcon.tintColor = color
+        
         self.strike1Image.image = #imageLiteral(resourceName: "Strike")
         self.strike2Image.image = #imageLiteral(resourceName: "Strike")
         self.strike3Image.image = #imageLiteral(resourceName: "Strike")
@@ -79,4 +84,29 @@ class HabitTableViewCell: UITableViewCell {
             return
         }
     }
+}
+
+
+extension HabitTableViewCell {
+    
+    func colorFrom(colorKey: String) -> UIColor {
+        switch colorKey {
+        case "iconColor1":
+            return Keys.shared.iconColor1
+        case "iconColor2" :
+            return Keys.shared.iconColor2
+        case "iconColor3" :
+            return Keys.shared.iconColor3
+        case "iconColor4" :
+            return Keys.shared.iconColor4
+        case "iconColor5" :
+            return Keys.shared.iconColor5
+        case "iconColor6" :
+            return Keys.shared.iconColor6
+        default:
+            return Keys.shared.iconColor7
+        }
+    }
+    
+    
 }

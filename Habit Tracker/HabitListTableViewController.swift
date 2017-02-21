@@ -76,35 +76,23 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
+
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHabitDetail" {
+            
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let destinationVC = segue.destination as? HabitDetailViewController {
-                    let habit = HabitController.shared.habits[indexPath.row]
-                    //                    destinationVC.habit = habit
+                    let habit = fetchedResultsController.object(at: indexPath)
+                        destinationVC.habit = habit
                 }
             }
         }
     }
+    
     
     // MARK: - NSFetchedResultsController stuff
     let fetchedResultsController: NSFetchedResultsController<Habit> = {

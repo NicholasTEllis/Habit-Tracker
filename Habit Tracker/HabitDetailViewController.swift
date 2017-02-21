@@ -13,22 +13,35 @@ class HabitDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let habit = self.habit { self.updateWith(habit: habit) }
+        updateWith()
     }
+    
+    
 
     var habit: Habit?
     
     
-    
-    func updateWith(habit: Habit) {
+    func updateWith() {
+        guard let habit = habit else {
+            return }
+        
         guard let icon = habit.icon,
             let daysCompleted = habit.habitProgress?.count,
-            let progress = habit.habitProgress?.array as? [DailyCompletion] else { return }
+            let progress = habit.habitProgress?.array as? [DailyCompletion] else {
+                return }
+        
+
+        
+        guard let colorKey = habit.color else {
+            return }
+        
         
         habitIcon.image = UIImage(named: icon)
-        daysCompletedLabel.text = "\(daysCompleted) / 21"
-        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted))"
+        self.habitIcon.backgroundColor = .clear
+        habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
+        
+        daysCompletedLabel.text = "\(daysCompleted - 1) days completed"
+        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted)) days remaining"
         self.title = habit.name
         
         //strikes
@@ -67,7 +80,7 @@ class HabitDetailViewController: UIViewController {
 extension HabitDetailViewController {
 
     func findDaysRemaining(completedDays: Int) -> Int {
-        return (21 - completedDays)
+        return (21 - (completedDays - 1))
     }
 
     
@@ -87,6 +100,27 @@ extension HabitDetailViewController {
             return
         }
     }
+    
+    
+    func colorFrom(colorKey: String) -> UIColor {
+        switch colorKey {
+        case "iconColor1":
+            return Keys.shared.iconColor1
+        case "iconColor2" :
+            return Keys.shared.iconColor2
+        case "iconColor3" :
+            return Keys.shared.iconColor3
+        case "iconColor4" :
+            return Keys.shared.iconColor4
+        case "iconColor5" :
+            return Keys.shared.iconColor5
+        case "iconColor6" :
+            return Keys.shared.iconColor6
+        default:
+            return Keys.shared.iconColor7
+        }
+    }
+
     
     
 }

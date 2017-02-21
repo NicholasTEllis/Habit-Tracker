@@ -9,11 +9,15 @@
 import UIKit
 
 protocol ColorMenuDelegate: class {
-    func colorMenuButtonTapped(at index: Int, with color: UIColor)
+    func colorMenuButtonTapped(at index: Int, with color: UIColor, colorKey: String)
 }
 
 class ColorMenuView: UIView {
     
+    // MARK: -  Properties
+    
+    var colorKey: String = "iconColor1"
+
     weak var delegate: ColorMenuDelegate?
     
     override func draw(_ rect: CGRect) {
@@ -26,6 +30,7 @@ class ColorMenuView: UIView {
                                        orangeColorButtonOutlet])
         
         selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
+        selectionView.center.x = blackColorButtonOutlet.center.x
     }
     
     
@@ -34,18 +39,26 @@ class ColorMenuView: UIView {
         switch index {
         case 0:
             selectColor(button: blackColorButtonOutlet)
+            self.colorKey = "iconColor1"
         case 1:
             selectColor(button: redColorButtonOutlet)
+            self.colorKey = "iconColor2"
         case 2:
             selectColor(button: greenColorButtonOutlet)
+            self.colorKey = "iconColor3"
         case 3:
             selectColor(button: purpleColorButtonOutlet)
+            self.colorKey = "iconColor4"
         case 4:
             selectColor(button: pinkColorButtonOutlet)
+            self.colorKey = "iconColor5"
         case 5:
             selectColor(button: yellowColorButtonOutlet)
+            self.colorKey = "iconColor6"
         default:
             selectColor(button: orangeColorButtonOutlet)
+            self.colorKey = "iconColor7"
+
         }
     }
     
@@ -68,11 +81,8 @@ class ColorMenuView: UIView {
     // MARK: - Actions
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         guard let color: UIColor = sender.backgroundColor else { return }
-        delegate?.colorMenuButtonTapped(at: sender.tag, with: color)
-        
+        delegate?.colorMenuButtonTapped(at: sender.tag, with: color, colorKey: colorKey)
     }
-    
-    
 }
 
 
@@ -94,6 +104,10 @@ extension ColorMenuView {
                        options: .allowAnimatedContent,
                        animations: { self.selectionView.center.x = button.center.x },
                        completion: nil)
+    }
+    
+    func setColorKey() -> String {
+        return self.colorKey
     }
     
 }
