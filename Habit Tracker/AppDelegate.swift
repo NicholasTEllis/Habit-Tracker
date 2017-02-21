@@ -47,10 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         if ((FBSDKAccessToken.current()) != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
+<<<<<<< HEAD
             let viewController = storyboard.instantiateViewController(withIdentifier: "CustomTabBarViewController")
             self.window?.rootViewController = viewController
             print("user is logged in")
         
+=======
+            let viewController = storyboard.instantiateViewController(withIdentifier: "customTabBar")
+            self.window?.rootViewController = viewController
+            print("user is logged in")
+            
+>>>>>>> f374236a65379beb87543d5067308fdaf3dd7082
         }else{
             print("user is not ")
         }
