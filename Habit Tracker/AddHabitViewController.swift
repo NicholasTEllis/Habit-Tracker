@@ -79,15 +79,16 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = habitNameTextField.text,
             let timeOfNotification = timeOfDayLabel.text,
-            let image = icon else { return }
+            let image = icon,
+            let colorKey = colorKey else { return }
         
         let habit = HabitController.shared.addHabit(name: name,
                                         imageName: image,
                                         startDate: NSDate(),
-                                        timeOfNotification: timeOfNotification)
+                                        timeOfNotification: timeOfNotification, color: colorKey)
+        
         
         scheduleLocalNotifications(habit)
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -112,6 +113,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     
     let imageIcon = Keys.shared.iconNames
     
+    var colorKey: String?
+    
     var color: UIColor? {
         didSet {
             self.iconCollectionView.reloadData()
@@ -125,10 +128,12 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
 
 extension AddHabitViewController: ColorMenuDelegate {
     
-    func colorMenuButtonTapped(at index: Int, with color: UIColor) {
+    func colorMenuButtonTapped(at index: Int, with color: UIColor, colorKey: String) {
         self.color = color
         self.colorsForIconView.select(index: index)
+        self.colorKey = colorsForIconView.setColorKey()
     }
+    
 }
 
 
