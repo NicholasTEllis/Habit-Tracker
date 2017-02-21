@@ -29,7 +29,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
+    
+        
     }
+    
+    
+    static let accessToken = FBSDKAccessToken.current()
+    
+    
     
 //    override func viewDidDisappear(_ animated: Bool) {
 //        func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -83,6 +90,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         performSegue(withIdentifier: "toHomeScreen", sender: self)
     }
     
+   
     
     
     func showEmailAddress() {
