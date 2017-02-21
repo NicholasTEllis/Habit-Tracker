@@ -17,6 +17,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(FBSDKAccessToken.current() != nil){
+            performSegue(withIdentifier: "toHomeScreen", sender: self)
+        }else{
+            print("user is not logged in")
+        }
+        
         setupTwitterButton()
         
         let loginButton = FBSDKLoginButton()
