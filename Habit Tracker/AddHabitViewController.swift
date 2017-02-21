@@ -13,10 +13,7 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        iconCollectionView.delegate = self
-        iconCollectionView.dataSource = self
-        
+  
         let swipeRight = UISwipeGestureRecognizer()
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -28,15 +25,20 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
         self.view.addGestureRecognizer(swipeLeft)
         swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
         
+       
+        iconCollectionView.delegate = self
+        iconCollectionView.dataSource = self
+        
         iconCollectionView.backgroundColor = .clear
         iconCollectionView.allowsMultipleSelection = false
         
+        
         colorsForIconView.delegate = self
+        colorsForIconView.select(index: 0)
         self.setupColorMenu()
     }
     
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
-        
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
             indexIncreasing()
@@ -64,6 +66,23 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     }
     
     
+    // MARK: - Properties
+    
+    var index: Int = 0
+    
+    var icon: String?
+    
+    let imageIcon = Keys.shared.iconNames
+    
+    var colorKey: String?
+    
+    var color: UIColor? {
+        didSet {
+            self.iconCollectionView.reloadData()
+        }
+    }
+    
+    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
@@ -77,10 +96,7 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let name = habitNameTextField.text,
-            let timeOfNotification = timeOfDayLabel.text,
-            let image = icon,
-            let colorKey = colorKey else { return }
+        guard let name = habitNameTextField.text, let timeOfNotification = timeOfDayLabel.text, let image = icon, let colorKey = colorKey else { return }
         
         let habit = HabitController.shared.addHabit(name: name,
                                         imageName: image,
@@ -104,23 +120,6 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
         indexIncreasing()
     }
     
-    
-    // MARK: - Properties
-    
-    var index: Int = 0
-    
-    var icon: String?
-    
-    let imageIcon = Keys.shared.iconNames
-    
-    var colorKey: String?
-    
-    var color: UIColor? {
-        didSet {
-            self.iconCollectionView.reloadData()
-        }
-    }
-    
 }
 
 
@@ -128,7 +127,7 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
 
 extension AddHabitViewController: ColorMenuDelegate {
     
-    func colorMenuButtonTapped(at index: Int, with color: UIColor, colorKey: String) {
+    func colorMenuButtonTapped(at index: Int, with color: UIColor) {
         self.color = color
         self.colorsForIconView.select(index: index)
         self.colorKey = colorsForIconView.setColorKey()
@@ -182,7 +181,8 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
         cell?.backgroundColor = UIColor.clear
-        cell?.iconImage.tintColor = .black
+        cell?.iconImage.tintColor = .lightGray
+        
         let icon = imageIcon[indexPath.row]
         
         if let color = self.color { cell?.iconImage.tintColor = color }
@@ -201,14 +201,14 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         UIView.animate(withDuration: 0.25, delay: 0,
                        usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 0.6,
-                       options: [], animations: { cell?.layer.backgroundColor = UIColor.white.cgColor },
+                       options: .allowAnimatedContent, animations: { cell?.layer.backgroundColor = UIColor.white.cgColor },
                        completion: nil)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.35) { 
+        UIView.animate(withDuration: 0.25) {
             cell?.layer.backgroundColor = UIColor.clear.cgColor
         }
     }

@@ -98,6 +98,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="U3R-Kt-6MU" secondAttribute="bottom" constant="4" id="5Pi-48-1gm"/>
                                             <constraint firstItem="U3R-Kt-6MU" firstAttribute="top" secondItem="Ra4-I8-ExP" secondAttribute="top" constant="4" id="EyE-cE-h2T"/>
