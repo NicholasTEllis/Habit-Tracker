@@ -13,10 +13,11 @@ import FirebaseAuth
 import TwitterKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isLoggedIn()
         setupTwitterButton()
         
         let loginButton = FBSDKLoginButton()
@@ -30,15 +31,43 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["email", "public_profile"]
     }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+//            
+//            _ = result.token
+//            
+//            let accessToken = FBSDKAccessToken.current()
+//            
+//            print(accessToken as Any)
+//            
+//            dismiss(animated: true) { 
+//                self.performSegue(withIdentifier: "toHomeScreen", sender: self.view)
+//            }
+//            
+//            
+//        }
+//    }
+    
+    func isLoggedIn() {
+        if ((FBSDKAccessToken.current()) != nil) {
+            print(FBSDKAccessToken.current())
+            performSegue(withIdentifier: "toHomeScreen", sender: self)
+        }else{
+            print("user is not ")
+        }
+    }
+    
     func setupTwitterButton() {
         let twitterButton = TWTRLogInButton { (session, error) in
             if let err = error {
                 print("Failed to log in to Twitter.", err)
             }
             print("Successfully logged into Twitter.")
+            self.performSegue(withIdentifier: "toHomeScreen", sender: self)
         }
         view.addSubview(twitterButton)
         twitterButton.frame = CGRect(x: 16, y: 250 + 66, width: view.frame.width - 32, height: 50)
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -51,6 +80,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         showEmailAddress()
+        performSegue(withIdentifier: "toHomeScreen", sender: self)
     }
     
     
