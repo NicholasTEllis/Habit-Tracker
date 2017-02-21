@@ -10,8 +10,9 @@ import Foundation
 import CoreData
 
 extension DailyCompletion {
-    convenience init(isComplete: Bool, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(isComplete: Bool, habit: Habit, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.isComplete = isComplete
+        self.habit = habit
     }
 }

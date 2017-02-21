@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53933E881E54BFB900BECC3F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E871E54BFB900BECC3F /* Keys.swift */; };
 		53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */; };
+		539342F51E5B649F00BECC3F /* DailyCompletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539342F41E5B649F00BECC3F /* DailyCompletionController.swift */; };
 		846CF97761DCB477574C224F /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
 		53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		539342F41E5B649F00BECC3F /* DailyCompletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCompletionController.swift; sourceTree = "<group>"; };
 		5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				8D9D72B11E5B9A0C008BED2D /* DateHelper.swift */,
 				8D89C6AF1E538408004FA6E3 /* HabitController.swift */,
+				539342F41E5B649F00BECC3F /* DailyCompletionController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */,
 				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
 				8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */,
+				539342F51E5B649F00BECC3F /* DailyCompletionController.swift in Sources */,
 				FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */,
 				8D9D72B21E5B9A0C008BED2D /* DateHelper.swift in Sources */,
 				8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */,

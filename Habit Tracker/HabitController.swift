@@ -33,6 +33,7 @@ class HabitController {
 
     func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
+        DailyCompletionController.shared.createCompletion(habit: habit)
         return habit
     }
     
