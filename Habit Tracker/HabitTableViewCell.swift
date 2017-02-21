@@ -27,8 +27,6 @@ class HabitTableViewCell: UITableViewCell {
         }
     }
     
-
-    
     // setup what the cell will display
     func updateCell() {
         guard let habit = habit else { return }

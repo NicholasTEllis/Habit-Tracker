@@ -31,8 +31,8 @@ class HabitController {
         return fireDateFromThisMorning
     }
 
-    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) -> Habit {
-        let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
+    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String) -> Habit {
+        let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification, color: color)
         DailyCompletionController.shared.createCompletion(habit: habit)
         return habit
     }

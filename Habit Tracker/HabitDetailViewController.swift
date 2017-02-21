@@ -13,30 +13,35 @@ class HabitDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let habit = self.habit {
-            self.updateWith(habit: habit)
-        }
+        updateWith()
     }
+    
+    
 
     var habit: Habit?
     
     
-    
-    func updateWith(habit: Habit) {
+    func updateWith() {
+        guard let habit = habit else {
+            return }
+        
         guard let icon = habit.icon,
             let daysCompleted = habit.habitProgress?.count,
-            let progress = habit.habitProgress?.array as? [DailyCompletion] else { return }
+            let progress = habit.habitProgress?.array as? [DailyCompletion] else {
+                return }
         
-        guard let colorKey = habit.color else { return }
+
+        
+        guard let colorKey = habit.color else {
+            return }
         
         
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        daysCompletedLabel.text = "\(daysCompleted) / 21"
-        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted))"
+        daysCompletedLabel.text = "\(daysCompleted - 1) days completed"
+        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted)) days remaining"
         self.title = habit.name
         
         //strikes
@@ -75,7 +80,7 @@ class HabitDetailViewController: UIViewController {
 extension HabitDetailViewController {
 
     func findDaysRemaining(completedDays: Int) -> Int {
-        return (21 - completedDays)
+        return (21 - (completedDays - 1))
     }
 
     
