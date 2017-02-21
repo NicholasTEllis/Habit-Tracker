@@ -107,11 +107,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     // MARK: - Properties
     
     var index: Int = 0
-    
     var icon: String?
-    
     let imageIcon = Keys.shared.iconNames
-    
     var color: UIColor? {
         didSet {
             self.iconCollectionView.reloadData()

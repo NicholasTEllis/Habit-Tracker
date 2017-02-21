@@ -59,7 +59,7 @@ extension HabitNotificationScheduler {
         content.categoryIdentifier = "message"
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([], from: <#T##Date#>)
+       // let dateComponents = calendar.dateComponents([], from: <#T##Date#>)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }

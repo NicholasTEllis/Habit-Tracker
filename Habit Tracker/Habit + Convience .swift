@@ -19,4 +19,11 @@ extension Habit {
         self.startDate = startDate
         self.timeOfNotification = timeOfNotification
     }
+    
+
+    func setIconColor(color: UIColor) {
+        
+    }
+    
+    
 }
