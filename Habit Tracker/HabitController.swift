@@ -21,6 +21,15 @@ class HabitController {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
+    
+    static var fireDateFromTimeOfNotification: Date? {
+        let timeWindowFromSettings = SettingsViewController.morning
+        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight,
+        let timeFromSettings = Double(timeWindowFromSettings) else { return nil }
+        let timeInterval: TimeInterval = timeFromSettings
+        let fireDateFromThisMorning = Date(timeInterval: timeInterval, since: thisMorningAtMidnight)
+        return fireDateFromThisMorning
+    }
 
     func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
@@ -51,17 +60,17 @@ protocol HabitNotificationScheduler {
 extension HabitNotificationScheduler {
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name else {
+        guard let name = habit.name, let fireDate = HabitController.fireDateFromTimeOfNotification else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
         content.categoryIdentifier = "message"
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
         let calendar = Calendar.current
-//        let dateComponents = calendar.dateComponents([], from: <#T##Date#>)
-        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     

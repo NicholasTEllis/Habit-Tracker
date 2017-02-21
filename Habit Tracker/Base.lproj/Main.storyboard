@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vJC-tq-jhB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="guQ-Pc-fpG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
         <!--Habit List Table View Controller-->
         <scene sceneID="Bkn-E0-CwV">
             <objects>
-                <tableViewController id="6lA-fz-oqh" customClass="HabitListTableViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="homeScreen" id="6lA-fz-oqh" customClass="HabitListTableViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="HOH-wd-ysG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWu-1l-TXa" id="xUf-hN-jDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-nA-DI7">
@@ -52,7 +52,7 @@
                                             <rect key="frame" x="8" y="2" width="57" height="58"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-vI-NFC">
-                                                    <rect key="frame" x="9" y="0.0" width="40" height="40"/>
+                                                    <rect key="frame" x="8.5" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="1uy-PX-ddT"/>
                                                         <constraint firstAttribute="width" constant="40" id="S6L-jV-3vP"/>
@@ -126,7 +126,7 @@
                                     <outlet property="strike1Image" destination="s00-ia-qIs" id="ymy-rt-Gex"/>
                                     <outlet property="strike2Image" destination="SCA-DO-5U8" id="2AY-Na-9Jy"/>
                                     <outlet property="strike3Image" destination="VoF-X0-ekW" id="wpT-e5-4cz"/>
-                                    <segue destination="M8o-Cf-kHZ" kind="show" identifier="toHabitDetail" id="1wy-qZ-A9m"/>
+                                    <segue destination="M8o-Cf-kHZ" kind="show" id="1wy-qZ-A9m"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -168,6 +168,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="vJC-tq-jhB" kind="show" identifier="toHomeScreen" id="eJf-aN-jfM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3r-Ip-tRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,7 +179,7 @@
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="Jde-XO-LU8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="vJC-tq-jhB" customClass="CustomTabBarViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="customTabBar" automaticallyAdjustsScrollViewInsets="NO" id="vJC-tq-jhB" customClass="CustomTabBarViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ig1-M8-kB8">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
