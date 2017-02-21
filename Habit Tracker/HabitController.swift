@@ -22,8 +22,8 @@ class HabitController {
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
 
-    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String) -> Habit {
-        let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification)
+    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String) -> Habit {
+        let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification, color: color)
         return habit
     }
     

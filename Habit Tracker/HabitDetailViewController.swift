@@ -14,7 +14,9 @@ class HabitDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let habit = self.habit { self.updateWith(habit: habit) }
+        if let habit = self.habit {
+            self.updateWith(habit: habit)
+        }
     }
 
     var habit: Habit?
@@ -25,6 +27,8 @@ class HabitDetailViewController: UIViewController {
         guard let icon = habit.icon,
             let daysCompleted = habit.habitProgress?.count,
             let progress = habit.habitProgress?.array as? [DailyCompletion] else { return }
+        
+        
         
         habitIcon.image = UIImage(named: icon)
         daysCompletedLabel.text = "\(daysCompleted) / 21"
