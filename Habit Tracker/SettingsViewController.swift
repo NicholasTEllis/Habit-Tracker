@@ -90,6 +90,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toSettingsAppButtonTapped(_ sender: Any) {
-        
+        UIApplication.openAppSettings()
     }
 }
