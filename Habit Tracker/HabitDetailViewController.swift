@@ -61,13 +61,15 @@ class HabitDetailViewController: UIViewController {
         self.title = habit.name
         
         //strikes
-        var strikes = 0
-        for day in progress {
-            if day.isComplete == false {
-                strikes += 1
-            }
-        }
-        numberOfStrikes(from: strikes)
+        
+        // MARK: - Strike Functionality
+//        var strikes = 0
+//        for day in progress {
+//            if day.isComplete == false {
+//                strikes += 1
+//            }
+//        }
+        //      numberOfStrikes(from: strikes)
         
         progressView.setProgress(Float(daysCompleted / 21), animated: true)
         progressView.progressTintColor = habitIcon.tintColor

@@ -60,29 +60,32 @@ class HabitTableViewCell: UITableViewCell {
         // Count the number of strikes that the user has on the habit in the cell
         var strikes = 0
         guard let progress = habit.habitProgress?.array as? [DailyCompletion] else { return }
-        for day in progress {
-            if day.isComplete == false {
-                strikes += 1
-            }
-        }
+        
+        //  MARK: - Progress Functionalitiy
+//        for day in progress {
+//            if day.completedDay == false {
+//                strikes += 1
+//            }
+//        }
         
         // change the color of the strike images to properly reflect the number of strikes
         // TODO: - fix this to account for the current day's completion status
-        switch strikes {
-        case 1:
-            return
-        case 2:
-            strike1Image.tintColor = Keys.shared.iconColor5
-        case 3:
-            strike1Image.tintColor = Keys.shared.iconColor5
-            strike2Image.tintColor = Keys.shared.iconColor5
-        case 4:
-            strike1Image.tintColor = Keys.shared.iconColor5
-            strike2Image.tintColor = Keys.shared.iconColor5
-            strike3Image.tintColor = Keys.shared.iconColor5
-        default:
-            return
-        }
+//        switch strikes {
+//        case 1:
+//            return
+//        case 2:
+//            strike1Image.tintColor = Keys.shared.iconColor5
+//        case 3:
+//            strike1Image.tintColor = Keys.shared.iconColor5
+//            strike2Image.tintColor = Keys.shared.iconColor5
+//        case 4:
+//            strike1Image.tintColor = Keys.shared.iconColor5
+//            strike2Image.tintColor = Keys.shared.iconColor5
+//            strike3Image.tintColor = Keys.shared.iconColor5
+//        default:
+//            return
+//        }
+//    }
     }
 }
 
