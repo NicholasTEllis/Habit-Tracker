@@ -61,7 +61,6 @@ extension UIApplication {
     class func openAppSettings() {
         guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
         if UIApplication.shared.canOpenURL(settingsURL) {
-            //let options = [UIApplicationOpenURLOptionUniversalLinksOnly: true]
             UIApplication.shared.open(settingsURL, options: [:], completionHandler: { (success) in
                 print("Settings opened: \(success)")
             })
