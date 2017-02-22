@@ -19,8 +19,9 @@ class DailyCompletionController {
     }
     
     func undoCompleteHabitForDay(habit: Habit) {
-        let today = habit.habitProgress?.lastObject as? DailyCompletion
-        today?.completedDay = NSDate()
+        guard let today = habit.habitProgress?.lastObject as? DailyCompletion else { return }
+        today.completedDay = NSDate()
+        habit.managedObjectContext?.delete(today)
         habit.isCompleteToday = false
     }
     
