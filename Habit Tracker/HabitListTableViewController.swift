@@ -95,6 +95,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     
     
     // MARK: - NSFetchedResultsController stuff
+    
     let fetchedResultsController: NSFetchedResultsController<Habit> = {
         let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
         let sortDescriptors = [NSSortDescriptor(key: "isCompleteToday", ascending: true), NSSortDescriptor(key: "startDate", ascending: true)]
