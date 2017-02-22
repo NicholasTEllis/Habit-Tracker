@@ -40,7 +40,6 @@ class HabitController {
         return habit
     }
     
-    
      //  MARK: - Persistence
     
     func saveToPersistentStore() {

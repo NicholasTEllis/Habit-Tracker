@@ -64,13 +64,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             }
             SettingsViewController.morning = morningFirst
             
+            
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             guard let afternoonFirst = afternoonFirstTextField.text else {
                 return
             }
             SettingsViewController.afternoon = afternoonFirst
-
             
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)

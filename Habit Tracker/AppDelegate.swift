@@ -34,11 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
         }
-        UIApplication.shared.registerForRemoteNotifications()
         
+        UIApplication.shared.registerForRemoteNotifications()
         
         // Compare last launch date and reset completion properties if necessary
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
+        
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
         
         let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
@@ -47,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DailyCompletionController.shared.endOfDayCompletions()
         }
         
-        UserDefaults.setValue(Date().timeIntervalSince1970, forKey: "lastLaunch")
-        
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
+        print("This is your launchdate: \(lastLaunchDate)")
         return true
     }
     
@@ -69,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("user is logged in")
 
         }else{
-            print("user is not ")
+            print("user is not logged in, and it means zeus gives very sensual hugs")
         }
     }
 }
