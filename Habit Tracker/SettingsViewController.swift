@@ -21,10 +21,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var eveningSecondTextField: UITextField!
     
-    static var morningWindow: [String] = []
     static var morning = ""
-    static var afternoonWindow: [String] = []
-    static var eveningWindow: [String] = []
+    static var afternoon = ""
+    static var evening = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +31,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         timePicker.datePickerMode = .time
         
         morningFirstTextField.delegate = self
-        morningSecondTextField.delegate = self
         morningFirstTextField.inputView = timePicker
-        morningSecondTextField.inputView = timePicker
         
         afternoonFirstTextField.delegate = self
-        afternoonSecondTextField.delegate = self
         afternoonFirstTextField.inputView = timePicker
-        afternoonSecondTextField.inputView = timePicker
         
         eveningFirstTextField.delegate = self
-        eveningSecondTextField.delegate = self
         eveningFirstTextField.inputView = timePicker
-        eveningSecondTextField.inputView = timePicker
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -75,46 +68,28 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             SettingsViewController.morning = morningFirst
-            SettingsViewController.morningWindow.append(morningFirst)
-            
-        } else if sender == morningSecondTextField.inputView {
-            morningSecondTextField.text = formatter.string(from: sender.date)
-            guard let morningSecond = morningSecondTextField.text else {
-                return
-            }
-            SettingsViewController.morningWindow.append(morningSecond)
             
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             guard let afternoonFirst = afternoonFirstTextField.text else {
                 return
             }
-            SettingsViewController.afternoonWindow.append(afternoonFirst)
-            
-        } else if sender == afternoonSecondTextField.inputView {
-            afternoonSecondTextField.text = formatter.string(from: sender.date)
-            guard let afternoonSecond = afternoonSecondTextField.text else {
-                return
-            }
-            SettingsViewController.afternoonWindow.append(afternoonSecond)
-            
+            SettingsViewController.afternoon = afternoonFirst
+
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
             guard let eveningFirst = eveningFirstTextField.text else {
                 return
             }
-            SettingsViewController.eveningWindow.append(eveningFirst)
-            
-        } else if sender == eveningSecondTextField.inputView {
-            eveningSecondTextField.text = formatter.string(from: sender.date)
-            guard let eveningSecond = eveningSecondTextField.text else {
-                return
-            }
-            SettingsViewController.eveningWindow.append(eveningSecond)
+            SettingsViewController.evening = eveningFirst
         }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func toSettingsAppButtonTapped(_ sender: Any) {
+        UIApplication.openAppSettings()
     }
 }
