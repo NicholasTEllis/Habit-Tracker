@@ -57,3 +57,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension UIApplication {
+    class func openAppSettings() {
+        guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsURL) {
+            let options = [UIApplicationOpenURLOptionUniversalLinksOnly: true]
+            UIApplication.shared.open(settingsURL, options: options, completionHandler: { (success) in
+                print("Settings opened: \(success)")
+            })
+        }
+    }
+}
+
