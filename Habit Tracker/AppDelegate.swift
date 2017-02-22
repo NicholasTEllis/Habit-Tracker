@@ -34,6 +34,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         UIApplication.shared.registerForRemoteNotifications()
         
+        
+        // Compare last launch date and reset completion properties if necessary
+        let LastLaunch = NSUserDefaults.standardUserDefaults().doubleForKey("lastLaunch")
+        let lastLaunchDate = NSDate(timeIntervalSince1970: lastLaunch)
+        
+        let lastLaunchIsToday = NSCalendar.currentCalendar().isDateInToday(lastLaunchDate)
+        
+        if !lastLaunchIsToday {
+            DailyCompletionController.shared.endOfDayCompletions()
+        }
+        
+        NSUserDefaults.setDouble(NSDate().timeIntervalSince1970(), forKey: "lastLaunch")
+        
+        
         return true
     }
     
