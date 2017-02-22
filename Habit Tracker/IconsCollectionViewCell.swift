@@ -9,6 +9,9 @@
 import UIKit
 
 class IconsCollectionViewCell: UICollectionViewCell {
+    
+     //  MARK: - Outlets
+    
     @IBOutlet var iconImage: UIImageView!
     
     

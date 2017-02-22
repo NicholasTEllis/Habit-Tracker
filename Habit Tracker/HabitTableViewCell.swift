@@ -10,7 +10,7 @@ import UIKit
 
 class HabitTableViewCell: UITableViewCell {
    
-    // MARK: - Outlets
+    // MARK: - Outlets 
     
     @IBOutlet weak var habitIcon: UIImageView!
     @IBOutlet weak var strike1Image: UIImageView!
@@ -27,7 +27,8 @@ class HabitTableViewCell: UITableViewCell {
         }
     }
     
-    // setup what the cell will display
+     //  MARK: - Setup Cell on tableview 
+    
     func updateCell() {
         guard let habit = habit else { return }
         
@@ -48,7 +49,8 @@ class HabitTableViewCell: UITableViewCell {
         self.strike2Image.image = #imageLiteral(resourceName: "Strike")
         self.strike3Image.image = #imageLiteral(resourceName: "Strike")
         
-        // MARK: - This will probably break depending how we decide to add the daily isComplete object to the progress array.
+        // TODO: - Fix this to count number of days completed, and days that have passed  
+        
         guard let completedDays = habit.habitProgress?.count else { return }
         self.progressLabel.text = "\(completedDays)/21"
         self.progressLabel.textColor = Keys.shared.textColor
@@ -89,6 +91,8 @@ class HabitTableViewCell: UITableViewCell {
     }
 }
 
+
+ //  MARK: - Icon Colors 
 
 extension HabitTableViewCell {
     

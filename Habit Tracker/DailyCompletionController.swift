@@ -12,6 +12,8 @@ class DailyCompletionController {
     
     static let shared = DailyCompletionController()
     
+    // MARK: - Daily Completion Methods 
+    
     func completeHabitForDay(habit: Habit) {
         let today = habit.habitProgress?.lastObject as? DailyCompletion
         today?.completedDay = NSDate()

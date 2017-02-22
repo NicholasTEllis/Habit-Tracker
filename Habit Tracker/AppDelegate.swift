@@ -17,6 +17,8 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    //  MARK: - App Delegate Did Finish Launching & Facebook/Twitter
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -36,20 +38,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Compare last launch date and reset completion properties if necessary
-        let LastLaunch = NSUserDefaults.standardUserDefaults().doubleForKey("lastLaunch")
-        let lastLaunchDate = NSDate(timeIntervalSince1970: lastLaunch)
+        let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
+        let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
         
-        let lastLaunchIsToday = NSCalendar.currentCalendar().isDateInToday(lastLaunchDate)
+        let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
         
         if !lastLaunchIsToday {
             DailyCompletionController.shared.endOfDayCompletions()
         }
         
-        NSUserDefaults.setDouble(NSDate().timeIntervalSince1970(), forKey: "lastLaunch")
-        
+        UserDefaults.setValue(Date().timeIntervalSince1970, forKey: "lastLaunch")
         
         return true
     }
+    
+     //  MARK: - App Delegate Facebook
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -70,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
+
+ //  MARK: - To settings app 
 
 extension UIApplication {
     class func openAppSettings() {

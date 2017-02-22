@@ -38,6 +38,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
         self.setupColorMenu()
     }
     
+    // MARK: - Choice of notification gesture
+    
     func respondToSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:

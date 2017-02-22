@@ -14,11 +14,13 @@ protocol ColorMenuDelegate: class {
 
 class ColorMenuView: UIView {
     
-    // MARK: -  Properties
+    // MARK: -  Internal Properties
     
     var colorKey: String = "iconColor1"
     
     weak var delegate: ColorMenuDelegate?
+    
+     //  MARK: - Color Button
     
     override func draw(_ rect: CGRect) {
         self.circularButtons(buttons: [blackColorButtonOutlet,
@@ -73,11 +75,11 @@ class ColorMenuView: UIView {
     @IBOutlet var pinkColorButtonOutlet: UIButton!
     @IBOutlet var yellowColorButtonOutlet: UIButton!
     @IBOutlet var orangeColorButtonOutlet: UIButton!
-    
     @IBOutlet var selectionView: UIView!
     
     
     // MARK: - Actions
+    
     @IBAction func colorButtonTapped(_ sender: UIButton) {
         guard let color: UIColor = sender.backgroundColor else { return }
         delegate?.colorMenuButtonTapped(at: sender.tag, with: color)

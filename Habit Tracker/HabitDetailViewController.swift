@@ -12,30 +12,31 @@ import FBSDKShareKit
 
 
 class HabitDetailViewController: UIViewController {
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-                let content = FBSDKShareLinkContent()
-                let button = FBSDKShareButton()
-                button.shareContent = content
-                button.center = self.view.center
-                self.view.addSubview(button)
-                content.contentURL = URL(string: "https://developers.facebook.com")
-                let dialog = FBSDKShareDialog()
-                dialog.fromViewController = self
-                dialog.shareContent = content
-                dialog.mode = .shareSheet
-                
-
+        
+        let content = FBSDKShareLinkContent()
+        let button = FBSDKShareButton()
+        button.shareContent = content
+        button.center = self.view.center
+        self.view.addSubview(button)
+        content.contentURL = URL(string: "https://developers.facebook.com")
+        let dialog = FBSDKShareDialog()
+        dialog.fromViewController = self
+        dialog.shareContent = content
+        dialog.mode = .shareSheet
+        
+        
         updateWith()
     }
     
+    //  MARK: - Properties
     
-
     var habit: Habit?
     
+    //  MARK: - Update With
     
     func updateWith() {
         guard let habit = habit else {
@@ -46,7 +47,7 @@ class HabitDetailViewController: UIViewController {
             let progress = habit.habitProgress?.array as? [DailyCompletion] else {
                 return }
         
-
+        
         
         guard let colorKey = habit.color else {
             return }
@@ -63,12 +64,12 @@ class HabitDetailViewController: UIViewController {
         //strikes
         
         // MARK: - Strike Functionality
-//        var strikes = 0
-//        for day in progress {
-//            if day.isComplete == false {
-//                strikes += 1
-//            }
-//        }
+        //        var strikes = 0
+        //        for day in progress {
+        //            if day.isComplete == false {
+        //                strikes += 1
+        //            }
+        //        }
         //      numberOfStrikes(from: strikes)
         
         progressView.setProgress(Float(daysCompleted / 21), animated: true)
@@ -96,11 +97,11 @@ class HabitDetailViewController: UIViewController {
 // MARK: - EXTENSION: Helper Methods
 
 extension HabitDetailViewController {
-
+    
     func findDaysRemaining(completedDays: Int) -> Int {
         return (21 - (completedDays - 1))
     }
-
+    
     
     func numberOfStrikes(from strikes: Int) {
         
@@ -138,7 +139,7 @@ extension HabitDetailViewController {
             return Keys.shared.iconColor7
         }
     }
-
+    
     
     
 }

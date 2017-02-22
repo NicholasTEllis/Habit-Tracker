@@ -55,6 +55,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 //        }
 //    }
     
+    // MARK: - Social Media Login 
+    
     func isLoggedIn() {
         if ((FBSDKAccessToken.current()) != nil) {
             print(FBSDKAccessToken.current())

@@ -9,6 +9,8 @@
 import UIKit
 
 class CustomTabBarViewController: UITabBarController {
+    
+    // MARK: - Outlets
 
     @IBOutlet var addButtonTabView: UIView!
     

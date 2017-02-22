@@ -15,6 +15,8 @@ class HabitController {
     
     static let shared = HabitController()
     
+    // MARK: - Internal Properties
+    
     fileprivate static let userNotificationIdentifier = "habitNotification"
 
     var habits: [Habit] {
@@ -30,16 +32,16 @@ class HabitController {
         let fireDateFromThisMorning = Date(timeInterval: timeInterval, since: thisMorningAtMidnight)
         return fireDateFromThisMorning
     }
+    
+    //  MARK: - Habit Methods
 
     func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification, color: color)
         return habit
     }
     
-    //this will be to choose 21 then onto 66 days
-    func durationOfHabit() {
-        
-    }
+    
+     //  MARK: - Persistence
     
     func saveToPersistentStore() {
         let moc = CoreDataStack.context
@@ -50,6 +52,8 @@ class HabitController {
         }
     }
 }
+
+ //  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
     func scheduleLocalNotifications(_ habit: Habit)

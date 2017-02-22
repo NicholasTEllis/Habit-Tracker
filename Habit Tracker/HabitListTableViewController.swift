@@ -94,7 +94,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     
-    // MARK: - NSFetchedResultsController stuff
+    // MARK: - NSFetchedResultsController 
     
     let fetchedResultsController: NSFetchedResultsController<Habit> = {
         let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()

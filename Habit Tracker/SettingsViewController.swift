@@ -10,16 +10,11 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     
-    //  MARK: - Properties
+    //  MARK: - Outlets
     
     @IBOutlet weak var morningFirstTextField: UITextField!
-    @IBOutlet weak var morningSecondTextField: UITextField!
-    
     @IBOutlet weak var afternoonFirstTextField: UITextField!
-    @IBOutlet weak var afternoonSecondTextField: UITextField!
-    
     @IBOutlet weak var eveningFirstTextField: UITextField!
-    @IBOutlet weak var eveningSecondTextField: UITextField!
     
     static var morning = ""
     static var afternoon = ""
@@ -76,20 +71,21 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             }
             SettingsViewController.afternoon = afternoonFirst
 
+            
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
             guard let eveningFirst = eveningFirstTextField.text else {
                 return
             }
             SettingsViewController.evening = eveningFirst
+
         }
     }
     
+    
+    // ACTIONS:
+
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func toSettingsAppButtonTapped(_ sender: Any) {
-        UIApplication.openAppSettings()
     }
 }
