@@ -40,8 +40,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         colorsForIconView.select(index: 0)
         self.setupColorMenu()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
+        //view.addGestureRecognizer(tap)
 
     }
     
