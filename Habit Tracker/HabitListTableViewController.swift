@@ -11,23 +11,22 @@ import CoreData
 
 class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchedResultsController.delegate = self
         self.tableView.backgroundColor = Keys.shared.background
         do {
             try fetchedResultsController.performFetch()
         } catch {
             NSLog("Error starting fetched results controller: \(error)")
         }
-        fetchedResultsController.delegate = self
     }
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = fetchedResultsController.sections else { return 0 }
+        guard let sections = fetchedResultsController.sections else {
+            return 0 }
         return sections.count
     }
     
@@ -44,13 +43,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         
         return cell ?? HabitTableViewCell()
     }
-    
-    // TODO: - There has got to be a better way to do this, you should find it.
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    
+        
     // MARK: - Swipe to complete functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
@@ -146,7 +139,9 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sections = fetchedResultsController.sections, let index = Int(sections[section].name) else { return nil }
+        guard let sections = fetchedResultsController.sections,
+            let index = Int(sections[section].name) else {
+                return "The title for header is broken" }
         return index == 0 ? "To Do" : "Completed Today"
     }
 }

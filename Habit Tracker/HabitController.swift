@@ -35,9 +35,26 @@ class HabitController {
     
     //  MARK: - Habit Methods
 
-    func addHabit(name: String, imageName: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String) -> Habit {
-        let habit = Habit(name: name, icon: imageName, startDate: startDate, timeOfNotification: timeOfNotification, color: color)
+    func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
+        let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
+        setupTimeForNotifications(habit: habit)
+        saveToPersistentStore()
         return habit
+    }
+    
+    func setupTimeForNotifications(habit: Habit) {
+        switch habit.timeOfNotification {
+        case "Morning"?:
+            habit.timeOfNotification = SettingsViewController.morning
+        case "Afternoon"?:
+            habit.timeOfNotification = SettingsViewController.afternoon
+        case "Evening"?:
+            habit.timeOfNotification = SettingsViewController.evening
+        case "Any"?:
+            habit.timeOfNotification = SettingsViewController.any
+        default:
+            habit.timeOfNotification = SettingsViewController.any
+        }
     }
     
      //  MARK: - Persistence
