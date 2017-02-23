@@ -40,8 +40,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         colorsForIconView.select(index: 0)
         self.setupColorMenu()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
+        //view.addGestureRecognizer(tap)
 
     }
     
@@ -133,25 +133,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
             let colorKey = colorKey else {
                 return }
         
-        let habit = HabitController.shared.addHabit(name: name,
-                                        imageName: image,
-                                        startDate: NSDate(),
-                                        timeOfNotification: time, color: colorKey)
-        
-//        switch habit.timeOfNotification {
-//        case "Morning"?:
-//            habit.timeOfNotification = SettingsViewController.morning
-//        case "Afternoon"?:
-//            habit.timeOfNotification = SettingsViewController.afternoon
-//        case "Evening"?:
-//            habit.timeOfNotification = SettingsViewController.evening
-//        case "Any"?:
-//            habit.timeOfNotification = SettingsViewController.any
-//        default:
-//            habit.timeOfNotification = SettingsViewController.any
-//        }
-        
-        
+        let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
+
         scheduleLocalNotifications(habit)
         dismiss(animated: true, completion: nil)
     }
