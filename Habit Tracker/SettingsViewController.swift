@@ -15,10 +15,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var morningFirstTextField: UITextField!
     @IBOutlet weak var afternoonFirstTextField: UITextField!
     @IBOutlet weak var eveningFirstTextField: UITextField!
+    @IBOutlet weak var anyTextField: UITextField!
     
     static var morning = ""
     static var afternoon = ""
     static var evening = ""
+    static var any = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         eveningFirstTextField.delegate = self
         eveningFirstTextField.inputView = timePicker
+        
+        anyTextField.delegate = self
+        anyTextField.inputView = timePicker
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -59,33 +64,52 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
-            guard let morningFirst = morningFirstTextField.text else {
+            guard let morningText = morningFirstTextField.text else {
                 return
             }
-            SettingsViewController.morning = morningFirst
-            
+            SettingsViewController.morning = morningText
             
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
-            guard let afternoonFirst = afternoonFirstTextField.text else {
+            guard let afternoonText = afternoonFirstTextField.text else {
                 return
             }
-            SettingsViewController.afternoon = afternoonFirst
+            SettingsViewController.afternoon = afternoonText
             
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
-            guard let eveningFirst = eveningFirstTextField.text else {
+            guard let eveningText = eveningFirstTextField.text else {
                 return
             }
-            SettingsViewController.evening = eveningFirst
-
+            SettingsViewController.evening = eveningText
+            
+        } else if sender == anyTextField.inputView {
+            anyTextField.text = formatter.string(from: sender.date)
+            guard let anyText = anyTextField.text else {
+                return
+            }
+            
+            SettingsViewController.any = anyText
         }
     }
     
+    func updateUserTimes() {
+        guard let user = UserController.shared.user.last else { return }
+        user.morningTime = SettingsViewController.morning
+        user.afternoonTime = SettingsViewController.afternoon
+        user.eveningTime = SettingsViewController.evening
+        user.anyTime = SettingsViewController.any
+    }
     
     // ACTIONS:
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        updateUserTimes()
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

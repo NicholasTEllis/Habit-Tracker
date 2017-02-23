@@ -51,7 +51,7 @@ class ColorMenuView: UIView {
             self.colorKey = "iconColor3"
         case 3:
             selectColor(button: purpleColorButtonOutlet)
-            self.colorKey = "iconColor4"
+             self.colorKey = "iconColor4"
         case 4:
             selectColor(button: pinkColorButtonOutlet)
             self.colorKey = "iconColor5"
