@@ -8,14 +8,15 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController, HabitNotificationScheduler {
+class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITextFieldDelegate {
     
     var timeWindow: String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        habitNameTextField.delegate = self
+        
         let swipeRight = UISwipeGestureRecognizer()
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -54,10 +55,10 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
             indexIncreasing()
-            timeWindowFromSettings()
+           // timeWindowFromSettings()
         case UISwipeGestureRecognizerDirection.right:
             indexDecreasing()
-            timeWindowFromSettings()
+         //   timeWindowFromSettings()
         default:
             return
         }
@@ -96,23 +97,23 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
         }
     }
     
-    func timeWindowFromSettings() {
-     
-        if timeOfDayLabel.text == "Morning" {
-            timeWindow = ""
-            timeWindow = SettingsViewController.morning
-        } else if timeOfDayLabel.text == "Afternoon" {
-            timeWindow = ""
-            timeWindow = SettingsViewController.afternoon
-        } else if timeOfDayLabel.text == "Evening" {
-            timeWindow = ""
-            timeWindow = SettingsViewController.evening
-        } else if timeOfDayLabel.text == "Any" {
-            timeWindow = ""
-            timeWindow = SettingsViewController.any
-        }
-    }
-    
+//    func timeWindowFromSettings() {
+//     
+//        if timeOfDayLabel.text == "Morning" {
+//            timeWindow = ""
+//            timeWindow = SettingsViewController.morning
+//        } else if timeOfDayLabel.text == "Afternoon" {
+//            timeWindow = ""
+//            timeWindow = SettingsViewController.afternoon
+//        } else if timeOfDayLabel.text == "Evening" {
+//            timeWindow = ""
+//            timeWindow = SettingsViewController.evening
+//        } else if timeOfDayLabel.text == "Any" {
+//            timeWindow = ""
+//            timeWindow = SettingsViewController.any
+//        }
+//    }
+//    
     
     // MARK: - Outlets
     
@@ -120,28 +121,35 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     @IBOutlet var timeOfDayLabel: UILabel!
     @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
-    
     @IBOutlet var colorsForIconView: ColorMenuView!
     
     
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let name = habitNameTextField.text, let image = icon,let time = timeOfDayLabel.text, let colorKey = colorKey else { return }
+        guard let name = habitNameTextField.text,
+            let image = icon,
+            let time = timeOfDayLabel.text,
+            let colorKey = colorKey else {
+                return }
         
         let habit = HabitController.shared.addHabit(name: name,
                                         imageName: image,
                                         startDate: NSDate(),
                                         timeOfNotification: time, color: colorKey)
         
-        switch habit.timeOfNotification {
-        case:
-        case:
-        case:
-        case:
-        default:
-            <#code#>
-        }
+//        switch habit.timeOfNotification {
+//        case "Morning"?:
+//            habit.timeOfNotification = SettingsViewController.morning
+//        case "Afternoon"?:
+//            habit.timeOfNotification = SettingsViewController.afternoon
+//        case "Evening"?:
+//            habit.timeOfNotification = SettingsViewController.evening
+//        case "Any"?:
+//            habit.timeOfNotification = SettingsViewController.any
+//        default:
+//            habit.timeOfNotification = SettingsViewController.any
+//        }
         
         
         scheduleLocalNotifications(habit)
@@ -153,12 +161,12 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler {
     }
     
     @IBAction func leftToDButtonTapped(_ sender: Any) {
-        timeWindowFromSettings()
+       // timeWindowFromSettings()
         indexDecreasing()
     }
     
     @IBAction func rightToDButtonTapped(_ sender: Any) {
-        timeWindowFromSettings()
+       // timeWindowFromSettings()
         indexIncreasing()
     }
     
