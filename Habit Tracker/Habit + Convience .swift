@@ -20,5 +20,4 @@ extension Habit {
         self.timeOfNotification = timeOfNotification
         self.color = color
     }
-    
 }
