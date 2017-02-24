@@ -25,7 +25,6 @@ class HabitController {
     }
     
     static var fireDateFromTimeOfNotification: Date? {
-        
         let timeWindowFromSettings = SettingsViewController.any
         guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight,
         let timeFromSettings = Double(timeWindowFromSettings) else { return nil }

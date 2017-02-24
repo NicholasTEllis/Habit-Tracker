@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     static var morning = ""
     static var afternoon = ""
     static var evening = ""
-    static var any = ""
+    static var any = "3:00 PM"
     
     override func viewDidLoad() {
         super.viewDidLoad()

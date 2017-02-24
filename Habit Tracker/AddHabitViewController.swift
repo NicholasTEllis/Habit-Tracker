@@ -40,14 +40,23 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         colorsForIconView.select(index: 0)
         self.setupColorMenu()
         
-        //let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
-        //view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
 
+    }
+    
+    // MARK: -Keyboard
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false 
     }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
+
     
     // MARK: - Choice of notification gesture
     
@@ -96,24 +105,6 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
             self.iconCollectionView.reloadData()
         }
     }
-    
-//    func timeWindowFromSettings() {
-//     
-//        if timeOfDayLabel.text == "Morning" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.morning
-//        } else if timeOfDayLabel.text == "Afternoon" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.afternoon
-//        } else if timeOfDayLabel.text == "Evening" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.evening
-//        } else if timeOfDayLabel.text == "Any" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.any
-//        }
-//    }
-//    
     
     // MARK: - Outlets
     
