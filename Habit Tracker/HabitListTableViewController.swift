@@ -45,7 +45,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         
         return cell ?? HabitTableViewCell()
     }
-        
+    
     // MARK: - Swipe to complete functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
@@ -82,11 +82,10 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHabitDetail" {
-            
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let destinationVC = segue.destination as? HabitDetailViewController {
                     let habit = fetchedResultsController.object(at: indexPath)
-                        destinationVC.habit = habit
+                    destinationVC.habit = habit
                 }
             }
         }
@@ -114,7 +113,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     
-    // MARK: - NSFetchedResultsController 
+    // MARK: - NSFetchedResultsController
     
     let fetchedResultsController: NSFetchedResultsController<Habit> = {
         let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
