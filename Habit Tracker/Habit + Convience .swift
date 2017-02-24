@@ -20,4 +20,51 @@ extension Habit {
         self.timeOfNotification = timeOfNotification
         self.color = color
     }
+    
+    var strikes: Int {
+        let calendar = NSCalendar.current
+        guard let startDate = self.startDate as? Date else {
+            return 0 }
+        
+        let start = calendar.startOfDay(for: startDate)
+        let current = calendar.startOfDay(for: Date())
+        
+        let components = calendar.dateComponents([.day], from: start, to: current)
+        guard let daysSinceStart = components.day else {
+            return 0
+        }
+        guard let habitCount = self.habitProgress?.count else { return 0 }
+        let strikedDays = daysSinceStart - habitCount
+        return strikedDays
+    }
+    
+    var streaks: [Int] {
+        var streak = 0
+        var bestStreak = 0
+        guard let progress = self.habitProgress?.array as? [DailyCompletion] else {
+            print("Habit completions do not contain any DailyCompletion objects.")
+            return [0, 0] }
+        
+        var compareDate = progress.first?.completedDay as? Date
+        
+        let calendar = Calendar.current
+        
+        for completed in progress {
+            guard let lastCompletedDate = completed.completedDay as? Date else { return [0, 0] }
+            guard let dateToCompare = compareDate else { return [0, 0] }
+            let components = Calendar.Component.day
+            if calendar.isDate(dateToCompare, equalTo: lastCompletedDate, toGranularity: components) {
+                streak += 1
+                compareDate = calendar.date(bySetting: .day, value: 1, of: dateToCompare)
+                if streak > bestStreak {
+                    bestStreak = streak
+                }
+            } else {
+                streak = 0
+                compareDate = completed.completedDay as? Date
+            }
+        }
+        
+        return [streak, bestStreak]
+    }
 }

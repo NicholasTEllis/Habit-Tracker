@@ -64,7 +64,7 @@ class HabitTableViewCell: UITableViewCell {
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
-        let strikes = HabitController.shared.strikeCounter(habit: habit)
+        let strikes = habit.strikes
       
         
       //   change the color of the strike images to properly reflect the number of strikes
