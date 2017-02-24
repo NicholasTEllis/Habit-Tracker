@@ -13,10 +13,11 @@ class UserController {
     
     static let shared = UserController()
     
-    var user: [User] {
+    var user: User {
         let request: NSFetchRequest<User> = User.fetchRequest()
-        return (try? CoreDataStack.context.fetch(request)) ?? []
-        
+        let users = (try? CoreDataStack.context.fetch(request)) ?? []
+        guard let user = users.first else { return User() }
+        return user
     }
     
     func createUserTime(morningTime: String = "9:00 AM", afternoonTime: String = "12:00 PM", eveningTime: String = "5:00 PM", anyTime: String = "1:00 PM") -> User {

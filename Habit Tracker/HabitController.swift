@@ -57,6 +57,27 @@ class HabitController {
         }
     }
     
+    func strikeCounter(habit: Habit) -> Int {
+        let calendar = NSCalendar.current
+        guard let startDate = habit.startDate as? Date else {
+            return 0 }
+        
+        let start = calendar.startOfDay(for: startDate)
+        let current = calendar.startOfDay(for: Date())
+        
+        let components = calendar.dateComponents([.day], from: start, to: current)
+        guard let strikedDays = components.day else {
+            return 0
+        }
+        return strikedDays
+    }
+    
+    // TODO: - Find streaks
+    func streakCounter(habit: Habit) -> Int {
+        var streak = 0
+        return streak
+    }
+    
      //  MARK: - Persistence
     
     func saveToPersistentStore() {

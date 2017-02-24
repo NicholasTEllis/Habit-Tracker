@@ -10,12 +10,13 @@
 		53933E881E54BFB900BECC3F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E871E54BFB900BECC3F /* Keys.swift */; };
 		53933E8A1E54CE8400BECC3F /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */; };
 		539342F51E5B649F00BECC3F /* DailyCompletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539342F41E5B649F00BECC3F /* DailyCompletionController.swift */; };
+		53DAE7FB1E609DF8003DA0E4 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */; };
+		53DAE7FD1E60ADE8003DA0E4 /* StatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */; };
 		846CF97761DCB477574C224F /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
 		8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */; };
-		8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */; };
 		8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6AF1E538408004FA6E3 /* HabitController.swift */; };
 		8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6B71E5385FE004FA6E3 /* HabitTracker.xcdatamodeld */; };
 		8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */; };
@@ -43,13 +44,14 @@
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
 		53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		539342F41E5B649F00BECC3F /* DailyCompletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCompletionController.swift; sourceTree = "<group>"; };
+		53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
+		53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsListTableViewController.swift; sourceTree = "<group>"; };
 		5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
 		8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListTableViewController.swift; sourceTree = "<group>"; };
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitStatsTableViewController.swift; path = ../HabitStatsTableViewController.swift; sourceTree = "<group>"; };
 		8D6552311E56296000E61BB6 /* Habit Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habit Tracker.entitlements"; sourceTree = "<group>"; };
 		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
 		8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -192,7 +194,8 @@
 				FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */,
 				8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */,
 				FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */,
-				8D56BBBB1E54B26C00B662C0 /* HabitStatsTableViewController.swift */,
+				53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */,
+				53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -384,12 +387,13 @@
 				8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */,
 				8D89C6BD1E538831004FA6E3 /* DailyCompletion + Convience .swift in Sources */,
 				8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */,
+				53DAE7FB1E609DF8003DA0E4 /* UserStatsViewController.swift in Sources */,
 				539342F51E5B649F00BECC3F /* DailyCompletionController.swift in Sources */,
 				FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */,
+				53DAE7FD1E60ADE8003DA0E4 /* StatsListTableViewController.swift in Sources */,
 				8D9D72B21E5B9A0C008BED2D /* DateHelper.swift in Sources */,
 				8DF8EFEB1E5F52F70059EF54 /* User + Convience.swift in Sources */,
 				8DDA397C1E5F557300216CD2 /* UserController.swift in Sources */,
-				8D56BBBC1E54B26C00B662C0 /* HabitStatsTableViewController.swift in Sources */,
 				FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

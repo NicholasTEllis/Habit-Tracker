@@ -55,14 +55,13 @@ class HabitTableViewCell: UITableViewCell {
         self.progressLabel.text = "\(completedDays)/21"
         self.progressLabel.textColor = Keys.shared.textColor
         
+        //  MARK: - Progress Bar Functionalitiy
         self.progressBar.setProgress(Float(Float(completedDays) / 21), animated: true)
-//        self.progressBar.progressTintColor = habit.iconColor
+        self.progressBar.progressTintColor = color
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
-        let strikes = strikeCounter(habit: habit)
-        
-        //  MARK: - Progress Functionalitiy
+        let strikes = HabitController.shared.strikeCounter(habit: habit)
       
         
       //   change the color of the strike images to properly reflect the number of strikes
@@ -82,20 +81,7 @@ class HabitTableViewCell: UITableViewCell {
         }
     }
     
-    func strikeCounter(habit: Habit) -> Int {
-        let calendar = NSCalendar.current
-        guard let startDate = habit.startDate as? Date else {
-            return 0 }
-        
-        let start = calendar.startOfDay(for: startDate)
-        let current = calendar.startOfDay(for: Date())
-        
-        let components = calendar.dateComponents([.day], from: start, to: current)
-        guard let strikedDays = components.day else {
-            return 0
-        }
-        return strikedDays
-    }
+
 }
 
 
