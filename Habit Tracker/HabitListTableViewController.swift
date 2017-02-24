@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import Social
 
-class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, HabitTableViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as? HabitTableViewCell
         
+        cell?.delegate = self
         cell?.habit = fetchedResultsController.object(at: indexPath)
         
         return cell ?? HabitTableViewCell()
@@ -69,7 +71,11 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     
-
+    // MARK: - HabitTableViewCellDelegate
+    
+    func presentTwitterController() {
+        presentTweetUponHabitFailure()
+    }
     
     // MARK: - Navigation
     
@@ -83,6 +89,27 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
                         destinationVC.habit = habit
                 }
             }
+        }
+    }
+    
+    func presentTweetUponHabitFailure() {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            guard let tweetController = SLComposeViewController(forServiceType: SLServiceTypeTwitter) else {
+                return
+            }
+            tweetController.setInitialText("I failed my habit")
+            present(tweetController, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to Twitter", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (UIAlertAction) in
+                let settingsURL = URL(string: "\(UIApplication.openAppSettings())")
+                if let url = settingsURL {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }))
+            present(alert, animated: true, completion: nil)
         }
     }
     
