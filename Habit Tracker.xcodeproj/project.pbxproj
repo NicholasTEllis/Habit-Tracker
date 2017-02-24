@@ -25,6 +25,10 @@
 		8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
+		C099742C1E5F61B900CAC072 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */; };
+		C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; };
+		C099742F1E5F61D200CAC072 /* PaperOnboarding.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C09974321E5F621000CAC072 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09974311E5F621000CAC072 /* OnboardingView.swift */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
 		FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */; };
 		FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */; };
@@ -36,6 +40,20 @@
 		FDBB28FE1E53BF9200B3687D /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB28FD1E53BF9200B3687D /* AddHabitViewController.swift */; };
 		FDD79FD81E55212D00D23F07 /* IconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C09974301E5F61D200CAC072 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C099742F1E5F61D200CAC072 /* PaperOnboarding.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
@@ -59,6 +77,9 @@
 		8DB8C2241E53CCB80048EA67 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Habit Tracker/Info.plist"; sourceTree = SOURCE_ROOT; };
 		C05C72831E5A183D000DFF91 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaperOnboarding.framework; path = Carthage/Build/iOS/PaperOnboarding.framework; sourceTree = "<group>"; };
+		C09974311E5F621000CAC072 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
@@ -78,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */,
 				846CF97761DCB477574C224F /* Pods_Habit_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +113,7 @@
 				FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */,
 				53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */,
 				FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */,
+				C09974311E5F621000CAC072 /* OnboardingView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -98,6 +121,7 @@
 		821136A9245C9BCC9D1DD887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */,
 				E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */,
 			);
 			name = Frameworks;
@@ -180,6 +204,7 @@
 		8D89C6C11E53B4BF004FA6E3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */,
 				C05C72831E5A183D000DFF91 /* LoginViewController.swift */,
 				FDAB6C2D1E53CD3800EC946B /* CustomTabBarViewController.swift */,
 				8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */,
@@ -227,6 +252,7 @@
 				3EF42DDF12FF9DB99FFC7CD7 /* [CP] Embed Pods Frameworks */,
 				C5EF63C36435D8A7A21AA46B /* [CP] Copy Pods Resources */,
 				C05C72891E5B8E1F000DFF91 /* ShellScript */,
+				C09974301E5F61D200CAC072 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,7 +396,9 @@
 				FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */,
 				C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */,
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
+				C09974321E5F621000CAC072 /* OnboardingView.swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
+				C099742C1E5F61B900CAC072 /* OnboardingViewController.swift in Sources */,
 				8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */,
 				8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */,
 				8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */,
@@ -515,6 +543,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
 				DEVELOPMENT_TEAM = XSV88KY8NF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicholasEllis.Habit-Tracker";
@@ -531,6 +563,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
 				DEVELOPMENT_TEAM = XSV88KY8NF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NicholasEllis.Habit-Tracker";
