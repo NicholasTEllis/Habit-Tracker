@@ -21,6 +21,9 @@ extension Habit {
         self.color = color
     }
     
+    
+    // Computed Properties
+    
     var strikes: Int {
         let calendar = NSCalendar.current
         guard let startDate = self.startDate as? Date else {
@@ -33,8 +36,12 @@ extension Habit {
         guard let daysSinceStart = components.day else {
             return 0
         }
+        var expectedCompletions = daysSinceStart
+        if !self.isCompleteToday {
+            expectedCompletions -= 1
+        }
         guard let habitCount = self.habitProgress?.count else { return 0 }
-        let strikedDays = daysSinceStart - habitCount
+        let strikedDays = expectedCompletions - habitCount
         return strikedDays
     }
     
@@ -64,7 +71,6 @@ extension Habit {
                 compareDate = completed.completedDay as? Date
             }
         }
-        
         return [streak, bestStreak]
     }
 }

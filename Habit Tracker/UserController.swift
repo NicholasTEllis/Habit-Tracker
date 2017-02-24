@@ -20,8 +20,8 @@ class UserController {
         return user
     }
     
-    func createUserTime(morningTime: String = "9:00 AM", afternoonTime: String = "12:00 PM", eveningTime: String = "5:00 PM", anyTime: String = "1:00 PM") -> User {
-        let user = User(morningTime: morningTime, afternoonTime: afternoonTime, eveningTime: eveningTime, anyTime: anyTime)
+    func createUser() -> User {
+        let user = User()
         return user
     }
     

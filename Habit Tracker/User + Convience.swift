@@ -11,7 +11,7 @@ import CoreData
 
 extension User {
     
-    convenience init(morningTime: String, afternoonTime: String, eveningTime: String, anyTime: String, perfectDays: Int16 = 0, bestStreak: Int16 = 0, completedHabits: Int16 = 0, currentStreak: Int16 = 0, perfectHabits: Int16 = 0, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(morningTime: String = "9:00 AM", afternoonTime: String = "12:00 PM", eveningTime: String = "5:00 PM", anyTime: String = "1:00 PM", perfectDays: Int16 = 0, bestStreak: Int16 = 0, completedHabits: Int16 = 0, currentStreak: Int16 = 0, perfectHabits: Int16 = 0, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.morningTime = morningTime
         self.afternoonTime = afternoonTime
