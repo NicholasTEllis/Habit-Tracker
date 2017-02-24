@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Social
 
 class HabitTableViewCell: UITableViewCell {
    
@@ -22,8 +21,6 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     
 
-    var delegate: HabitTableViewCellDelegate?
-    
     var habit: Habit? {
         didSet {
             updateCell()
@@ -79,7 +76,6 @@ class HabitTableViewCell: UITableViewCell {
             strike1Image.tintColor = Keys.shared.iconColor5
             strike2Image.tintColor = Keys.shared.iconColor5
             strike3Image.tintColor = Keys.shared.iconColor5
-            delegate?.presentTwitterController()
         default:
             return
         }
@@ -88,13 +84,8 @@ class HabitTableViewCell: UITableViewCell {
 
 }
 
-protocol HabitTableViewCellDelegate {
-    func presentTwitterController()
-}
 
  //  MARK: - Icon Colors 
-
- //  MARK: - Icon Colors
 
 extension HabitTableViewCell {
     
