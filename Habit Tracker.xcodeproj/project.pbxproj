@@ -27,6 +27,7 @@
 		8DF8EFEB1E5F52F70059EF54 /* User + Convience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8EFEA1E5F52F70059EF54 /* User + Convience.swift */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
+		FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
 		FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */; };
 		FD8821F81E5B679D001BD0CA /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */; };
@@ -65,6 +66,7 @@
 		C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
 		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
 		FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				FDD79FD71E55212D00D23F07 /* IconsCollectionViewCell.swift */,
 				53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */,
 				FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */,
+				FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
 				8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */,
+				FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */,
 				8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */,
 				8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */,
 				8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */,

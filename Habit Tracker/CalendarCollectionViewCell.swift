@@ -9,9 +9,6 @@
 import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet var dayName: UILabel!
     @IBOutlet var dayButton: UIButton!
-    
-    
 }

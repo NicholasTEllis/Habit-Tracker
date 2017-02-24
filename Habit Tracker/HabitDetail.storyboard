@@ -77,7 +77,7 @@
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-N4-ZWP">
                                 <rect key="frame" x="0.0" y="364" width="375" height="303"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O8L-4K-etf">
                                     <size key="itemSize" width="40" height="40"/>
@@ -112,8 +112,8 @@
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="dayButton" destination="OeF-3v-2hf" id="qty-3m-ofv"/>
-                                            <outlet property="dayName" destination="ADk-YN-Bp0" id="Q0B-Ca-qcZ"/>
+                                            <outlet property="dayButton" destination="OeF-3v-2hf" id="4Il-SW-Dlm"/>
+                                            <outlet property="dayName" destination="ADk-YN-Bp0" id="Vzh-Sf-AXo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
