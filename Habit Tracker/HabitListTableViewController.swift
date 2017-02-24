@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import Social
 
-class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, HabitTableViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +40,12 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as? HabitTableViewCell
         
+        cell?.delegate = self
         cell?.habit = fetchedResultsController.object(at: indexPath)
         
         return cell ?? HabitTableViewCell()
     }
-        
+    
     // MARK: - Swipe to complete functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
@@ -69,25 +71,49 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     
-
+    // MARK: - HabitTableViewCellDelegate
+    
+    func presentTwitterController() {
+        presentTweetUponHabitFailure()
+    }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHabitDetail" {
-            
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let destinationVC = segue.destination as? HabitDetailViewController {
                     let habit = fetchedResultsController.object(at: indexPath)
-                        destinationVC.habit = habit
+                    destinationVC.habit = habit
                 }
             }
         }
     }
     
+    func presentTweetUponHabitFailure() {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            guard let tweetController = SLComposeViewController(forServiceType: SLServiceTypeTwitter) else {
+                return
+            }
+            tweetController.setInitialText("I failed my habit")
+            present(tweetController, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to Twitter", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (UIAlertAction) in
+                let settingsURL = URL(string: "\(UIApplication.openAppSettings())")
+                if let url = settingsURL {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+    }
     
-    // MARK: - NSFetchedResultsController 
+    
+    // MARK: - NSFetchedResultsController
     
     let fetchedResultsController: NSFetchedResultsController<Habit> = {
         let fetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
