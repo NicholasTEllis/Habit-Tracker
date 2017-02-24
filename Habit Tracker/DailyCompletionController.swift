@@ -18,6 +18,7 @@ class DailyCompletionController {
         let today = habit.habitProgress?.lastObject as? DailyCompletion
         today?.completedDay = NSDate()
         habit.isCompleteToday = true
+        HabitController.shared.saveToPersistentStore()
     }
     
     func undoCompleteHabitForDay(habit: Habit) {
@@ -25,6 +26,7 @@ class DailyCompletionController {
         today.completedDay = NSDate()
         habit.managedObjectContext?.delete(today)
         habit.isCompleteToday = false
+        HabitController.shared.saveToPersistentStore()
     }
     
     // TODO: - fail remaining habits, check for failed & completed habits, and do whatever it is we do with non completed array

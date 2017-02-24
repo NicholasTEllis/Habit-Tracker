@@ -47,8 +47,6 @@ class HabitDetailViewController: UIViewController {
             let progress = habit.habitProgress?.array as? [DailyCompletion] else {
                 return }
         
-        
-        
         guard let colorKey = habit.color else {
             return }
         
