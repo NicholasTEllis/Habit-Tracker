@@ -29,13 +29,13 @@ class HabitDetailViewController: UIViewController {
         dialog.mode = .shareSheet
         
         
+        
+        calendarCollectionView.delegate = self
+        calendarCollectionView.dataSource = self
         updateWith()
     }
     
-    //  MARK: - Properties
-    
-    var habit: Habit?
-    
+
     //  MARK: - Update With
     
     func updateWith() {
@@ -44,18 +44,20 @@ class HabitDetailViewController: UIViewController {
         
         guard let icon = habit.icon,
             let daysCompleted = habit.habitProgress?.count,
-            let progress = habit.habitProgress?.array as? [DailyCompletion] else {
+            let progress = habit.habitProgress?.array as? [DailyCompletion],
+            let colorKey = habit.color else {
                 return }
-        
-        guard let colorKey = habit.color else {
-            return }
-        
-        
+
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        daysCompletedLabel.text = "\(daysCompleted - 1) days completed"
+        if daysCompleted - 1 != 0 {
+            daysCompletedLabel.text = "\(daysCompleted - 1) days completed"
+        } else {
+            daysCompletedLabel.text = ""
+        }
+        
         daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted)) days remaining"
         self.title = habit.name
         
@@ -76,6 +78,32 @@ class HabitDetailViewController: UIViewController {
     }
     
     
+    //  MARK: - Properties
+    
+    var habit: Habit?
+    
+    var habitDuration = [Date]()
+    
+    let sectionInsets = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 30.0, right: 20.0) // for colelction view
+
+    let dayNameFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return dateFormatter
+    }()
+    
+    let dayFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter
+    }()
+    
+    let monthFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM  yyyy"
+        return dateFormatter
+    }()
+    
     
     
     // MARK: - Outlets
@@ -89,6 +117,30 @@ class HabitDetailViewController: UIViewController {
     
     @IBOutlet var daysCompletedLabel: UILabel!
     @IBOutlet var daysRemainingLabel: UILabel!
+    
+    @IBOutlet var calendarCollectionView: UICollectionView!
+    
+    
+}
+
+// MARK: - Extension: UICollectionView 
+
+extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return habitDuration.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calanderDate", for: indexPath) as? CalendarCollectionViewCell
+        let date = habitDuration[indexPath.row]
+        let dayName = dayNameFormatter.string(from: date)
+        let day = dayFormatter.string(from: date)
+        cell?.dayButton.setTitle(day, for: .normal)
+        cell?.dayName.text = dayName
+        return cell ?? UICollectionViewCell()
+    }
+
 }
 
 
@@ -102,7 +154,6 @@ extension HabitDetailViewController {
     
     
     func numberOfStrikes(from strikes: Int) {
-        
         switch strikes {
         case 1:
             strikeOne.tintColor = Keys.shared.iconColor5
@@ -139,5 +190,31 @@ extension HabitDetailViewController {
     }
     
     
+    func findLengthOf(habit: Habit) {
+        guard let startDateForHabit = habit.startDate as? Date else {
+            return }
+        let cal = Calendar.current
+        let startDate = startDateForHabit
+        let today = Date()
+        while startDate <= today {
+            guard let daysBetween = cal.date(byAdding: .day, value: 1, to: startDate) else {
+                return }
+            habitDuration.append(daysBetween)
+        }
+    }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
