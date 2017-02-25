@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Social
 
 class HabitTableViewCell: UITableViewCell {
    
@@ -22,8 +21,6 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     
 
-    var delegate: HabitTableViewCellDelegate?
-    
     var habit: Habit? {
         didSet {
             updateCell()
@@ -58,13 +55,14 @@ class HabitTableViewCell: UITableViewCell {
         self.progressLabel.text = "\(completedDays)/21"
         self.progressLabel.textColor = Keys.shared.textColor
         
-        //  MARK: - Progress Bar Functionalitiy
         self.progressBar.setProgress(Float(Float(completedDays) / 21), animated: true)
-        self.progressBar.progressTintColor = color
+//        self.progressBar.progressTintColor = habit.iconColor
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
-        let strikes = habit.strikes
+        let strikes = strikeCounter(habit: habit)
+        
+        //  MARK: - Progress Functionalitiy
       
         
       //   change the color of the strike images to properly reflect the number of strikes
@@ -79,22 +77,29 @@ class HabitTableViewCell: UITableViewCell {
             strike1Image.tintColor = Keys.shared.iconColor5
             strike2Image.tintColor = Keys.shared.iconColor5
             strike3Image.tintColor = Keys.shared.iconColor5
-            delegate?.presentTwitterController()
         default:
             return
         }
     }
     
-
+    func strikeCounter(habit: Habit) -> Int {
+        let calendar = NSCalendar.current
+        guard let startDate = habit.startDate as? Date else {
+            return 0 }
+        
+        let start = calendar.startOfDay(for: startDate)
+        let current = calendar.startOfDay(for: Date())
+        
+        let components = calendar.dateComponents([.day], from: start, to: current)
+        guard let strikedDays = components.day else {
+            return 0
+        }
+        return strikedDays
+    }
 }
 
-protocol HabitTableViewCellDelegate {
-    func presentTwitterController()
-}
 
  //  MARK: - Icon Colors 
-
- //  MARK: - Icon Colors
 
 extension HabitTableViewCell {
     

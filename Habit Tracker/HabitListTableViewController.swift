@@ -50,6 +50,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
     
+    // MARK: - Complete/uncomplete swipe actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let habit = fetchedResultsController.object(at: indexPath)
         var completeAction: UITableViewRowAction?
