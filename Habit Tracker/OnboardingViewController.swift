@@ -78,8 +78,6 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
         userDefaults.set(true, forKey: "onboardingComplete")
         
         userDefaults.synchronize()
-        
-        UserController.shared.createUser()
     }
     
     

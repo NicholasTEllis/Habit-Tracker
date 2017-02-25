@@ -46,17 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Compare last launch date and reset completion properties if necessary
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
-        
+        if lastLaunch == 0 {
+            // Create user if the application has not ever been launched before
+            UserController.shared.createUser()
+        } else {
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
-        
         let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
-        
         if !lastLaunchIsToday {
             DailyCompletionController.shared.endOfDayCompletions()
         }
-        
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
         print("This is your launchdate: \(lastLaunchDate)")
+        }
         return true
     }
     

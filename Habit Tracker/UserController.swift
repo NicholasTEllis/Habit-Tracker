@@ -16,7 +16,9 @@ class UserController {
     var user: User {
         let request: NSFetchRequest<User> = User.fetchRequest()
         let users = (try? CoreDataStack.context.fetch(request)) ?? []
-        guard let user = users.first else { return User() }
+        guard let user = users.first else {
+            fatalError("User object does not exist")
+        }
         return user
     }
     
