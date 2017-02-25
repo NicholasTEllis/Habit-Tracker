@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if userDefaults.bool(forKey: "onboardingComplete"){
             initialViewController = storyBoard.instantiateViewController(withIdentifier: "Login")
+            
         }
         
         window?.rootViewController = initialViewController
