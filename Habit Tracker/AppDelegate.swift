@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if lastLaunch == 0 {
             // Create user if the application has not ever been launched before
             UserController.shared.createUser()
+            UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
         } else {
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
         let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
