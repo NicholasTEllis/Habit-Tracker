@@ -64,8 +64,14 @@ class HabitTableViewCell: UITableViewCell {
         self.progressBar.trackTintColor = Keys.shared.background
         
         // Count the number of strikes that the user has on the habit in the cell
-        let strikes = habit.strikes
+<<<<<<< HEAD
+        let strikes = HabitController.shared.strikeCounter(habit: habit)
       
+=======
+        let strikes = strikeCounter(habit: habit)
+        
+        //  MARK: - Progress Functionalitiy
+>>>>>>> c89c7cbc0befc007415c6c037cb5fc4c9a7effc4
         
       //   change the color of the strike images to properly reflect the number of strikes
      //    TODO: - fix this to account for the current day's completion status
@@ -92,7 +98,6 @@ protocol HabitTableViewCellDelegate {
     func presentTwitterController()
 }
 
- //  MARK: - Icon Colors 
 
  //  MARK: - Icon Colors
 
