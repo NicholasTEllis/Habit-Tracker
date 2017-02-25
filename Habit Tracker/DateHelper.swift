@@ -9,12 +9,13 @@
 import Foundation
 
 class DateHelper {
+    
     static var calendar: Calendar {
         return Calendar.current
     }
     
     static var thisMorningAtMidnight: Date? {
-        var components = (calendar as Calendar).dateComponents([.month, .day, .year], from: Date())
+        var components = calendar.dateComponents([.month, .day, .year], from: Date())
         components.second = 0
         components.minute = 0
         components.hour = 0
@@ -23,7 +24,7 @@ class DateHelper {
     }
     
     static var tomorrowMorningAtMidnight: Date? {
-        var components = (calendar as Calendar).dateComponents([.month, .day, .year], from: Date())
+        var components = calendar.dateComponents([.month, .day, .year], from: Date())
         components.second = 0
         components.minute = 0
         components.hour = 0

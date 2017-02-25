@@ -24,15 +24,6 @@ class HabitController {
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
-    static var fireDateFromTimeOfNotification: Date? {
-        let timeWindowFromSettings = SettingsViewController.any
-        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight,
-        let timeFromSettings = Double(timeWindowFromSettings) else { return nil }
-        let timeInterval: TimeInterval = timeFromSettings
-        let fireDateFromThisMorning = Date(timeInterval: timeInterval, since: thisMorningAtMidnight)
-        return fireDateFromThisMorning
-    }
-    
     //  MARK: - Habit Methods
 
     func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
@@ -77,18 +68,23 @@ protocol HabitNotificationScheduler {
 }
 
 extension HabitNotificationScheduler {
-    
+
     func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name, let fireDate = HabitController.fireDateFromTimeOfNotification else {
+        
+        guard let name = habit.name,
+            let timeNotification = habit.timeOfNotification else {
+                return
+        }
+           guard let fireDate = formatter.date(from: timeNotification) else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
-        content.categoryIdentifier = "message"
+        content.categoryIdentifier = "dailyHabit"
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate)
-        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
