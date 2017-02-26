@@ -33,6 +33,8 @@ class HabitDetailViewController: UIViewController {
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         updateWith()
+        
+        findLengthOfHabit()
     }
     
 
@@ -60,17 +62,7 @@ class HabitDetailViewController: UIViewController {
         
         daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted)) days remaining"
         self.title = habit.name
-        
-        //strikes
-        
-        // MARK: - Strike Functionality
-        //        var strikes = 0
-        //        for day in progress {
-        //            if day.isComplete == false {
-        //                strikes += 1
-        //            }
-        //        }
-        //      numberOfStrikes(from: strikes)
+    
         
         progressView.setProgress(Float(daysCompleted / 21), animated: true)
         progressView.progressTintColor = habitIcon.tintColor
@@ -190,15 +182,16 @@ extension HabitDetailViewController {
     }
     
     
-    func findLengthOf(habit: Habit) {
-        guard let startDateForHabit = habit.startDate as? Date else {
+    func findLengthOfHabit() {
+        guard let habit = self.habit, let startDateForHabit = habit.startDate as? Date else {
             return }
         let cal = Calendar.current
-        let startDate = startDateForHabit
-        let today = Date()
-        while startDate <= today {
-            guard let daysBetween = cal.date(byAdding: .day, value: 1, to: startDate) else {
-                return }
+        let habitStartDate = startDateForHabit
+        
+        for i in 0...21 {
+            guard let daysBetween = cal.date(byAdding: .day, value: i + 1, to: habitStartDate) else {
+                return
+            }
             habitDuration.append(daysBetween)
         }
     }
