@@ -28,8 +28,6 @@ class HabitDetailViewController: UIViewController {
         dialog.shareContent = content
         dialog.mode = .shareSheet
         
-        
-        
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         updateWith()
@@ -54,16 +52,15 @@ class HabitDetailViewController: UIViewController {
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        if daysCompleted - 1 != 0 {
-            daysCompletedLabel.text = "\(daysCompleted - 1) days completed"
+        if daysCompleted != 0 {
+            daysCompletedLabel.text = "\(daysCompleted) days completed"
         } else {
             daysCompletedLabel.text = ""
         }
         
-        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted)) days remaining"
+        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted + 1)) days remaining"
         self.title = habit.name
     
-        
         progressView.setProgress(Float(daysCompleted / 21), animated: true)
         progressView.progressTintColor = habitIcon.tintColor
         progressView.trackTintColor = Keys.shared.background
@@ -128,11 +125,28 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         let date = habitDuration[indexPath.row]
         let dayName = dayNameFormatter.string(from: date)
         let day = dayFormatter.string(from: date)
+        cell?.date = date
+        
         cell?.dayButton.setTitle(day, for: .normal)
         cell?.dayName.text = dayName
         return cell ?? UICollectionViewCell()
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRow: CGFloat = 7    // Number of items in a row
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: 43)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
 }
 
 
@@ -183,13 +197,12 @@ extension HabitDetailViewController {
     
     
     func findLengthOfHabit() {
-        guard let habit = self.habit, let startDateForHabit = habit.startDate as? Date else {
+        guard let habit = self.habit,
+            let startDateForHabit = habit.startDate as? Date else {
             return }
         let cal = Calendar.current
-        let habitStartDate = startDateForHabit
-        
-        for i in 0...21 {
-            guard let daysBetween = cal.date(byAdding: .day, value: i + 1, to: habitStartDate) else {
+        for i in 0...20 {
+            guard let daysBetween = cal.date(byAdding: .day, value: i, to: startDateForHabit) else {
                 return
             }
             habitDuration.append(daysBetween)
