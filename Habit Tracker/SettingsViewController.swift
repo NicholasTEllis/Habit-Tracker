@@ -79,8 +79,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func updateUserTimes() {
-        guard let user = UserController.shared.user.last else {
-            return }
+        let user = UserController.shared.user
         user.morningTime = SettingsViewController.morning
         user.afternoonTime = SettingsViewController.afternoon
         user.eveningTime = SettingsViewController.evening

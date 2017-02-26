@@ -17,16 +17,16 @@ class HabitDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let content = FBSDKShareLinkContent()
-        let button = FBSDKShareButton()
+        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+     //   content.contentURL = URL(string: "<INSERT STRING HERE>")
+        content.contentTitle = "I started a new habit with 21habit"
+        content.contentDescription = "Going to stop spending money on bs"
+       // content.imageURL = URL(string: "<INSERT STRING HERE>")
+        
+        let button : FBSDKShareButton = FBSDKShareButton()
         button.shareContent = content
-        button.center = self.view.center
+        button.frame = CGRect(x: 100, y: 250, width: 100, height: 25)
         self.view.addSubview(button)
-        content.contentURL = URL(string: "https://developers.facebook.com")
-        let dialog = FBSDKShareDialog()
-        dialog.fromViewController = self
-        dialog.shareContent = content
-        dialog.mode = .shareSheet
         
         
         updateWith()

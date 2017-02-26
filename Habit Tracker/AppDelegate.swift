@@ -22,34 +22,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController = storyBoard.instantiateViewController(withIdentifier: "Onboarding")
+        
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: "onboardingComplete"){
+            initialViewController = storyBoard.instantiateViewController(withIdentifier: "Login")
+            
+        }
+        
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        
         Fabric.with([Twitter.self])
         
         FIRApp.configure()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
-            if let error = error {
-                NSLog("Error requesting authorization for notifications: \(error)")
-                return
-            }
-        }
-        
-        UIApplication.shared.registerForRemoteNotifications()
+
         
         // Compare last launch date and reset completion properties if necessary
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
-        
+        if lastLaunch == 0 {
+            // Create user if the application has not ever been launched before
+            UserController.shared.createUser()
+            UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
+        } else {
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
-        
         let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
-        
         if !lastLaunchIsToday {
             DailyCompletionController.shared.endOfDayCompletions()
         }
-        
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
         print("This is your launchdate: \(lastLaunchDate)")
+        }
         return true
     }
     
@@ -70,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("user is logged in")
 
         }else{
-            print("user is not logged in, and it means zeus gives very sensual hugs")
+            print("user is not logged in, and it means sohail gives very sensual hugs")
         }
     }
 }
