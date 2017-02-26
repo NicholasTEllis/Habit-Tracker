@@ -62,20 +62,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         
-        
         // Do i need to turn text into string anymore????
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.morning = sender.date as NSDate?
-            
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.afternoon = sender.date as NSDate?
-            
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.evening = sender.date as NSDate?
-            
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
             SettingsViewController.any = sender.date as NSDate?
@@ -83,7 +79,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func updateUserTimes() {
-        guard let user = UserController.shared.user.last else { return }
+        guard let user = UserController.shared.user.last else {
+            return }
         user.morningTime = SettingsViewController.morning
         user.afternoonTime = SettingsViewController.afternoon
         user.eveningTime = SettingsViewController.evening

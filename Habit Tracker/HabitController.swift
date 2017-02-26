@@ -18,24 +18,21 @@ class HabitController {
     // MARK: - Internal Properties
     
     fileprivate static let userNotificationIdentifier = "habitNotification"
-    
-    var delegate: HabitNotificationScheduler?
-
+        
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
     //  MARK: - Habit Methods
-
+    
     func addHabit(name: String, imageName: String, timeOfNotification: NSDate, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
-        delegate?.scheduleLocalNotifications(habit, date: timeOfNotification as Date)
         saveToPersistentStore()
         return habit
     }
     
-     //  MARK: - Persistence
+    //  MARK: - Persistence
     
     func saveToPersistentStore() {
         let moc = CoreDataStack.context
@@ -47,7 +44,7 @@ class HabitController {
     }
 }
 
- //  MARK: - Push Notifications
+//  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
     func scheduleLocalNotifications(_ habit: Habit, date: Date)
@@ -55,10 +52,10 @@ protocol HabitNotificationScheduler {
 }
 
 extension HabitNotificationScheduler {
-
+    
     func scheduleLocalNotifications(_ habit: Habit, date: Date) {
         guard let name = habit.name else {
-                return
+            return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"

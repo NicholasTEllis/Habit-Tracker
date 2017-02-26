@@ -8,10 +8,9 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITextFieldDelegate {
+class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
     
-    var timeWindow: String = ""
-    
+    var time: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +63,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
             indexIncreasing()
-           // timeWindowFromSettings()
         case UISwipeGestureRecognizerDirection.right:
             indexDecreasing()
-         //   timeWindowFromSettings()
         default:
             return
         }
@@ -78,12 +75,16 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         switch index {
         case 0:
             timeOfDayLabel.text = "Any"
+            time = SettingsViewController.any
         case 1:
             timeOfDayLabel.text = "Morning"
+            time = SettingsViewController.morning
         case 2:
             timeOfDayLabel.text = "Afternoon"
+            time = SettingsViewController.afternoon
         case 3:
             timeOfDayLabel.text = "Evening"
+            time = SettingsViewController.evening
         default:
             return
         }
@@ -120,12 +121,13 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = habitNameTextField.text,
             let image = icon,
-            let time = timeOfDayLabel.text,
-            let colorKey = colorKey else {
+            let time = time,
+            let colorKey = colorKey
+            else {
                 return }
         
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-        
+        scheduleLocalNotifications(habit, date: time as Date)
         dismiss(animated: true, completion: nil)
     }
     
@@ -134,15 +136,12 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
     }
     
     @IBAction func leftToDButtonTapped(_ sender: Any) {
-       // timeWindowFromSettings()
         indexDecreasing()
     }
     
     @IBAction func rightToDButtonTapped(_ sender: Any) {
-       // timeWindowFromSettings()
         indexIncreasing()
     }
-    
 }
 
 
