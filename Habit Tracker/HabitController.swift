@@ -18,6 +18,8 @@ class HabitController {
     // MARK: - Internal Properties
     
     fileprivate static let userNotificationIdentifier = "habitNotification"
+    
+    let notifications: HabitNotificationScheduler?
 
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
@@ -28,7 +30,7 @@ class HabitController {
 
     func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
-        setupTimeForNotifications(habit: habit)
+        notifications?.scheduleLocalNotifications(habit, date: )
         saveToPersistentStore()
         return habit
     }
@@ -63,15 +65,14 @@ class HabitController {
  //  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
-    func scheduleLocalNotifications(_ habit: Habit)
+    func scheduleLocalNotifications(_ habit: Habit, date: Date)
     func cancelLocalNotifications(_ habit: Habit)
 }
 
 extension HabitNotificationScheduler {
 
-    func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name,
-            let timeNotification = habit.timeOfNotification else {
+    func scheduleLocalNotifications(_ habit: Habit, date: Date) {
+        guard let name = habit.name else {
                 return
         }
         let content = UNMutableNotificationContent()
@@ -79,7 +80,7 @@ extension HabitNotificationScheduler {
         content.body = "Finish Your Habit Today!"
         content.categoryIdentifier = "dailyHabit"
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate)
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)

@@ -125,7 +125,7 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
                 return }
         
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-        scheduleLocalNotifications(habit)
+        
         dismiss(animated: true, completion: nil)
     }
     
