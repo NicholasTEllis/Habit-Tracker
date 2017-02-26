@@ -70,13 +70,9 @@ protocol HabitNotificationScheduler {
 extension HabitNotificationScheduler {
 
     func scheduleLocalNotifications(_ habit: Habit) {
-        
         guard let name = habit.name,
             let timeNotification = habit.timeOfNotification else {
                 return
-        }
-           guard let fireDate = formatter.date(from: timeNotification) else {
-            return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
