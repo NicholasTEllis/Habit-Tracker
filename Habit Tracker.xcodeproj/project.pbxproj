@@ -12,7 +12,6 @@
 		539342F51E5B649F00BECC3F /* DailyCompletionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539342F41E5B649F00BECC3F /* DailyCompletionController.swift */; };
 		53DAE7FB1E609DF8003DA0E4 /* UserStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */; };
 		53DAE7FD1E60ADE8003DA0E4 /* StatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */; };
-		846CF97761DCB477574C224F /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
@@ -87,7 +86,6 @@
 		C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaperOnboarding.framework; path = Carthage/Build/iOS/PaperOnboarding.framework; sourceTree = "<group>"; };
 		C09974311E5F621000CAC072 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
-		E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
 		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
 		FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */,
-				846CF97761DCB477574C224F /* Pods_Habit_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */,
-				E4193FD843DF01768B520163 /* Pods_Habit_Tracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
