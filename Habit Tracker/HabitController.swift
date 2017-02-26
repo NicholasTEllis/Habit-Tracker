@@ -19,7 +19,7 @@ class HabitController {
     
     fileprivate static let userNotificationIdentifier = "habitNotification"
     
-    let notifications: HabitNotificationScheduler?
+    var delegate: HabitNotificationScheduler?
 
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
@@ -28,26 +28,11 @@ class HabitController {
     
     //  MARK: - Habit Methods
 
-    func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
+    func addHabit(name: String, imageName: String, timeOfNotification: NSDate, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
-        notifications?.scheduleLocalNotifications(habit, date: )
+        delegate?.scheduleLocalNotifications(habit, date: timeOfNotification as Date)
         saveToPersistentStore()
         return habit
-    }
-    
-    func setupTimeForNotifications(habit: Habit) {
-        switch habit.timeOfNotification {
-        case "Morning"?:
-            habit.timeOfNotification = SettingsViewController.morning
-        case "Afternoon"?:
-            habit.timeOfNotification = SettingsViewController.afternoon
-        case "Evening"?:
-            habit.timeOfNotification = SettingsViewController.evening
-        case "Any"?:
-            habit.timeOfNotification = SettingsViewController.any
-        default:
-            habit.timeOfNotification = SettingsViewController.any
-        }
     }
     
      //  MARK: - Persistence

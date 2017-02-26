@@ -12,7 +12,7 @@ import UIKit
 
 extension Habit {
     
-    convenience init(name: String, icon: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(name: String, icon: String, startDate: NSDate = NSDate(), timeOfNotification: NSDate, color: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.icon = icon

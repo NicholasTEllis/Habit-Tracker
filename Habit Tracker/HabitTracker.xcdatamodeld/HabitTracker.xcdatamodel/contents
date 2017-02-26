@@ -10,7 +10,7 @@
         <attribute name="isCompleteToday" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="timeOfNotification" attributeType="String" syncable="YES"/>
+        <attribute name="timeOfNotification" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="habitProgress" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DailyCompletion" inverseName="habit" inverseEntity="DailyCompletion" syncable="YES"/>
         <relationship name="timeForNotifcations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="timeFromSettings" inverseEntity="User" syncable="YES"/>
     </entity>
