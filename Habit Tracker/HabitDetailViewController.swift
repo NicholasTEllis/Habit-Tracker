@@ -149,6 +149,7 @@ class HabitDetailViewController: UIViewController {
 extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return habitDuration.count
     }
     
@@ -160,12 +161,16 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         let day = dayFormatter.string(from: date)
         cell?.dayName.text = dayName
         
-        if calendar.isDate(date, inSameDayAs: startDate as Date) {
-            cell?.dayButton.backgroundColor = UIColor.orange
-            cell?.dayName.text = "\(dayName) (S)"
+        if date < startDate as Date {
+            cell?.dayButton.backgroundColor = UIColor.gray
+            cell?.dayButton.alpha = 0.3
+            cell?.dayName.alpha = 0.3
         } else if calendar.isDateInToday(date) {
             cell?.dayButton.backgroundColor = UIColor.purple
             cell?.dayName.text = "\(dayName) (T)"
+        } else if calendar.isDate(date, inSameDayAs: startDate as Date) {
+            cell?.dayButton.backgroundColor = UIColor.orange
+            cell?.dayName.text = "\(dayName) (S)"
         }
     
         cell?.startDate = startDate as Date
