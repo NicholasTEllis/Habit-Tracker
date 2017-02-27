@@ -62,10 +62,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         if sender == morningFirstTextField.inputView {
-            
             morningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.morning = sender.date as NSDate?
             AddHabitViewController.time = SettingsViewController.morning
+            print(SettingsViewController.morning)
             UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
             
         } else if sender == afternoonFirstTextField.inputView {

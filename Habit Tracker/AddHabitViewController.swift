@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
+class AddHabitViewController: UIViewController, UITextFieldDelegate {
     
     static var time: NSDate?
     
@@ -119,6 +119,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        print(NSDate())
         guard let name = habitNameTextField.text,
             let image = icon,
             let time = AddHabitViewController.time,
@@ -127,7 +128,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
                 return }
         
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-        scheduleLocalNotifications(habit, date: time as Date)
+        //scheduleLocalNotifications(habit, date: time)
         dismiss(animated: true, completion: nil)
     }
     
