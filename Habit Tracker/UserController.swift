@@ -22,7 +22,7 @@ class UserController {
         return user
     }
     
-    func createUser(morningTime: String = "9:00 AM", afternoonTime: String = "12:00 PM", eveningTime: String = "5:00 PM", anyTime: String = "1:00 PM") -> User {
+    func createUserTime(morningTime: NSDate, afternoonTime: NSDate, eveningTime: NSDate, anyTime: NSDate) -> User {
         let user = User(morningTime: morningTime, afternoonTime: afternoonTime, eveningTime: eveningTime, anyTime: anyTime)
         saveToPersistentStore()
         return user

@@ -15,16 +15,14 @@ class DailyCompletionController {
     // MARK: - Daily Completion Methods 
     
     func completeHabitForDay(habit: Habit) {
-        let today = habit.habitProgress?.lastObject as? DailyCompletion
-        today?.completedDay = NSDate()
+        _ = DailyCompletion(completedDay: NSDate(), habit: habit)
         habit.isCompleteToday = true
         HabitController.shared.saveToPersistentStore()
     }
     
     func undoCompleteHabitForDay(habit: Habit) {
-        guard let today = habit.habitProgress?.lastObject as? DailyCompletion else { return }
-        today.completedDay = NSDate()
-        habit.managedObjectContext?.delete(today)
+        let undoCompleteDay = DailyCompletion(completedDay: NSDate(), habit: habit)
+        habit.managedObjectContext?.delete(undoCompleteDay)
         habit.isCompleteToday = false
         HabitController.shared.saveToPersistentStore()
     }

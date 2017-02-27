@@ -8,10 +8,9 @@
 
 import UIKit
 
-class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITextFieldDelegate {
+class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
     
-    var timeWindow: String = ""
-    
+    var time: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +39,23 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         colorsForIconView.select(index: 0)
         self.setupColorMenu()
         
-        //let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
-        //view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
 
+    }
+    
+    // MARK: -Keyboard
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false 
     }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
+
     
     // MARK: - Choice of notification gesture
     
@@ -55,10 +63,8 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
             indexIncreasing()
-           // timeWindowFromSettings()
         case UISwipeGestureRecognizerDirection.right:
             indexDecreasing()
-         //   timeWindowFromSettings()
         default:
             return
         }
@@ -69,12 +75,16 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         switch index {
         case 0:
             timeOfDayLabel.text = "Any"
+            time = SettingsViewController.any
         case 1:
             timeOfDayLabel.text = "Morning"
+            time = SettingsViewController.morning
         case 2:
             timeOfDayLabel.text = "Afternoon"
+            time = SettingsViewController.afternoon
         case 3:
             timeOfDayLabel.text = "Evening"
+            time = SettingsViewController.evening
         default:
             return
         }
@@ -97,24 +107,6 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
         }
     }
     
-//    func timeWindowFromSettings() {
-//     
-//        if timeOfDayLabel.text == "Morning" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.morning
-//        } else if timeOfDayLabel.text == "Afternoon" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.afternoon
-//        } else if timeOfDayLabel.text == "Evening" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.evening
-//        } else if timeOfDayLabel.text == "Any" {
-//            timeWindow = ""
-//            timeWindow = SettingsViewController.any
-//        }
-//    }
-//    
-    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
@@ -129,13 +121,13 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = habitNameTextField.text,
             let image = icon,
-            let time = timeOfDayLabel.text,
-            let colorKey = colorKey else {
+            let time = time,
+            let colorKey = colorKey
+            else {
                 return }
         
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-
-        scheduleLocalNotifications(habit)
+        scheduleLocalNotifications(habit, date: time as Date)
         dismiss(animated: true, completion: nil)
     }
     
@@ -144,15 +136,12 @@ class AddHabitViewController: UIViewController, HabitNotificationScheduler, UITe
     }
     
     @IBAction func leftToDButtonTapped(_ sender: Any) {
-       // timeWindowFromSettings()
         indexDecreasing()
     }
     
     @IBAction func rightToDButtonTapped(_ sender: Any) {
-       // timeWindowFromSettings()
         indexIncreasing()
     }
-    
 }
 
 

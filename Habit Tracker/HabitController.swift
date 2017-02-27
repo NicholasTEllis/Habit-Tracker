@@ -18,46 +18,21 @@ class HabitController {
     // MARK: - Internal Properties
     
     fileprivate static let userNotificationIdentifier = "habitNotification"
-
+        
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
-    static var fireDateFromTimeOfNotification: Date? {
-        let timeWindowFromSettings = SettingsViewController.morning
-        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight,
-        let timeFromSettings = Double(timeWindowFromSettings) else { return nil }
-        let timeInterval: TimeInterval = timeFromSettings
-        let fireDateFromThisMorning = Date(timeInterval: timeInterval, since: thisMorningAtMidnight)
-        return fireDateFromThisMorning
-    }
-    
     //  MARK: - Habit Methods
-
-    func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
+    
+    func addHabit(name: String, imageName: String, timeOfNotification: NSDate, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
-        setupTimeForNotifications(habit: habit)
         saveToPersistentStore()
         return habit
     }
     
-    func setupTimeForNotifications(habit: Habit) {
-        switch habit.timeOfNotification {
-        case "Morning"?:
-            habit.timeOfNotification = SettingsViewController.morning
-        case "Afternoon"?:
-            habit.timeOfNotification = SettingsViewController.afternoon
-        case "Evening"?:
-            habit.timeOfNotification = SettingsViewController.evening
-        case "Any"?:
-            habit.timeOfNotification = SettingsViewController.any
-        default:
-            habit.timeOfNotification = SettingsViewController.any
-        }
-    }
-    
-     //  MARK: - Persistence
+    //  MARK: - Persistence
     
     func saveToPersistentStore() {
         let moc = CoreDataStack.context
@@ -69,26 +44,26 @@ class HabitController {
     }
 }
 
- //  MARK: - Push Notifications
+//  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
-    func scheduleLocalNotifications(_ habit: Habit)
+    func scheduleLocalNotifications(_ habit: Habit, date: Date)
     func cancelLocalNotifications(_ habit: Habit)
 }
 
 extension HabitNotificationScheduler {
     
-    func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name, let fireDate = HabitController.fireDateFromTimeOfNotification else {
+    func scheduleLocalNotifications(_ habit: Habit, date: Date) {
+        guard let name = habit.name else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
-        content.categoryIdentifier = "message"
+        content.categoryIdentifier = "dailyHabit"
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate)
-        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }

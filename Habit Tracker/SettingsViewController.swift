@@ -17,10 +17,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
     
-    static var morning = ""
-    static var afternoon = ""
-    static var evening = ""
-    static var any = ""
+    static var morning: NSDate?
+    static var afternoon: NSDate?
+    static var evening: NSDate?
+    static var any: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,34 +62,19 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         
+        // Do i need to turn text into string anymore????
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
-            guard let morningText = morningFirstTextField.text else {
-                return
-            }
-            SettingsViewController.morning = morningText
-            
+            SettingsViewController.morning = sender.date as NSDate?
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
-            guard let afternoonText = afternoonFirstTextField.text else {
-                return
-            }
-            SettingsViewController.afternoon = afternoonText
-            
+            SettingsViewController.afternoon = sender.date as NSDate?
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
-            guard let eveningText = eveningFirstTextField.text else {
-                return
-            }
-            SettingsViewController.evening = eveningText
-            
+            SettingsViewController.evening = sender.date as NSDate?
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
-            guard let anyText = anyTextField.text else {
-                return
-            }
-            
-            SettingsViewController.any = anyText
+            SettingsViewController.any = sender.date as NSDate?
         }
     }
     
