@@ -15,11 +15,11 @@ import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     //  MARK: - App Delegate Did Finish Launching & Facebook/Twitter
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -42,27 +42,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
+        
         
         // Compare last launch date and reset completion properties if necessary
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
         if lastLaunch == 0 {
             // Create user if the application has not ever been launched before
-            UserController.shared.createUser()
+        
+            let calendar = Calendar.current
+            let date = Date()
+            var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            components.hour = 9
+            components.minute = 30
+            components.second = 0
+            guard let defaultDate = calendar.date(from: components) else {
+                return true
+            }
+            
+            UserController.shared.createUser(morningTime: defaultDate as NSDate, afternoonTime: defaultDate as NSDate, eveningTime: defaultDate as NSDate, anyTime: defaultDate as NSDate)
+            
             UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
+            
         } else {
-        let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
-        let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
-        if !lastLaunchIsToday {
-            DailyCompletionController.shared.endOfDayCompletions()
-        }
-        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
-        print("This is your launchdate: \(lastLaunchDate)")
+            let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
+            let lastLaunchIsToday = NSCalendar.current.isDateInToday(lastLaunchDate)
+            if !lastLaunchIsToday {
+                DailyCompletionController.shared.endOfDayCompletions()
+            }
+            
+            UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
+            print("This is your launchdate: \(lastLaunchDate)")
         }
         return true
     }
     
-     //  MARK: - App Delegate Facebook
+    //  MARK: - App Delegate Facebook
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -77,14 +91,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = storyboard.instantiateViewController(withIdentifier: "customTabBar")
             self.window?.rootViewController = viewController
             print("user is logged in")
-
+            
         }else{
             print("user is not logged in, and it means sohail gives very sensual hugs")
         }
     }
 }
 
- //  MARK: - To settings app 
+//  MARK: - To settings app
 
 extension UIApplication {
     class func openAppSettings() {
