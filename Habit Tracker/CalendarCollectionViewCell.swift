@@ -12,16 +12,18 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override func draw(_ rect: CGRect) {
         dayButton.layer.cornerRadius = 0.5 * dayButton.bounds.width
+        
         guard let date = self.date else {
             return }
-        
-        let cal = Calendar.current
-        if cal.isDateInToday(date) {
-            dayButton.backgroundColor = UIColor.purple
-        }
     }
+    
+    var startDate: Date?
     var date: Date?
-    var today = Date()
+    var completedDate: Date?
+    
+    let cal = Calendar.current
+    
+
     @IBOutlet var dayName: UILabel!
     @IBOutlet var dayButton: UIButton!
 }

@@ -32,11 +32,12 @@ class HabitDetailViewController: UIViewController {
         calendarCollectionView.dataSource = self
         updateWith()
         
-        findLengthOfHabit()
+        habitLengthInDays()
+        addDatesSinceSunday()
     }
     
 
-    //  MARK: - Update With
+    //  MARK: - Main Methods
     
     func updateWith() {
         guard let habit = habit else {
@@ -45,8 +46,7 @@ class HabitDetailViewController: UIViewController {
         guard let icon = habit.icon,
             let daysCompleted = habit.habitProgress?.count,
             let progress = habit.habitProgress?.array as? [DailyCompletion],
-            let colorKey = habit.color else {
-                return }
+            let colorKey = habit.color else { return }
 
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
@@ -66,12 +66,44 @@ class HabitDetailViewController: UIViewController {
         progressView.trackTintColor = Keys.shared.background
     }
     
+    // displays the number of days in the calendarView
+    func habitLengthInDays() {
+        guard let habit = self.habit,
+            let startDateForHabit = habit.startDate as? Date else { return }
+        for i in 0...20 {
+            guard let daysBetween = calendar.date(byAdding: .day, value: i, to: startDateForHabit) else { return }
+            habitDuration.append(daysBetween)
+        }
+    }
+    
+    // if the start date of your habit isn't a sunday, this will at the days before it from sunday
+    func addDatesSinceSunday() {
+        guard let startDate = habit?.startDate else { return }
+        var sundayOnward: [Date] = []
+        
+        if isDateSunday(date: startDate as Date) {
+            return
+        } else {
+            let dayComponent = dayComponentsSinceSunday(date: startDate as Date)
+            let start = calendar.startOfDay(for: startDate as Date)
+            for i in 1 ... dayComponent {
+                guard let days = calendar.date(byAdding: .day, value: -i, to: start as Date) else { return }
+                sundayOnward.append(days)
+            }
+        }
+        for day in sundayOnward {
+            habitDuration.insert(day, at: 0)
+        }
+    }
+
     
     //  MARK: - Properties
     
     var habit: Habit?
-    
+
     var habitDuration = [Date]()
+    
+    let calendar = Calendar.current
     
     let sectionInsets = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 30.0, right: 20.0) // for colelction view
 
@@ -122,16 +154,28 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calanderDate", for: indexPath) as? CalendarCollectionViewCell
+        guard let startDate = self.habit?.startDate else { return UICollectionViewCell() }
         let date = habitDuration[indexPath.row]
         let dayName = dayNameFormatter.string(from: date)
         let day = dayFormatter.string(from: date)
-        cell?.date = date
-        
-        cell?.dayButton.setTitle(day, for: .normal)
         cell?.dayName.text = dayName
+        
+        if calendar.isDate(date, inSameDayAs: startDate as Date) {
+            cell?.dayButton.backgroundColor = UIColor.orange
+            cell?.dayName.text = "\(dayName) (S)"
+        } else if calendar.isDateInToday(date) {
+            cell?.dayButton.backgroundColor = UIColor.purple
+            cell?.dayName.text = "\(dayName) (T)"
+        }
+    
+        cell?.startDate = startDate as Date
+        cell?.date = date
+        cell?.dayButton.setTitle(day, for: .normal)
+        
         return cell ?? UICollectionViewCell()
     }
     
+    // collectionview cell flow layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow: CGFloat = 7    // Number of items in a row
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
@@ -157,7 +201,7 @@ extension HabitDetailViewController {
     func findDaysRemaining(completedDays: Int) -> Int {
         return (21 - (completedDays - 1))
     }
-    
+
     
     func numberOfStrikes(from strikes: Int) {
         switch strikes {
@@ -195,20 +239,40 @@ extension HabitDetailViewController {
         }
     }
     
-    
-    func findLengthOfHabit() {
-        guard let habit = self.habit,
-            let startDateForHabit = habit.startDate as? Date else {
-            return }
-        let cal = Calendar.current
-        for i in 0...20 {
-            guard let daysBetween = cal.date(byAdding: .day, value: i, to: startDateForHabit) else {
-                return
-            }
-            habitDuration.append(daysBetween)
+    func isDateSunday(date: Date) -> Bool {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        if weekday == 1 {
+            print("true")
+            return true
+        } else {
+            print("false")
+            return false
         }
     }
     
+    func dayComponentsSinceSunday(date: Date) -> Int {
+        var weekdayComponent = 0
+        
+        let weekday = calendar.component(.weekday, from: date)
+        switch weekday {
+        case 2:
+            weekdayComponent = 1
+        case 3:
+            weekdayComponent = 2
+        case 4:
+            weekdayComponent = 3
+        case 5:
+            weekdayComponent = 4
+        case 6:
+            weekdayComponent = 5
+        case 7:
+            weekdayComponent = 6
+        default:
+            break
+        }
+        return weekdayComponent
+    }
 }
 
 
