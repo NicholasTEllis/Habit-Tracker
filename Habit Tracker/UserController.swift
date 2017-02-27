@@ -22,10 +22,31 @@ class UserController {
         return user
     }
     
-    func createUserTime(morningTime: NSDate, afternoonTime: NSDate, eveningTime: NSDate, anyTime: NSDate) -> User {
-        let user = User(morningTime: morningTime, afternoonTime: afternoonTime, eveningTime: eveningTime, anyTime: anyTime)
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
+    
+    func createUser()  {
+        guard let morningTime = dateFormatter.date(from: "09:00"),
+            let afternoonTime = dateFormatter.date(from: "12:00"),
+            let eveningTime = dateFormatter.date(from: "17:00"),
+            let anytime = dateFormatter.date(from: "13:00") else {
+            return
+        }
+        _ = User(morningTime: morningTime as NSDate, afternoonTime: afternoonTime as NSDate, eveningTime: eveningTime as NSDate, anyTime: anytime as NSDate)
+        updateUserTimes()
         saveToPersistentStore()
-        return user
+    }
+    
+    func updateUserTimes() {
+        user.morningTime = SettingsViewController.morning
+        user.afternoonTime = SettingsViewController.afternoon
+        user.eveningTime = SettingsViewController.evening
+        user.anyTime = SettingsViewController.any
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {

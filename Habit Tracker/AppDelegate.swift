@@ -48,10 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
         if lastLaunch == 0 {
             // Create user if the application has not ever been launched before
-            
-            // TODO: - Check with Keaton if this is the right function
-            
-            UserController.shared.createUserTime()
+            UserController.shared.createUser()
             UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
         } else {
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)

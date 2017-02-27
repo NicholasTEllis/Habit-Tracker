@@ -10,7 +10,7 @@ import UIKit
 
 class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
     
-    var time: NSDate?
+    static var time: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,16 +75,16 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
         switch index {
         case 0:
             timeOfDayLabel.text = "Any"
-            time = SettingsViewController.any
+            AddHabitViewController.time = SettingsViewController.any
         case 1:
             timeOfDayLabel.text = "Morning"
-            time = SettingsViewController.morning
+            AddHabitViewController.time = SettingsViewController.morning
         case 2:
             timeOfDayLabel.text = "Afternoon"
-            time = SettingsViewController.afternoon
+            AddHabitViewController.time = SettingsViewController.afternoon
         case 3:
             timeOfDayLabel.text = "Evening"
-            time = SettingsViewController.evening
+            AddHabitViewController.time = SettingsViewController.evening
         default:
             return
         }
@@ -121,7 +121,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = habitNameTextField.text,
             let image = icon,
-            let time = time,
+            let time = AddHabitViewController.time,
             let colorKey = colorKey
             else {
                 return }

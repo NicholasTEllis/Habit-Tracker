@@ -66,6 +66,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.morning = sender.date as NSDate?
+            SettingsViewController.morning = AddHabitViewController.time 
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.afternoon = sender.date as NSDate?
@@ -78,14 +79,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func updateUserTimes() {
-        let user = UserController.shared.user
-        user.morningTime = SettingsViewController.morning
-        user.afternoonTime = SettingsViewController.afternoon
-        user.eveningTime = SettingsViewController.evening
-        user.anyTime = SettingsViewController.any
-    }
-    
     // ACTIONS:
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -93,7 +86,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        updateUserTimes()
+        UserController.shared.updateUserTimes()
         dismiss(animated: true, completion: nil)
     }
     
