@@ -25,6 +25,7 @@
 		8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */; };
 		8DDA397C1E5F557300216CD2 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA397B1E5F557300216CD2 /* UserController.swift */; };
 		8DF8EFEB1E5F52F70059EF54 /* User + Convience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8EFEA1E5F52F70059EF54 /* User + Convience.swift */; };
+		A4DA81B6525D8244C3C3B5C3 /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
 		C099742C1E5F61B900CAC072 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
 		53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		539342F41E5B649F00BECC3F /* DailyCompletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCompletionController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */,
+				A4DA81B6525D8244C3C3B5C3 /* Pods_Habit_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */,
+				0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,7 +284,7 @@
 				TargetAttributes = {
 					8D0686F91E537C2E00FBAA55 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XSV88KY8NF;
+						DevelopmentTeam = J5HBDYC8AZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -550,7 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = XSV88KY8NF;
+				DEVELOPMENT_TEAM = J5HBDYC8AZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -570,7 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = XSV88KY8NF;
+				DEVELOPMENT_TEAM = J5HBDYC8AZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

@@ -18,9 +18,9 @@ class HabitDetailViewController: UIViewController {
         super.viewDidLoad()
         
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
-       content.contentURL = URL(string: "www.21habit.io")
+       content.contentURL = URL(string: "")
         content.contentTitle = "I started a new habit with 21habit"
-        content.contentDescription = "Going to stop spending money on bs"
+        content.contentDescription = "Create better habits for yourself with 21habit. It's free on the app store!"
        content.imageURL = URL(string: "https://s-media-cache-ak0.pinimg.com/564x/f8/88/eb/f888ebbf1c32893934ed29b7f90cc589.jpg")
         
         let button : FBSDKShareButton = FBSDKShareButton()

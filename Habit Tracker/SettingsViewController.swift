@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     static var morning: NSDate?
     static var afternoon: NSDate?
     static var evening: NSDate?
-    static var any: NSDate?
+    static var any = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +74,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             SettingsViewController.evening = sender.date as NSDate?
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.any = sender.date as NSDate?
+            SettingsViewController.any = sender.date as NSDate
         }
     }
     

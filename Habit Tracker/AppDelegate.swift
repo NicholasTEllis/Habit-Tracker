@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // TODO: - Check with Keaton if this is the right function
             
-            UserController.shared.createUserTime()
+            UserController.shared.createUserTime(morningTime: NSDate(), afternoonTime: NSDate(), eveningTime: NSDate(), anyTime: NSDate())
             UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
         } else {
         let lastLaunchDate = Date(timeIntervalSince1970: lastLaunch)
