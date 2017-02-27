@@ -75,7 +75,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             SettingsViewController.evening = sender.date as NSDate?
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.any = sender.date as NSDate?
+            SettingsViewController.any = sender.date as NSDate
         }
     }
     

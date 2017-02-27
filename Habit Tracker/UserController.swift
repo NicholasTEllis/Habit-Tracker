@@ -46,6 +46,11 @@ class UserController {
         user.afternoonTime = SettingsViewController.afternoon
         user.eveningTime = SettingsViewController.evening
         user.anyTime = SettingsViewController.any
+//        SettingsViewController.morning = user.morningTime
+//        SettingsViewController.afternoon = user.afternoonTime
+//        SettingsViewController.evening = user.eveningTime
+//        SettingsViewController.any = user.anyTime
+//        
         saveToPersistentStore()
     }
     
