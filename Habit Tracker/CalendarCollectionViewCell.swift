@@ -21,9 +21,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         
         if cal.isDate(date, inSameDayAs: today) {
             selectionView.backgroundColor = UIColor.black
-        } else {
-            selectionView.backgroundColor = .clear
-        }
+        } 
     }
     
     
