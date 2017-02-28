@@ -23,12 +23,27 @@ extension Habit {
     
     // Computed Properties
     
+    var fireTimeOfNotification: TimeInterval {
+        switch timeOfNotification {
+        case "Morning"?:
+            return TimeSettingsController.shared.morning
+        case "Afternoon"?:
+            return TimeSettingsController.shared.afternoon
+        case "Evening"?:
+            return TimeSettingsController.shared.evening
+        case "Any"?:
+            return TimeSettingsController.shared.anytime
+        default:
+            print("All the cases from fireTimeOfNotification were not what I expected")
+            return TimeSettingsController.shared.anytime
+        }
+    }
     
-//    var fireDate: NSDate? {
-//        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else { return nil }
-//        let fireDateFromThisMorning = NSDate(timeInterval: asdf, since: thisMorningAtMidnight)
-//        return fireDateFromThisMorning
-//    }
+    var fireDate: NSDate? {
+        guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else { return nil }
+        let fireDateFromThisMorning = NSDate(timeInterval: fireTimeOfNotification, since: thisMorningAtMidnight)
+        return fireDateFromThisMorning
+    }
     
     var strikes: Int {
         let calendar = NSCalendar.current

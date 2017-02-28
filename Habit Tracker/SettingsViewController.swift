@@ -61,22 +61,23 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     func dateValueChanged(sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
+        
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.morning = sender.date
-            AddHabitViewController.time = SettingsViewController.morning
-            
+            let interval = sender.date.timeIntervalSinceNow
+            SettingsViewController.morning = interval
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
-           // SettingsViewController.afternoon = sender.date as NSDate?
-            
+            let interval = sender.date.timeIntervalSinceNow
+            SettingsViewController.afternoon = interval
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
-           // SettingsViewController.evening = sender.date as NSDate?
-            
+            let interval = sender.date.timeIntervalSinceNow
+            SettingsViewController.evening = interval
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
-            //SettingsViewController.any = sender.date as NSDate
+            let interval = sender.date.timeIntervalSinceNow
+            SettingsViewController.any = interval
         }
     }
     

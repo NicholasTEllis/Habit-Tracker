@@ -48,18 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastLaunch = UserDefaults.standard.double(forKey: "lastLaunch")
         if lastLaunch == 0 {
           //  Create user if the application has not ever been launched before
-            
-            let calendar = Calendar.current
-            let date = Date()
-            var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-            components.hour = 9
-            components.minute = 30
-            components.second = 0
-            guard let defaultDate = calendar.date(from: components) else {
-                return true
-            }
-            
-            UserController.shared.createUser(morningTime: defaultDate as NSDate, afternoonTime: defaultDate as NSDate, eveningTime: defaultDate as NSDate, anyTime: defaultDate as NSDate)
+            UserController.shared.createUser()
             UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastLaunch")
             
         } else {

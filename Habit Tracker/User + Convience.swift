@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension User {
-    convenience init(perfectDays: Int16 = 0, bestStreak: Int16 = 0, completedHabits: Int16 = 0, currentStreak: Int16 = 0, perfectHabits: Int16 = 0, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(perfectDays: Int16, bestStreak: Int16 = 0, completedHabits: Int16 = 0, currentStreak: Int16 = 0, perfectHabits: Int16 = 0, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.perfectDays = perfectDays
         self.bestStreak = bestStreak

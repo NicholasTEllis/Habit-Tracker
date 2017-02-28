@@ -23,7 +23,7 @@ class UserController {
     }
   
     func createUser()  {
-        _ = User()
+        _ = User(perfectDays: 0)
         saveToPersistentStore()
     }
     
