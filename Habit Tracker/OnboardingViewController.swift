@@ -39,10 +39,10 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
     }
     
     func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
-    let backgroundColorOne = UIColor(red: 217/255, green: 72/255, blue: 89/255, alpha: 1)
-        let backgroundColorTwo = UIColor(red: 229/255, green: 159/255, blue: 18/255, alpha: 1)
-        let backgroundColorThree = UIColor(red: 75/255, green: 96/255, blue: 92/255, alpha: 1)
-        let backgroundColorFour = UIColor(red: 22/255, green: 89/255, blue: 198/255, alpha: 1)
+    let backgroundColorOne = Keys.shared.iconColor1
+        let backgroundColorTwo = Keys.shared.iconColor2
+        let backgroundColorThree = Keys.shared.iconColor3
+        let backgroundColorFour = Keys.shared.iconColor4
         
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descriptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!

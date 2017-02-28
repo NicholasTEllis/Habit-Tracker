@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import Firebase
 import Fabric
 import TwitterKit
+import FBSDKShareKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

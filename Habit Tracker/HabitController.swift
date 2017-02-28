@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 import UIKit
 import UserNotifications
+import FBSDKCoreKit
+import FBSDKShareKit
 
 class HabitController {
     
@@ -30,6 +32,8 @@ class HabitController {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
         saveToPersistentStore()
         return habit
+        
+            
     }
     
     //  MARK: - Persistence
