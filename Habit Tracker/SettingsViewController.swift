@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
-class SettingsViewController: UIViewController, UITextFieldDelegate {
+class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     
     //  MARK: - Outlets
     
@@ -24,6 +25,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let loginButton = FBSDKLoginButton()
+        view.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 16, y: 500, width: view.frame.width - 32, height: 50)
+        
+        loginButton.delegate = self
+        
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
         
@@ -96,5 +104,17 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Logged out of Facebook.")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+    }
+
     
 }
