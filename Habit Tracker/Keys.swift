@@ -13,6 +13,8 @@ class Keys {
     
     static let shared = Keys()
     
+    var fireTimesDictionary: [String : Double] = ["morning": 1500.0,"afternoon" :3000.0,"evening" :4500.0,"anytime" :6000.0]
+    
     // black
     let iconColor1 = UIColor(colorLiteralRed: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
     // salmon-ey

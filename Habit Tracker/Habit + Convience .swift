@@ -21,7 +21,7 @@ enum FireTime: TimeInterval {
 
 extension Habit {
     
-    convenience init(name: String, icon: String, startDate: NSDate = NSDate(), timeOfNotification: NSDate, color: String, context: NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(name: String, icon: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.icon = icon
@@ -40,20 +40,20 @@ extension Habit {
 //            let evening = SettingsViewController.evening,
 //            let anytime = SettingsViewController.any else { return nil }
         
-        guard let fireTime = self.fireTime
+        let fireTimeDictionary = Keys.shared.fireTimesDictionary
         
-        switch fireTime {
-        case .morning:
-            print("morning")
-        case .afternoon:
-            print("afternoon")
-        case .evening:
-            print("evening")
-        case .anytime:
-            print("anytime")
-        //default:
-            
-        }
+//        switch fireTimeDictionary.keys {
+//        case "morning":
+//            print("morning")
+//        case afternoon:
+//            print("afternoon")
+//        case .evening:
+//            print("evening")
+//        case .anytime:
+//            print("anytime")
+//        default:
+//            
+//        }
         
         guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else { return nil }
         let fireDateFromThisMorning = NSDate(timeInterval: time.rawValue, since: thisMorningAtMidnight)

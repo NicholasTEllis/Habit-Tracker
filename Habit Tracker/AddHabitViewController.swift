@@ -12,7 +12,7 @@ import FBSDKShareKit
 
 class AddHabitViewController: UIViewController, UITextFieldDelegate {
     
-    static var time: NSDate?
+    static var time: TimeInterval?
     
     override func viewDidLoad() {
         super.viewDidLoad()
