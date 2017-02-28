@@ -28,7 +28,7 @@ class HabitController {
     
     //  MARK: - Habit Methods
     
-    func addHabit(name: String, imageName: String, timeOfNotification: NSDate, color: String) -> Habit {
+    func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
         saveToPersistentStore()
         return habit
@@ -49,27 +49,27 @@ class HabitController {
 //  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
-    func scheduleLocalNotifications(_ habit: Habit, date: Date)
+    func scheduleLocalNotifications(_ habit: Habit)
     func cancelLocalNotifications(_ habit: Habit)
 }
 
 extension HabitNotificationScheduler {
     
-    func scheduleLocalNotifications(_ habit: Habit, date: NSDate) {
-        guard let name = habit.name else {
-            return
-        }
-        let content = UNMutableNotificationContent()
-        content.title = "\(name)"
-        content.body = "Finish Your Habit Today!"
-        content.categoryIdentifier = "dailyHabit"
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date)
-        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: <#T##TimeInterval#>, repeats: true)
-        // UNTimeIntervalNotificationTrigger ^^^^^^^^^^^^^
-        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    func scheduleLocalNotifications(_ habit: Habit) {
+//        guard let name = habit.name else {
+//            return
+//        }
+//        let content = UNMutableNotificationContent()
+//        content.title = "\(name)"
+//        content.body = "Finish Your Habit Today!"
+//        content.categoryIdentifier = "dailyHabit"
+//        let calendar = Calendar.current
+//        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date)
+//        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: , repeats: true)
+//        // UNTimeIntervalNotificationTrigger ^^^^^^^^^^^^^
+//        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func cancelLocalNotifications(_ habit: Habit) {

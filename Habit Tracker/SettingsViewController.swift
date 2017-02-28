@@ -17,10 +17,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
     
-    static var morning = UserController.shared.user.morningTime
-    static var afternoon = UserController.shared.user.afternoonTime
-    static var evening = UserController.shared.user.eveningTime
-    static var any = UserController.shared.user.anyTime
+    static var morning = TimeSettingsController.shared.morning
+    static var afternoon = TimeSettingsController.shared.afternoon
+    static var evening = TimeSettingsController.shared.evening
+    static var any = TimeSettingsController.shared.anytime
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,27 +63,20 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         formatter.timeStyle = .short
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.morning = sender.date as NSDate?
+            SettingsViewController.morning = sender.date
             AddHabitViewController.time = SettingsViewController.morning
-            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
             
         } else if sender == afternoonFirstTextField.inputView {
-            
             afternoonFirstTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.afternoon = sender.date as NSDate?
-            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+           // SettingsViewController.afternoon = sender.date as NSDate?
             
         } else if sender == eveningFirstTextField.inputView {
-            
             eveningFirstTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.evening = sender.date as NSDate?
-            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+           // SettingsViewController.evening = sender.date as NSDate?
             
         } else if sender == anyTextField.inputView {
-            
             anyTextField.text = formatter.string(from: sender.date)
-            SettingsViewController.any = sender.date as NSDate
-            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+            //SettingsViewController.any = sender.date as NSDate
         }
     }
     

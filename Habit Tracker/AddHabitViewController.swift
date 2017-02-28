@@ -80,13 +80,13 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
             AddHabitViewController.time = SettingsViewController.any
         case 1:
             timeOfDayLabel.text = "Morning"
-            AddHabitViewController.time = SettingsViewController.morning
+          //  AddHabitViewController.time = SettingsViewController.morning
         case 2:
             timeOfDayLabel.text = "Afternoon"
-            AddHabitViewController.time = SettingsViewController.afternoon
+            //AddHabitViewController.time = SettingsViewController.afternoon
         case 3:
             timeOfDayLabel.text = "Evening"
-            AddHabitViewController.time = SettingsViewController.evening
+            //AddHabitViewController.time = SettingsViewController.evening
         default:
             return
         }
