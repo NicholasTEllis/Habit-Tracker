@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKShareKit
 
-class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
+class AddHabitViewController: UIViewController, UITextFieldDelegate {
     
-    var time: NSDate?
+    static var time: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,16 +77,16 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
         switch index {
         case 0:
             timeOfDayLabel.text = "Any"
-            time = SettingsViewController.any
+            AddHabitViewController.time = SettingsViewController.any
         case 1:
             timeOfDayLabel.text = "Morning"
-            time = SettingsViewController.morning
+            AddHabitViewController.time = SettingsViewController.morning
         case 2:
             timeOfDayLabel.text = "Afternoon"
-            time = SettingsViewController.afternoon
+            AddHabitViewController.time = SettingsViewController.afternoon
         case 3:
             timeOfDayLabel.text = "Evening"
-            time = SettingsViewController.evening
+            AddHabitViewController.time = SettingsViewController.evening
         default:
             return
         }
@@ -119,16 +121,26 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        if ((FBSDKAccessToken.current()) != nil) {
+            let content = FBSDKShareLinkContent()
+            content.contentURL = URL(string: "http://developers.facebook.com")
+            FBSDKShareDialog.show(from: self, with: content, delegate: nil)
+        
         guard let name = habitNameTextField.text,
             let image = icon,
-            let time = time,
+            let time = AddHabitViewController.time,
             let colorKey = colorKey
             else {
                 return }
         
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-        scheduleLocalNotifications(habit, date: time as Date)
+        //scheduleLocalNotifications(habit, date: time)
         dismiss(animated: true, completion: nil)
+        
+       
+            
+        }
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {

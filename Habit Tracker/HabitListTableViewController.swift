@@ -9,11 +9,13 @@
 import UIKit
 import CoreData
 import Social
+import FBSDKShareKit
 
 class HabitListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, HabitTableViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fetchedResultsController.delegate = self
         self.tableView.backgroundColor = Keys.shared.background
         do {

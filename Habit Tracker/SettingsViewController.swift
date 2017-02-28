@@ -17,10 +17,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
     
-    static var morning: NSDate?
-    static var afternoon: NSDate?
-    static var evening: NSDate?
-    static var any = NSDate()
+    static var morning = UserController.shared.user.morningTime
+    static var afternoon = UserController.shared.user.afternoonTime
+    static var evening = UserController.shared.user.eveningTime
+    static var any = UserController.shared.user.anyTime
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,39 +61,39 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     func dateValueChanged(sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-        
-        // Do i need to turn text into string anymore????
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.morning = sender.date as NSDate?
+            AddHabitViewController.time = SettingsViewController.morning
+            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+            
         } else if sender == afternoonFirstTextField.inputView {
+            
             afternoonFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.afternoon = sender.date as NSDate?
+            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+            
         } else if sender == eveningFirstTextField.inputView {
+            
             eveningFirstTextField.text = formatter.string(from: sender.date)
             SettingsViewController.evening = sender.date as NSDate?
+            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
+            
         } else if sender == anyTextField.inputView {
+            
             anyTextField.text = formatter.string(from: sender.date)
             SettingsViewController.any = sender.date as NSDate
+            UserController.shared.updateUserTimes(withDate: sender.date as NSDate)
         }
     }
     
-    func updateUserTimes() {
-        let user = UserController.shared.user
-        user.morningTime = SettingsViewController.morning
-        user.afternoonTime = SettingsViewController.afternoon
-        user.eveningTime = SettingsViewController.evening
-        user.anyTime = SettingsViewController.any
-    }
-    
     // ACTIONS:
-
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        updateUserTimes()
         dismiss(animated: true, completion: nil)
     }
     
