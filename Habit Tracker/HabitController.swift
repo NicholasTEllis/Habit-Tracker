@@ -10,6 +10,8 @@ import Foundation
 import CoreData
 import UIKit
 import UserNotifications
+import FBSDKCoreKit
+import FBSDKShareKit
 
 class HabitController {
     
@@ -18,7 +20,7 @@ class HabitController {
     // MARK: - Internal Properties
     
     fileprivate static let userNotificationIdentifier = "habitNotification"
-        
+    
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         return (try? CoreDataStack.context.fetch(request)) ?? []
@@ -30,6 +32,8 @@ class HabitController {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
         saveToPersistentStore()
         return habit
+        
+            
     }
     
     //  MARK: - Persistence
@@ -53,7 +57,7 @@ protocol HabitNotificationScheduler {
 
 extension HabitNotificationScheduler {
     
-    func scheduleLocalNotifications(_ habit: Habit, date: Date) {
+    func scheduleLocalNotifications(_ habit: Habit, date: NSDate) {
         guard let name = habit.name else {
             return
         }
@@ -62,8 +66,9 @@ extension HabitNotificationScheduler {
         content.body = "Finish Your Habit Today!"
         content.categoryIdentifier = "dailyHabit"
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        // UNTimeIntervalNotificationTrigger ^^^^^^^^^^^^^
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
