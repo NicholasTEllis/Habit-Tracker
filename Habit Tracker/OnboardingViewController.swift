@@ -11,16 +11,12 @@ import PaperOnboarding
 import UserNotifications
 
 class OnboardingViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate {
-    
 
     @IBOutlet weak var onboardingView: OnboardingView!
-    
 
     @IBOutlet weak var notificationButton: UIButton!
     
     @IBOutlet weak var doneButton: UIButton!
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
