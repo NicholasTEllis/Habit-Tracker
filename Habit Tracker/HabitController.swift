@@ -68,13 +68,29 @@ class HabitController {
         }
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                print("************** \(request.trigger)")
+                print("\(request.trigger)")
             }
         }
     }
     
     func cancelLocalNotifications(_ habit: Habit) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [HabitController.userNotificationIdentifier])
+    }
+    
+    //  MARK: - Generate Random Qoutes 
+    
+    func createDict() {
+        guard let path = Bundle.main.path(forResource: "qoutes", ofType: "json") else { return }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+            let jsonObj = try JSONSerialization.jsonObject(with: Data, options: .allowFragments)
+            
+            guard let dictionary = jsonObj as? [String : Any] else { return }
+        }
+    }
+    
+    func randomQoutes(qoutes: []) -> [] {
+        
     }
 
 }
