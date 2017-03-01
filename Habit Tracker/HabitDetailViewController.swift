@@ -18,10 +18,10 @@ class HabitDetailViewController: UIViewController {
         super.viewDidLoad()
         
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
-       content.contentURL = URL(string: "")
+        content.contentURL = URL(string: "")
         content.contentTitle = "I started a new habit with 21habit"
         content.contentDescription = "Create better habits for yourself with 21habit. It's free on the app store!"
-       content.imageURL = URL(string: "https://s-media-cache-ak0.pinimg.com/564x/f8/88/eb/f888ebbf1c32893934ed29b7f90cc589.jpg")
+        content.imageURL = URL(string: "https://s-media-cache-ak0.pinimg.com/564x/f8/88/eb/f888ebbf1c32893934ed29b7f90cc589.jpg")
         
         let button : FBSDKShareButton = FBSDKShareButton()
         button.shareContent = content
@@ -34,9 +34,11 @@ class HabitDetailViewController: UIViewController {
         
         habitLengthInDays()
         addDatesSinceSunday()
+        
+        monthLabel.text = monthFormatter.string(from: Date())
     }
     
-
+    
     //  MARK: - Main Methods
     
     func updateWith() {
@@ -47,24 +49,24 @@ class HabitDetailViewController: UIViewController {
             let daysCompleted = habit.habitProgress?.count,
             let progress = habit.habitProgress?.array as? [DailyCompletion],
             let colorKey = habit.color else { return }
-
+        
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        if daysCompleted != 0 {
-            daysCompletedLabel.text = "\(daysCompleted) days completed"
-        } else {
-            daysCompletedLabel.text = ""
-        }
+        self.daysCompleted(daysCompleted: daysCompleted)
+        
+        let strikes = habit.strikes
+        self.numberOfStrikes(from: strikes)
         
         daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted + 1)) days remaining"
         self.title = habit.name
-    
-        progressView.setProgress(Float(daysCompleted / 21), animated: true)
+        
+        progressView.setProgress(Float(Float(progress.count) / 21), animated: true)
         progressView.progressTintColor = habitIcon.tintColor
         progressView.trackTintColor = Keys.shared.background
     }
+    
     
     // displays the number of days in the calendarView
     func habitLengthInDays() {
@@ -75,6 +77,7 @@ class HabitDetailViewController: UIViewController {
             habitDuration.append(daysBetween)
         }
     }
+    
     
     // if the start date of your habit isn't a sunday, this will at the days before it from sunday
     func addDatesSinceSunday() {
@@ -95,18 +98,18 @@ class HabitDetailViewController: UIViewController {
             habitDuration.insert(day, at: 0)
         }
     }
-
+    
     
     //  MARK: - Properties
     
     var habit: Habit?
-
+    
     var habitDuration = [Date]()
     
     let calendar = Calendar.current
     
     let sectionInsets = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 30.0, right: 20.0) // for colelction view
-
+    
     let dayNameFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
@@ -135,16 +138,18 @@ class HabitDetailViewController: UIViewController {
     @IBOutlet var strikeThree: UIImageView!
     
     @IBOutlet var progressView: UIProgressView!
-    
     @IBOutlet var daysCompletedLabel: UILabel!
     @IBOutlet var daysRemainingLabel: UILabel!
     
+    // calendar
     @IBOutlet var calendarCollectionView: UICollectionView!
+    @IBOutlet var calendarHeader: UIView!
+    @IBOutlet var monthLabel: UILabel!
     
     
 }
 
-// MARK: - Extension: UICollectionView 
+// MARK: - Extension: UICollectionView
 
 extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -152,28 +157,46 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         return habitDuration.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calanderDate", for: indexPath) as? CalendarCollectionViewCell
-        guard let startDate = self.habit?.startDate else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calanderDate", for: indexPath) as? CalendarCollectionViewCell, let habit = habit, let startDate = self.habit?.startDate, let daysCompleted = habit.habitProgress?.array as? [DailyCompletion] else { return UICollectionViewCell() }
+        
         let date = habitDuration[indexPath.row]
         let dayName = dayNameFormatter.string(from: date)
         let day = dayFormatter.string(from: date)
-        cell?.dayName.text = dayName
         
-        if calendar.isDate(date, inSameDayAs: startDate as Date) {
-            cell?.dayButton.backgroundColor = UIColor.orange
-            cell?.dayName.text = "\(dayName) (S)"
-        } else if calendar.isDateInToday(date) {
-            cell?.dayButton.backgroundColor = UIColor.purple
-            cell?.dayName.text = "\(dayName) (T)"
+        cell.dayName.text = dayName
+        
+        if date <= Date() {
+            for dayCompleted in daysCompleted {
+                if let completedDay = dayCompleted.completedDay as? Date {
+                    
+                    let complete = calendar.startOfDay(for: completedDay)
+                    let startOfDate = calendar.startOfDay(for: date)
+                    
+                    if calendar.isDate(complete, inSameDayAs: startOfDate) {
+                        cell.dayButton.backgroundColor = UIColor(colorLiteralRed: 20/255, green: 177/255, blue: 24/255, alpha: 1)
+                        break
+                    } else {
+                        cell.dayButton.backgroundColor = UIColor.red
+                    }
+                }
+            }
         }
-    
-        cell?.startDate = startDate as Date
-        cell?.date = date
-        cell?.dayButton.setTitle(day, for: .normal)
         
-        return cell ?? UICollectionViewCell()
+        if date < startDate as Date {
+            cell.dayButton.backgroundColor = UIColor.gray
+            cell.dayButton.alpha = 0.3
+            cell.dayName.alpha = 0.3
+        }
+        
+        cell.dayName.text = dayName
+        cell.date = date
+        cell.dayButton.setTitle(day, for: .normal)
+        
+        return cell
     }
+    
     
     // collectionview cell flow layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -184,9 +207,11 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         return CGSize(width: widthPerItem, height: 43)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
@@ -201,7 +226,16 @@ extension HabitDetailViewController {
     func findDaysRemaining(completedDays: Int) -> Int {
         return (21 - (completedDays - 1))
     }
-
+    
+    
+    func daysCompleted(daysCompleted: Int) {
+        if daysCompleted != 0 {
+            daysCompletedLabel.text = "\(daysCompleted) days completed"
+        } else {
+            daysCompletedLabel.text = ""
+        }
+    }
+    
     
     func numberOfStrikes(from strikes: Int) {
         switch strikes {
@@ -239,6 +273,7 @@ extension HabitDetailViewController {
         }
     }
     
+    
     func isDateSunday(date: Date) -> Bool {
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: date)
@@ -250,6 +285,7 @@ extension HabitDetailViewController {
             return false
         }
     }
+    
     
     func dayComponentsSinceSunday(date: Date) -> Int {
         var weekdayComponent = 0
