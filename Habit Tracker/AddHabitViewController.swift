@@ -118,11 +118,11 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        if ((FBSDKAccessToken.current()) != nil) {
-            let content = FBSDKShareLinkContent()
-            content.contentURL = URL(string: "http://developers.facebook.com")
-            FBSDKShareDialog.show(from: self, with: content, delegate: nil)
-        
+//        if ((FBSDKAccessToken.current()) != nil) {
+//            let content = FBSDKShareLinkContent()
+//            content.contentURL = URL(string: "http://developers.facebook.com")
+//            FBSDKShareDialog.show(from: self, with: content, delegate: nil)
+//        
         guard let name = habitNameTextField.text,
             let image = icon,
             let time = timeOfDayLabel.text,
@@ -133,7 +133,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
         let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
         scheduleLocalNotifications(habit)
         dismiss(animated: true, completion: nil)
-        }
+//        }
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {

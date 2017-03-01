@@ -68,11 +68,8 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "toLoginScreen", sender: self)
-        
         let userDefaults = UserDefaults.standard
-        
         userDefaults.set(true, forKey: "onboardingComplete")
-        
         userDefaults.synchronize()
     }
     

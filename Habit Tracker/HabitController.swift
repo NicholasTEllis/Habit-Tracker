@@ -56,20 +56,29 @@ protocol HabitNotificationScheduler {
 extension HabitNotificationScheduler {
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name,
-            let fireDate = habit.fireDate else {
+        guard let name = habit.name else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
         content.categoryIdentifier = "dailyHabit"
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
-        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
-        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        //let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
+        //let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
+        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print("\(error?.localizedDescription)")
+                print("\(error)")
+                print("There was an error an Nick sucks")
+            }
+        }
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            for request in requests {
+                print("************** \(request.trigger)")
+            }
+        }
     }
     
     func cancelLocalNotifications(_ habit: Habit) {

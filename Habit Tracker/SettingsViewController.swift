@@ -62,22 +62,26 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         
+        guard let timeinterval = DateHelper.thisMorningAtMidnight else {
+            return
+        }
+        
         if sender == morningFirstTextField.inputView {
             morningFirstTextField.text = formatter.string(from: sender.date)
-            let interval = sender.date.timeIntervalSinceNow
-            SettingsViewController.morning = interval
+            let morning = sender.date.timeIntervalSince(timeinterval)
+            TimeSettingsController.shared.morning = morning
         } else if sender == afternoonFirstTextField.inputView {
             afternoonFirstTextField.text = formatter.string(from: sender.date)
-            let interval = sender.date.timeIntervalSinceNow
-            SettingsViewController.afternoon = interval
+            let afternoon = sender.date.timeIntervalSince(timeinterval)
+            TimeSettingsController.shared.afternoon = afternoon
         } else if sender == eveningFirstTextField.inputView {
             eveningFirstTextField.text = formatter.string(from: sender.date)
-            let interval = sender.date.timeIntervalSinceNow
-            SettingsViewController.evening = interval
+            let evening = sender.date.timeIntervalSince(timeinterval)
+            TimeSettingsController.shared.evening = evening
         } else if sender == anyTextField.inputView {
             anyTextField.text = formatter.string(from: sender.date)
-            let interval = sender.date.timeIntervalSinceNow
-            SettingsViewController.any = interval
+            let anyTime = sender.date.timeIntervalSince(timeinterval)
+            TimeSettingsController.shared.anytime = anyTime
         }
     }
     
