@@ -10,15 +10,6 @@ import Foundation
 import CoreData
 import UIKit
 
-
-enum FireTime: TimeInterval {
-    case morning = 5.0
-    case afternoon = 10.0
-    case evening = 15.0
-    case anytime = 40.0
-}
-
-
 extension Habit {
     
     convenience init(name: String, icon: String, startDate: NSDate = NSDate(), timeOfNotification: String, color: String, context: NSManagedObjectContext = CoreDataStack.context) {
@@ -32,31 +23,25 @@ extension Habit {
     
     // Computed Properties
     
+    var fireTimeOfNotification: TimeInterval {
+        switch timeOfNotification {
+        case "Morning"?:
+            return TimeSettingsController.shared.morning
+        case "Afternoon"?:
+            return TimeSettingsController.shared.afternoon
+        case "Evening"?:
+            return TimeSettingsController.shared.evening
+        case "Any"?:
+            return TimeSettingsController.shared.anytime
+        default:
+            print("All the cases from fireTimeOfNotification were not what I expected")
+            return TimeSettingsController.shared.anytime
+        }
+    }
     
     var fireDate: NSDate? {
-//        
-//        guard let morning = SettingsViewController.morning,
-//            let afternoon = SettingsViewController.afternoon,
-//            let evening = SettingsViewController.evening,
-//            let anytime = SettingsViewController.any else { return nil }
-        
-        let fireTimeDictionary = Keys.shared.fireTimesDictionary
-        
-//        switch fireTimeDictionary.keys {
-//        case "morning":
-//            print("morning")
-//        case afternoon:
-//            print("afternoon")
-//        case .evening:
-//            print("evening")
-//        case .anytime:
-//            print("anytime")
-//        default:
-//            
-//        }
-        
         guard let thisMorningAtMidnight = DateHelper.thisMorningAtMidnight else { return nil }
-        let fireDateFromThisMorning = NSDate(timeInterval: time.rawValue, since: thisMorningAtMidnight)
+        let fireDateFromThisMorning = NSDate(timeInterval: fireTimeOfNotification, since: thisMorningAtMidnight)
         return fireDateFromThisMorning
     }
     

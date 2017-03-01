@@ -12,22 +12,56 @@ class TimeSettingsController {
     
     static let shared = TimeSettingsController()
     
-    var fireTimes: [TimeSettings] = []
+    fileprivate let kMorning = "morning"
+    fileprivate let kAfternoon = "afternoon"
+    fileprivate let kEvening = "evening"
+    fileprivate let kAnytime = "anytime"
     
-    fileprivate let kFireTime = "fireTimes"
+    var morning: TimeInterval {
+        didSet {
+            saveToPersisentStore()
+        }
+    }
     
-    func savedToPersisentStore() {
+    var afternoon: TimeInterval {
+        didSet {
+            saveToPersisentStore()
+        }
+    }
+    
+    var evening: TimeInterval {
+        didSet {
+            saveToPersisentStore()
+        }
+    }
+    
+    var anytime: TimeInterval {
+        didSet {
+            saveToPersisentStore()
+        }
+    }
+    
+    init() {
+        self.morning = UserDefaults.standard.object(forKey: kMorning) as? TimeInterval ?? 32400.0
+        self.afternoon = UserDefaults.standard.object(forKey: kAfternoon) as? TimeInterval ?? 43200.0
+        self.evening = UserDefaults.standard.object(forKey: kEvening) as? TimeInterval ?? 54000.0
+        self.anytime = UserDefaults.standard.object(forKey: kAnytime) as? TimeInterval ?? 43200.0
+        loadFromStore()
+    }
+    
+    func saveToPersisentStore() {
         let userDefaults = UserDefaults.standard
-        let fireTimeDictionary = fireTimes.map{$0.dictionaryRep}
-        userDefaults.set(fireTimeDictionary, forKey: kFireTime)
+        userDefaults.set(morning, forKey: kMorning)
+        userDefaults.set(afternoon, forKey: kAfternoon)
+        userDefaults.set(evening, forKey: kEvening)
+        userDefaults.set(anytime, forKey: kAnytime)
     }
     
     func loadFromStore() {
         let userDefaults = UserDefaults.standard
-        guard let fireTimeDictionary = userDefaults.object(forKey: kFireTime) as? [[String : Any]] else {
-            return
-        }
-        
-        fireTimes = fireTimeDictionary.flatMap{TimeSettings(dictionary: $0)}
+        userDefaults.double(forKey: kMorning)
+        userDefaults.double(forKey: kAfternoon)
+        userDefaults.double(forKey: kEvening)
+        userDefaults.double(forKey: kAnytime)
     }
 }

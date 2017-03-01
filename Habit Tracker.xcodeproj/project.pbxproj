@@ -14,7 +14,6 @@
 		53DAE7FD1E60ADE8003DA0E4 /* StatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */; };
 		8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */; };
 		8D2998011E65D66E0082A90F /* TimeSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2998001E65D66E0082A90F /* TimeSettingsController.swift */; };
-		8D2998051E661D740082A90F /* TimeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2998041E661D740082A90F /* TimeSettings.swift */; };
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
 		8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */; };
@@ -73,7 +72,6 @@
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2998001E65D66E0082A90F /* TimeSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettingsController.swift; sourceTree = "<group>"; };
-		8D2998041E661D740082A90F /* TimeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettings.swift; sourceTree = "<group>"; };
 		8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
 		8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListTableViewController.swift; sourceTree = "<group>"; };
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */,
 				8D89C6BC1E538831004FA6E3 /* DailyCompletion + Convience .swift */,
 				8DF8EFEA1E5F52F70059EF54 /* User + Convience.swift */,
-				8D2998041E661D740082A90F /* TimeSettings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -296,7 +293,7 @@
 				TargetAttributes = {
 					8D0686F91E537C2E00FBAA55 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J5HBDYC8AZ;
+						DevelopmentTeam = XSV88KY8NF;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -424,7 +421,6 @@
 				8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */,
 				FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */,
 				8D0686FE1E537C2E00FBAA55 /* AppDelegate.swift in Sources */,
-				8D2998051E661D740082A90F /* TimeSettings.swift in Sources */,
 				8D2998011E65D66E0082A90F /* TimeSettingsController.swift in Sources */,
 				8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */,
 				8D89C6BF1E53888D004FA6E3 /* CoreDataStack.swift in Sources */,
@@ -570,7 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = J5HBDYC8AZ;
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -590,7 +586,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = J5HBDYC8AZ;
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

@@ -23,19 +23,7 @@ class UserController {
     }
   
     func createUser()  {
-        _ = User()
-        saveToPersistentStore()
-    }
-    
-    func updateUserTimes(withDate: NSDate) {
-       //SettingsViewController.morning = user.morningTime
-        //SettingsViewController.afternoon = user.afternoonTime
-        //SettingsViewController.evening = user.eveningTime
-        //SettingsViewController.any = user.anyTime
-        user.morningTime = SettingsViewController.morning
-        user.afternoonTime = SettingsViewController.afternoon
-        user.eveningTime = SettingsViewController.evening
-        user.anyTime = SettingsViewController.any
+        _ = User(perfectDays: 0)
         saveToPersistentStore()
     }
     

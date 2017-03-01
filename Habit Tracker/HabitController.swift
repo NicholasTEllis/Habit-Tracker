@@ -19,7 +19,9 @@ class HabitController {
     
     // MARK: - Internal Properties
     
-    fileprivate static let userNotificationIdentifier = "habitNotification"
+    fileprivate static let userNotificationIdentifier = "dailyHabit"
+    
+    //var delegate: HabitNotificationScheduler?
     
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
@@ -28,8 +30,9 @@ class HabitController {
     
     //  MARK: - Habit Methods
     
-    func addHabit(name: String, imageName: String, timeOfNotification: NSDate, color: String) -> Habit {
+    func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
+        //delegate?.scheduleLocalNotifications(habit)
         saveToPersistentStore()
         return habit
     }
@@ -49,27 +52,36 @@ class HabitController {
 //  MARK: - Push Notifications
 
 protocol HabitNotificationScheduler {
-    func scheduleLocalNotifications(_ habit: Habit, date: Date)
+    func scheduleLocalNotifications(_ habit: Habit)
     func cancelLocalNotifications(_ habit: Habit)
 }
 
 extension HabitNotificationScheduler {
     
-    func scheduleLocalNotifications(_ habit: Habit, date: NSDate) {
-        guard let name = habit.name else {
+    func scheduleLocalNotifications(_ habit: Habit) {
+        guard let name = habit.name,
+              let fireDate = habit.fireDate  else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
-        content.categoryIdentifier = "dailyHabit"
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: <#T##TimeInterval#>, repeats: true)
-        // UNTimeIntervalNotificationTrigger ^^^^^^^^^^^^^
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print("\(error?.localizedDescription)")
+                print("\(error)")
+                print("There was an error an Nick sucks")
+            }
+        }
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            for request in requests {
+                print("************** \(request.trigger)")
+            }
+        }
     }
     
     func cancelLocalNotifications(_ habit: Habit) {
