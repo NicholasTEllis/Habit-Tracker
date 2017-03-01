@@ -21,8 +21,6 @@ class HabitController {
     
     fileprivate static let userNotificationIdentifier = "dailyHabit"
     
-    //var delegate: HabitNotificationScheduler?
-    
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
         return (try? CoreDataStack.context.fetch(request)) ?? []
@@ -32,7 +30,7 @@ class HabitController {
     
     func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
-        //delegate?.scheduleLocalNotifications(habit)
+        scheduleLocalNotifications(habit)
         saveToPersistentStore()
         return habit
     }
@@ -47,21 +45,13 @@ class HabitController {
             NSLog("There was a problem saving to coredata: \(error)")
         }
     }
-}
-
-//  MARK: - Push Notifications
-
-protocol HabitNotificationScheduler {
-    func scheduleLocalNotifications(_ habit: Habit)
-    func cancelLocalNotifications(_ habit: Habit)
-}
-
-extension HabitNotificationScheduler {
+    
+    // MARK: - Local Notifications
     
     func scheduleLocalNotifications(_ habit: Habit) {
         guard let name = habit.name,
-              let fireDate = habit.fireDate  else {
-            return
+            let fireDate = habit.fireDate  else {
+                return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
@@ -87,4 +77,45 @@ extension HabitNotificationScheduler {
     func cancelLocalNotifications(_ habit: Habit) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [HabitController.userNotificationIdentifier])
     }
+
 }
+
+//  MARK: - Push Notifications
+
+//protocol HabitNotificationScheduler {
+//    func scheduleLocalNotifications(_ habit: Habit)
+//    func cancelLocalNotifications(_ habit: Habit)
+//}
+//
+//extension HabitNotificationScheduler {
+//    
+//    func scheduleLocalNotifications(_ habit: Habit) {
+//        guard let name = habit.name,
+//              let fireDate = habit.fireDate  else {
+//            return
+//        }
+//        let content = UNMutableNotificationContent()
+//        content.title = "\(name)"
+//        content.body = "Finish Your Habit Today!"
+//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
+//        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
+//        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
+//        UNUserNotificationCenter.current().add(request) { (error) in
+//            if error != nil {
+//                print("\(error?.localizedDescription)")
+//                print("\(error)")
+//                print("There was an error an Nick sucks")
+//            }
+//        }
+//        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+//            for request in requests {
+//                print("************** \(request.trigger)")
+//            }
+//        }
+//    }
+//    
+//    func cancelLocalNotifications(_ habit: Habit) {
+//        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [HabitController.userNotificationIdentifier])
+//    }
+//}

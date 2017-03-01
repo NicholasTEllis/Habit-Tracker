@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 
-class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotificationScheduler {
+class AddHabitViewController: UIViewController, UITextFieldDelegate {
     
     static var time: TimeInterval?
     
@@ -130,8 +130,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate, HabitNotifi
             else {
                 return }
         
-        let habit = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
-        scheduleLocalNotifications(habit)
+        _ = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
         dismiss(animated: true, completion: nil)
 //        }
     }
