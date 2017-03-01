@@ -62,7 +62,6 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
                 return
             }
         }
-
     }
     
     

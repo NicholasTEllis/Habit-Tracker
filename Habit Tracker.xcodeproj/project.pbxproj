@@ -33,7 +33,6 @@
 		C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; };
 		C099742F1E5F61D200CAC072 /* PaperOnboarding.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C09974321E5F621000CAC072 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09974311E5F621000CAC072 /* OnboardingView.swift */; };
-		FD18839F1E64B2A9000D70D4 /* HabitStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD18839E1E64B2A9000D70D4 /* HabitStatsTableViewController.swift */; };
 		FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
 		FD8821F41E5B56CD001BD0CA /* HabitDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */; };
@@ -92,7 +91,6 @@
 		C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaperOnboarding.framework; path = Carthage/Build/iOS/PaperOnboarding.framework; sourceTree = "<group>"; };
 		C09974311E5F621000CAC072 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
-		FD18839E1E64B2A9000D70D4 /* HabitStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitStatsTableViewController.swift; sourceTree = "<group>"; };
 		FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
 		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				FD8821F71E5B679D001BD0CA /* HabitDetailViewController.swift */,
 				53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */,
 				53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */,
-				FD18839E1E64B2A9000D70D4 /* HabitStatsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 				8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */,
 				C09974321E5F621000CAC072 /* OnboardingView.swift in Sources */,
 				FDAB6C2E1E53CD3800EC946B /* CustomTabBarViewController.swift in Sources */,
-				FD18839F1E64B2A9000D70D4 /* HabitStatsTableViewController.swift in Sources */,
 				C099742C1E5F61B900CAC072 /* OnboardingViewController.swift in Sources */,
 				8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */,
 				FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */,
