@@ -19,7 +19,9 @@ class HabitController {
     
     // MARK: - Internal Properties
     
-    fileprivate static let userNotificationIdentifier = "habitNotification"
+    fileprivate static let userNotificationIdentifier = "dailyHabit"
+    
+    //var delegate: HabitNotificationScheduler?
     
     var habits: [Habit] {
         let request: NSFetchRequest<Habit> = Habit.fetchRequest()
@@ -30,6 +32,7 @@ class HabitController {
     
     func addHabit(name: String, imageName: String, timeOfNotification: String, color: String) -> Habit {
         let habit = Habit(name: name, icon: imageName, timeOfNotification: timeOfNotification, color: color)
+        //delegate?.scheduleLocalNotifications(habit)
         saveToPersistentStore()
         return habit
     }
@@ -56,17 +59,17 @@ protocol HabitNotificationScheduler {
 extension HabitNotificationScheduler {
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        guard let name = habit.name else {
+        guard let name = habit.name,
+              let fireDate = habit.fireDate  else {
             return
         }
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
-        content.categoryIdentifier = "dailyHabit"
-        //let dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
-        //let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
-        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: trigger)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: fireDate as Date)
+        let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
+        let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             if error != nil {
                 print("\(error?.localizedDescription)")
