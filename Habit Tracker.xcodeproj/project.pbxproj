@@ -17,6 +17,7 @@
 		8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */; };
 		8D56BBB61E54B1A600B662C0 /* HabitListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */; };
 		8D56BBB81E54B22F00B662C0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */; };
+		8D7EFCD01E678001008CBD86 /* qoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D7EFCCF1E678001008CBD86 /* qoutes.json */; };
 		8D89C6B01E538408004FA6E3 /* HabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6AF1E538408004FA6E3 /* HabitController.swift */; };
 		8D89C6B91E5385FE004FA6E3 /* HabitTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6B71E5385FE004FA6E3 /* HabitTracker.xcdatamodeld */; };
 		8D89C6BB1E5387FA004FA6E3 /* Habit + Convience .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */; };
@@ -75,6 +76,7 @@
 		8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListTableViewController.swift; sourceTree = "<group>"; };
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8D6552311E56296000E61BB6 /* Habit Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habit Tracker.entitlements"; sourceTree = "<group>"; };
+		8D7EFCCF1E678001008CBD86 /* qoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = qoutes.json; path = "Habit Tracker/qoutes.json"; sourceTree = SOURCE_ROOT; };
 		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
 		8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
 		8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Habit + Convience .swift"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */,
 				53933E871E54BFB900BECC3F /* Keys.swift */,
+				8D7EFCCF1E678001008CBD86 /* qoutes.json */,
 				FDAB6C321E53CD7A00EC946B /* LaunchScreen.storyboard */,
 				8DB8C2241E53CCB80048EA67 /* Info.plist */,
 				C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */,
@@ -333,6 +336,7 @@
 				FDAB6C341E53CD7A00EC946B /* LaunchScreen.storyboard in Resources */,
 				FDBB28FA1E53BA1E00B3687D /* StatsStoryBoard.storyboard in Resources */,
 				8D56BBB41E54B17500B662C0 /* SettingsView.storyboard in Resources */,
+				8D7EFCD01E678001008CBD86 /* qoutes.json in Resources */,
 				8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

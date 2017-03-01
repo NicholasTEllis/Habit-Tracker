@@ -58,7 +58,6 @@ class HabitController {
         content.body = "Finish Your Habit Today!"
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate as Date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: habit.fireTimeOfNotification, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             if error != nil {
