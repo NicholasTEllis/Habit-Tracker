@@ -24,6 +24,15 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         } catch {
             NSLog("Error starting fetched results controller: \(error)")
         }
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        
+        
+        
+        navigationBarAppearance.backgroundColor = Keys.shared.background
+        let fontName = UIFont(name: "Avenir", size: 17)
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: fontName]
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
     }
     
     // MARK: - Table view data source
@@ -49,6 +58,12 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         return cell ?? HabitTableViewCell()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Avenir", size: 12.0)
+        header.textLabel?.textColor = Keys.shared.textColor
+    }
+    
     // MARK: - Swipe to complete functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     }
@@ -69,7 +84,9 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
             })
         }
         
-        //        completeAction.backgroundColor = HabitController.shared.habits[indexPath.row].iconColor // TODO: -  fix this with whatever Sohail names the color property on the habit model
+        guard let color = habit.color else { return  []}
+        
+        completeAction?.backgroundColor = Keys.shared.colorFrom(colorKey: color) // TODO: -  fix this with whatever Sohail names the color property on the habit model
         guard let swipeMenuAction = completeAction else { return [] }
         return [swipeMenuAction]
     }
@@ -172,6 +189,17 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         guard let sections = fetchedResultsController.sections,
             let index = Int(sections[section].name) else {
                 return "The title for header is broken" }
+        
         return index == 0 ? "To Do" : "Completed Today"
+    }
+}
+
+extension UINavigationBar {
+    
+    func setBottomBorderColor(color: UIColor, height: CGFloat) {
+        let bottomBorderRect = CGRect(x: 0, y: frame.height, width: frame.width, height: height)
+        let bottomBorderView = UIView(frame: bottomBorderRect)
+        bottomBorderView.backgroundColor = color
+        addSubview(bottomBorderView)
     }
 }

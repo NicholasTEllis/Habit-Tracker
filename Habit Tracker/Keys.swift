@@ -30,20 +30,39 @@ class Keys {
     // naranja
     let iconColor7 = UIColor(colorLiteralRed: 255 / 255, green: 156 / 255, blue: 105 / 255, alpha: 1)
     
+    func colorFrom(colorKey: String) -> UIColor {
+        switch colorKey {
+        case "iconColor1":
+            return Keys.shared.iconColor1
+        case "iconColor2" :
+            return Keys.shared.iconColor2
+        case "iconColor3" :
+            return Keys.shared.iconColor3
+        case "iconColor4" :
+            return Keys.shared.iconColor4
+        case "iconColor5" :
+            return Keys.shared.iconColor5
+        case "iconColor6" :
+            return Keys.shared.iconColor6
+        default:
+            return Keys.shared.iconColor7
+        }
+    }
 
     // Pick a color any color
     // let icon8 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
     // let icon9 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
     
     // VVV Let's pick these here now
-    let cellBackground = UIColor(colorLiteralRed: 26 / 255, green: 26 / 255, blue: 26 / 255, alpha: 1)
-    let background = UIColor(colorLiteralRed: 65 / 255, green: 65 / 255, blue: 65 / 255, alpha: 1)
+    let alternateBackground = UIColor(colorLiteralRed: 247 / 255, green: 247 / 255, blue: 247 / 255, alpha: 1)
+    let background = UIColor(colorLiteralRed: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
+    let darkGrayAccent = UIColor(colorLiteralRed: 200 / 255, green: 199 / 255, blue: 204 / 255, alpha: 1)
     
     let primaryAccent = UIColor.cyan
     
     // textStyle? celltextStyle?
-    let textColor = UIColor.white
-    
+    let textColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 1)
+    let font = UIFont(name: "Avenir", size: 17)
     
     // Strings and such
     

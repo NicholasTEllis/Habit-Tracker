@@ -35,17 +35,18 @@ class HabitTableViewCell: UITableViewCell {
     func updateCell() {
         guard let habit = habit else { return }
         
-        self.backgroundColor = Keys.shared.cellBackground
+        self.backgroundColor = Keys.shared.background
         
         self.habitNameLabel.text = habit.name
         self.habitNameLabel.textColor = Keys.shared.textColor
+        self.habitNameLabel.font = Keys.shared.font
         
         guard let colorKey = habit.color else { return }
-        let color = self.colorFrom(colorKey: colorKey)
+        let color = Keys.shared.colorFrom(colorKey: colorKey)
         
         guard let habitIcon = habit.icon else { return }
         self.habitIcon.image = UIImage(named:habitIcon)
-        self.habitIcon.backgroundColor = Keys.shared.cellBackground
+        self.habitIcon.backgroundColor = Keys.shared.background
         self.habitIcon.tintColor = color
         
         self.strike1Image.image = #imageLiteral(resourceName: "Strike")
@@ -92,30 +93,3 @@ protocol HabitTableViewCellDelegate {
     func presentTwitterController()
 }
 
- //  MARK: - Icon Colors 
-
- //  MARK: - Icon Colors
-
-extension HabitTableViewCell {
-    
-    func colorFrom(colorKey: String) -> UIColor {
-        switch colorKey {
-        case "iconColor1":
-            return Keys.shared.iconColor1
-        case "iconColor2" :
-            return Keys.shared.iconColor2
-        case "iconColor3" :
-            return Keys.shared.iconColor3
-        case "iconColor4" :
-            return Keys.shared.iconColor4
-        case "iconColor5" :
-            return Keys.shared.iconColor5
-        case "iconColor6" :
-            return Keys.shared.iconColor6
-        default:
-            return Keys.shared.iconColor7
-        }
-    }
-    
-    
-}
