@@ -22,14 +22,14 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
-
+        
         
         let swipeLeft = UISwipeGestureRecognizer()
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
         swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
         
-       
+        
         iconCollectionView.delegate = self
         iconCollectionView.dataSource = self
         
@@ -44,20 +44,20 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
-
+        
     }
     
     // MARK: -Keyboard
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        return false 
+        return false
     }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
     
     // MARK: - Choice of notification gesture
     
@@ -105,24 +105,21 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    var selectedIcon: String?
+    
+    
     // MARK: - Outlets
     
     @IBOutlet var habitNameTextField: UITextField!
     @IBOutlet var timeOfDayLabel: UILabel!
-    @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
     @IBOutlet var colorsForIconView: ColorMenuView!
     
     
     // MARK: - Actions
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
-//        if ((FBSDKAccessToken.current()) != nil) {
-//            let content = FBSDKShareLinkContent()
-//            content.contentURL = URL(string: "http://developers.facebook.com")
-//            FBSDKShareDialog.show(from: self, with: content, delegate: nil)
-//        
         guard let name = habitNameTextField.text,
             let image = icon,
             let time = timeOfDayLabel.text,
@@ -132,10 +129,9 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         
         _ = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
         dismiss(animated: true, completion: nil)
-//        }
     }
     
-    @IBAction func dismissButtonTapped(_ sender: Any) {
+    @IBAction func dismissButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -179,7 +175,7 @@ extension AddHabitViewController {
     
     func setupColorMenu() {
         self.view.addSubview(self.colorsForIconView)
-        let frame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 26)
+        let frame = CGRect(x: 0, y: view.frame.height - 60, width: view.frame.width, height: 46)
         UIView.animate(withDuration: 0.75,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
@@ -187,10 +183,9 @@ extension AddHabitViewController {
                        options: [],
                        animations: {
                         
-            self.colorsForIconView.frame = frame
+                        self.colorsForIconView.frame = frame
         }, completion: nil)
     }
-    
     
 }
 
@@ -203,42 +198,41 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         return imageIcon.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
         cell?.backgroundColor = UIColor.clear
         cell?.iconImage.tintColor = .lightGray
-        
         let icon = imageIcon[indexPath.row]
-        
-        if let color = self.color { cell?.iconImage.tintColor = color }
+        if let color = self.color {
+            cell?.iconImage.tintColor = color
+        }
+        if icon == selectedIcon {
+            cell?.layer.cornerRadius = 5
+            cell?.layer.backgroundColor = UIColor.white.cgColor
+        } else {
+            cell?.layer.backgroundColor = UIColor.clear.cgColor
+        }
         
         cell?.iconImage.image = UIImage(named:icon)
         return cell ?? UICollectionViewCell()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.cornerRadius = 5
         let icon = imageIcon[indexPath.row]
+        cell?.layer.backgroundColor = UIColor.white.cgColor
         self.icon = icon
-       
-        UIView.animate(withDuration: 0.25, delay: 0,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0.6,
-                       options: .allowAnimatedContent, animations: { cell?.layer.backgroundColor = UIColor.white.cgColor },
-                       completion: nil)
+        self.selectedIcon = icon
+        collectionView.reloadData()
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.25) {
-            cell?.layer.backgroundColor = UIColor.clear.cgColor
-        }
+        cell?.layer.backgroundColor = UIColor.clear.cgColor
+        collectionView.reloadData()
     }
-
+    
 }
 
 

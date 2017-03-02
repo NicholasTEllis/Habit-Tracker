@@ -33,6 +33,7 @@ class ColorMenuView: UIView {
         
         selectionView.layer.cornerRadius = 0.5 * selectionView.bounds.width
         selectionView.center.x = blackColorButtonOutlet.center.x - 200
+        selectionView.center.y = blackColorButtonOutlet.center.y
         selectionView.alpha = 0
     }
     
@@ -106,7 +107,8 @@ extension ColorMenuView {
                        options: .allowAnimatedContent,
                        animations: {
                         self.selectionView.center.x = button.center.x
-                        self.selectionView.alpha = 1
+                        self.selectionView.center.y = button.center.y
+                        self.selectionView.alpha = 0.2
         },
                        completion: nil)
     }
