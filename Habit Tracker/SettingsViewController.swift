@@ -32,6 +32,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         
         loginButton.delegate = self
         
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
         
@@ -97,11 +99,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out of Facebook.")

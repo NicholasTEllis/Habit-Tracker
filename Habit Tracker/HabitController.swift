@@ -50,7 +50,7 @@ class HabitController {
     // MARK: - Local Notifications
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        let body = qoutes[0]
+        //let body = qoutes[0]
         guard let name = habit.name,
             let fireDate = habit.fireDate  else {
                 return
@@ -81,26 +81,26 @@ class HabitController {
     
     //  MARK: - Generate Random Qoutes 
     
-    var qoutes: [String] = []
-    
-    func createArray() {
-        guard let path = Bundle.main.path(forResource: "qoutes", ofType: "json") else { return }
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            
-            guard let array = jsonObj as? [String] else {
-                return }
-            for i in array {
-                qoutes.append(i)
-            }
-        } catch {
-            NSLog(error.localizedDescription)
-        }
-    }
-    
-    func randomQoutes(qoutes: [String]) -> [String] {
-        _ = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: qoutes)
-        return qoutes
-    }
+//    var qoutes: [String] = []
+//    
+//    func createArray() {
+//        guard let path = Bundle.main.path(forResource: "qoutes", ofType: "json") else { return }
+//        do {
+//            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+//            let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//            
+//            guard let array = jsonObj as? [String] else {
+//                return }
+//            for i in array {
+//                qoutes.append(i)
+//            }
+//        } catch {
+//            NSLog(error.localizedDescription)
+//        }
+//    }
+//    
+//    func randomQoutes(qoutes: [String]) -> [String] {
+//        _ = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: qoutes)
+//        return qoutes
+//    }
 }
