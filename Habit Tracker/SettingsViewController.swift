@@ -17,22 +17,25 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     @IBOutlet weak var afternoonFirstTextField: UITextField!
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
+    @IBOutlet weak var enableNotificationsButton: UIButton!
     
     static var morning = TimeSettingsController.shared.morning
     static var afternoon = TimeSettingsController.shared.afternoon
     static var evening = TimeSettingsController.shared.evening
     static var any = TimeSettingsController.shared.anytime
     
+    let loginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 500, width: view.frame.width - 32, height: 50)
-        
         loginButton.delegate = self
-        //self.navigationController?.navigationBar.setbott
-        //self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        view.addSubview(loginButton)
+        loginButtonConstraints()
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: fontName]
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
         
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
@@ -48,9 +51,17 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         
         anyTextField.delegate = self
         anyTextField.inputView = timePicker
-        
+                
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    func loginButtonConstraints() {
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
     // MARK: - Keyboard
@@ -106,6 +117,26 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func enableNotificationsButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController (title: "Turn on notifications", message: "Go to Settings?", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out of Facebook.")
@@ -117,6 +148,4 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
             return
         }
     }
-
-    
 }
