@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RBG-fb-f8y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RBG-fb-f8y">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,11 +26,11 @@
             </objects>
             <point key="canvasLocation" x="2603" y="59"/>
         </scene>
-        <!--Habit List Table View Controller-->
+        <!--21 Habit-->
         <scene sceneID="Bkn-E0-CwV">
             <objects>
                 <tableViewController storyboardIdentifier="homeScreen" id="6lA-fz-oqh" customClass="HabitListTableViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="HOH-wd-ysG">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="HOH-wd-ysG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWu-1l-TXa" id="xUf-hN-jDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-nA-DI7">
@@ -51,7 +51,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RKT-0n-y8g">
                                             <rect key="frame" x="8" y="2" width="57" height="58"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-vI-NFC">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-vI-NFC">
                                                     <rect key="frame" x="8.6666666666666679" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="1uy-PX-ddT"/>
@@ -135,8 +135,9 @@
                             <outlet property="delegate" destination="6lA-fz-oqh" id="0uJ-J0-Gz1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6pd-sh-7Bk">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="AHO-PI-Dgz">
+                    <navigationItem key="navigationItem" title="21 Habit" id="6pd-sh-7Bk">
+                        <barButtonItem key="leftBarButtonItem" image="Settings" id="AHO-PI-Dgz">
+                            <color key="tintColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="4MS-0h-RPM" kind="show" identifier="toSettingsPage" action="showDetailViewController:sender:" id="AHN-kM-ne9"/>
                             </connections>
@@ -231,9 +232,12 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q1G-GT-Xdd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rMU-FF-7sX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GK-tf-Nru">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5GK-tf-Nru">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -320,4 +324,7 @@
             <point key="canvasLocation" x="-1859.4202898550725" y="58.695652173913047"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Settings" width="24" height="24"/>
+    </resources>
 </document>
