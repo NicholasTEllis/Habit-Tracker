@@ -209,7 +209,10 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         if icon == selectedIcon {
             cell?.layer.cornerRadius = 5
             cell?.layer.backgroundColor = UIColor.white.cgColor
+        } else {
+            cell?.layer.backgroundColor = UIColor.clear.cgColor
         }
+        
         cell?.iconImage.image = UIImage(named:icon)
         return cell ?? UICollectionViewCell()
     }
