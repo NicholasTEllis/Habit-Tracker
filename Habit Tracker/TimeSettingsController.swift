@@ -43,11 +43,10 @@ class TimeSettingsController {
     
     init() {
         
-        //  MARK: -Add times next to timeintervals 
-        self.morning = UserDefaults.standard.object(forKey: kMorning) as? TimeInterval ?? 32400.0
-        self.afternoon = UserDefaults.standard.object(forKey: kAfternoon) as? TimeInterval ?? 43200.0
-        self.evening = UserDefaults.standard.object(forKey: kEvening) as? TimeInterval ?? 54000.0
-        self.anytime = UserDefaults.standard.object(forKey: kAnytime) as? TimeInterval ?? 43200.0
+        self.morning = UserDefaults.standard.object(forKey: kMorning) as? TimeInterval ?? 32400.0 //9 AM
+        self.afternoon = UserDefaults.standard.object(forKey: kAfternoon) as? TimeInterval ?? 43200.0//12PM
+        self.evening = UserDefaults.standard.object(forKey: kEvening) as? TimeInterval ?? 54000.0//5PM
+        self.anytime = UserDefaults.standard.object(forKey: kAnytime) as? TimeInterval ?? 43200.0//12PM
         loadFromStore()
     }
     
