@@ -25,15 +25,20 @@ class StatsListTableViewController: UITableViewController {
         
         let user = UserController.shared.user
         
-//        bestStreakLabel.textColor = Keys.shared.textColor
+        bestStreakLabel.textColor = Keys.shared.textColor
         bestStreakLabel.text = "Best Streak: \(user.bestStreak)"
-//        totalCompletedLabel.textColor = Keys.shared.textColor
+        bestStreakLabel.font = Keys.shared.font
+        totalCompletedLabel.textColor = Keys.shared.textColor
         totalCompletedLabel.text = "Habits Completed: \(user.completedHabits)"
-//        currentPerfectStreakLabel.textColor = Keys.shared.textColor
+        totalCompletedLabel.font = Keys.shared.font
+        currentPerfectStreakLabel.textColor = Keys.shared.textColor
         currentPerfectStreakLabel.text = "Current Perfect Day Streak: \(user.currentStreak)"
-//        totalPerfectHabitsLabel.textColor = Keys.shared.textColor
+        currentPerfectStreakLabel.font = Keys.shared.font
+        totalPerfectHabitsLabel.textColor = Keys.shared.textColor
         totalPerfectHabitsLabel.text = "Total Perfect Habits: \(user.perfectHabits)"
-//        totalPerfectDaysLabel.textColor = Keys.shared.textColor
+        totalPerfectHabitsLabel.font = Keys.shared.font
+        totalPerfectDaysLabel.textColor = Keys.shared.textColor
         totalPerfectDaysLabel.text = "Total Perfect Days: \(user.perfectDays)"
+        totalPerfectDaysLabel.font = Keys.shared.font
     }
 }
