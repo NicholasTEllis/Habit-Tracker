@@ -112,14 +112,13 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var habitNameTextField: UITextField!
     @IBOutlet var timeOfDayLabel: UILabel!
-    @IBOutlet var timeDetailLabel: UILabel!
     @IBOutlet var iconCollectionView: UICollectionView!
     @IBOutlet var colorsForIconView: ColorMenuView!
     
     
     // MARK: - Actions
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         guard let name = habitNameTextField.text,
             let image = icon,
@@ -132,7 +131,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func dismissButtonTapped(_ sender: Any) {
+    @IBAction func dismissButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -176,7 +175,7 @@ extension AddHabitViewController {
     
     func setupColorMenu() {
         self.view.addSubview(self.colorsForIconView)
-        let frame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 26)
+        let frame = CGRect(x: 0, y: view.frame.height - 60, width: view.frame.width, height: 46)
         UIView.animate(withDuration: 0.75,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
@@ -219,22 +218,16 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.cornerRadius = 5
         let icon = imageIcon[indexPath.row]
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            cell?.layer.backgroundColor = UIColor.white.cgColor
-            self.icon = icon
-            self.selectedIcon = icon
-        }) { (_) in
-            
-        }
+        cell?.layer.backgroundColor = UIColor.white.cgColor
+        self.icon = icon
+        self.selectedIcon = icon
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.01) {
-            cell?.layer.backgroundColor = UIColor.clear.cgColor
-            collectionView.reloadData()
-        }
+        cell?.layer.backgroundColor = UIColor.clear.cgColor
+        collectionView.reloadData()
     }
     
 }
