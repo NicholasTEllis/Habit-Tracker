@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWu-1l-TXa" id="xUf-hN-jDk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-nA-DI7">
@@ -269,9 +269,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q1G-GT-Xdd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rMU-FF-7sX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GK-tf-Nru">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5GK-tf-Nru">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                         </textAttributes>

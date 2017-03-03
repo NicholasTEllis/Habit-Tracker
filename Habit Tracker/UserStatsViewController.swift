@@ -13,7 +13,7 @@ class UserStatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor3, height: 1)
     }
 
     override func didReceiveMemoryWarning() {

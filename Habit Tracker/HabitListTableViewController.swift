@@ -29,7 +29,7 @@ class HabitListTableViewController: UITableViewController, NSFetchedResultsContr
         navigationBarAppearance.backgroundColor = Keys.shared.background
         guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: fontName]
-        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor3, height: 1)
     }
     
     // MARK: - Table view data source

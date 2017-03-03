@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         let navigationBarAppearance = UINavigationBar.appearance()
         guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: fontName]
-        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor1, height: 1)
         
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
@@ -59,6 +59,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
                 
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        // set values to current user alert times
+        morningFirstTextField.text = DateHelper.stringFromTimeInterval(interval: TimeSettingsController.shared.morning)
+        afternoonFirstTextField.text = DateHelper.stringFromTimeInterval(interval: TimeSettingsController.shared.afternoon)
+        eveningFirstTextField.text = DateHelper.stringFromTimeInterval(interval: TimeSettingsController.shared.evening)
+        anyTextField.text = DateHelper.stringFromTimeInterval(interval: TimeSettingsController.shared.anytime)
     }
     
     //  MARK: - Facebook Constraints
@@ -118,17 +124,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     
     func textFieldBorders() {
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: morningFirstTextField.frame.height - 1, width: morningFirstTextField.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.black.cgColor
+        bottomLine.frame = CGRect(x: 0.0, y: morningFirstTextField.frame.height - 1, width: (morningFirstTextField.frame.width - 200), height: 1.0)
+        bottomLine.backgroundColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 0.5).cgColor
         let bottomLine2 = CALayer()
-        bottomLine2.frame = CGRect(x: 0.0, y: afternoonFirstTextField.frame.height - 1, width: afternoonFirstTextField.frame.width, height: 1.0)
-        bottomLine2.backgroundColor = UIColor.black.cgColor
+        bottomLine2.frame = CGRect(x: 0.0, y: afternoonFirstTextField.frame.height - 1, width: (morningFirstTextField.frame.width - 200), height: 1.0)
+        bottomLine2.backgroundColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 0.5).cgColor
         let bottomLine3 = CALayer()
-        bottomLine3.frame = CGRect(x: 0.0, y: eveningFirstTextField.frame.height - 1, width: eveningFirstTextField.frame.width, height: 1.0)
-        bottomLine3.backgroundColor = UIColor.black.cgColor
+        bottomLine3.frame = CGRect(x: 0.0, y: eveningFirstTextField.frame.height - 1, width: (morningFirstTextField.frame.width - 200), height: 1.0)
+        bottomLine3.backgroundColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 0.5).cgColor
+        
         let bottomLine4 = CALayer()
-        bottomLine4.frame = CGRect(x: 0.0, y: anyTextField.frame.height - 1, width: anyTextField.frame.width, height: 1.0)
-        bottomLine4.backgroundColor = UIColor.black.cgColor
+        bottomLine4.frame = CGRect(x: 0.0, y: anyTextField.frame.height - 1, width: (morningFirstTextField.frame.width - 200), height: 1.0)
+        bottomLine4.backgroundColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 0.5).cgColor
         morningFirstTextField.borderStyle = .none
         morningFirstTextField.layer.addSublayer(bottomLine)
         afternoonFirstTextField.borderStyle = .none
