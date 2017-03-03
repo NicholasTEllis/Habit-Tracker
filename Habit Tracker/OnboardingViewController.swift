@@ -35,15 +35,15 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
     }
     
     func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
-    let backgroundColorOne = Keys.shared.iconColor1
+    let backgroundColorOne = Keys.shared.iconColor8
         let backgroundColorTwo = Keys.shared.iconColor2
-        let backgroundColorThree = Keys.shared.iconColor3
-        let backgroundColorFour = Keys.shared.iconColor4
+        let backgroundColorThree = Keys.shared.iconColor1
+        let backgroundColorFour = Keys.shared.iconColor7
         
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descriptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         
-        return [(imageName: "habit_mascot", title: "Welcome to 21habit", description: "Don't mind our mascot, Coach. He's happier to see you than it seems.", iconName: "", color: backgroundColorOne, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
+        return [(imageName: "bunny_720", title: "Welcome to 21habit", description: "Don't mind our mascot, Habit Rabbit. He's happier to see you than it seems.", iconName: "", color: backgroundColorOne, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
                 
             (imageName: "OnboardingHabits", title: "How it works", description: "We're sure you've heard that it takes 21 days to form a habit. 21habit is the app that encourages to create new ones for yourself while monitoring your progress for 21 days. It could be anything from fitness-related goals to quitting cigarettes cold turkey.", iconName: "", color: backgroundColorTwo, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
             
