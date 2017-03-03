@@ -34,8 +34,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         view.addSubview(loginButton)
         loginButtonConstraints()
         
-        enableNotificationsButton.backgroundColor = Keys.shared.iconColor2
-        faceBookLogout.backgroundColor = Keys.shared.iconColor3
+        textFieldBorders()
+        
         
         let navigationBarAppearance = UINavigationBar.appearance()
         guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
@@ -117,11 +117,26 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     // MARK: - Text Field Bottom Lines
     
     func textFieldBorders() {
-        var bottomLine = CALayer()
+        let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: morningFirstTextField.frame.height - 1, width: morningFirstTextField.frame.width, height: 1.0)
         bottomLine.backgroundColor = UIColor.black.cgColor
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRect(x: 0.0, y: afternoonFirstTextField.frame.height - 1, width: afternoonFirstTextField.frame.width, height: 1.0)
+        bottomLine2.backgroundColor = UIColor.black.cgColor
+        let bottomLine3 = CALayer()
+        bottomLine3.frame = CGRect(x: 0.0, y: eveningFirstTextField.frame.height - 1, width: eveningFirstTextField.frame.width, height: 1.0)
+        bottomLine3.backgroundColor = UIColor.black.cgColor
+        let bottomLine4 = CALayer()
+        bottomLine4.frame = CGRect(x: 0.0, y: anyTextField.frame.height - 1, width: anyTextField.frame.width, height: 1.0)
+        bottomLine4.backgroundColor = UIColor.black.cgColor
         morningFirstTextField.borderStyle = .none
         morningFirstTextField.layer.addSublayer(bottomLine)
+        afternoonFirstTextField.borderStyle = .none
+        afternoonFirstTextField.layer.addSublayer(bottomLine2)
+        eveningFirstTextField.borderStyle = .none
+        eveningFirstTextField.layer.addSublayer(bottomLine3)
+        anyTextField.borderStyle = .none
+        anyTextField.layer.addSublayer(bottomLine4)
     }
     
     // ACTIONS:
