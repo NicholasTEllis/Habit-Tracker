@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RBG-fb-f8y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RBG-fb-f8y">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -193,19 +193,44 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addButton" destination="uvj-aE-qCE" id="2t4-fX-NR8"/>
                         <outlet property="addButtonTabView" destination="RjX-jZ-MfQ" id="5tR-hm-oKY"/>
+                        <outlet property="listButton" destination="yJa-Uy-Xrs" id="xPh-Ql-KEh"/>
+                        <outlet property="statsButton" destination="eHs-Ob-8yC" id="ttV-xM-4qW"/>
+                        <outlet property="tabSelection" destination="7Cx-1e-LSq" id="5FK-3d-ByJ"/>
                         <segue destination="q1G-GT-Xdd" kind="relationship" relationship="viewControllers" id="Bsh-Qv-za8"/>
                         <segue destination="kRJ-Xu-Jep" kind="relationship" relationship="viewControllers" id="Oij-EL-N3B"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zd5-zO-p4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="RjX-jZ-MfQ">
-                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvj-aE-qCE">
-                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Ob-8yC">
+                            <rect key="frame" x="206" y="22" width="208" height="49"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="graph"/>
+                            <connections>
+                                <action selector="statsBarTapped:" destination="vJC-tq-jhB" eventType="touchUpInside" id="FqI-1F-U6E"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJa-Uy-Xrs">
+                            <rect key="frame" x="0.0" y="22" width="207" height="49"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="Checklist"/>
+                            <connections>
+                                <action selector="listButtonTapped:" destination="vJC-tq-jhB" eventType="touchUpInside" id="AZm-eG-6yW"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Cx-1e-LSq">
+                            <rect key="frame" x="75" y="64" width="57" height="4"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="0.81417025949999999" blue="0.55169262070000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvj-aE-qCE">
+                            <rect key="frame" x="172" y="0.0" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" red="0.47647648128518594" green="0.52283506508674649" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="59"/>
                             <state key="normal" title="+">
@@ -216,7 +241,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="-166" y="77"/>
@@ -330,6 +355,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Checklist" width="29" height="27"/>
         <image name="Settings" width="24" height="24"/>
+        <image name="graph" width="25" height="18"/>
     </resources>
 </document>
