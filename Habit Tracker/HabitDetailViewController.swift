@@ -25,7 +25,7 @@ class HabitDetailViewController: UIViewController {
         
         let button : FBSDKShareButton = FBSDKShareButton()
         button.shareContent = content
-        button.frame = CGRect(x: 100, y: 250, width: 100, height: 25)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 25) // move later
         self.view.addSubview(button)
         
         calendarCollectionView.delegate = self
@@ -201,10 +201,10 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
     // collectionview cell flow layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow: CGFloat = 7    // Number of items in a row
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
+        let paddingSpace = sectionInsets.left * (itemsPerRow)
+        let availableWidth = collectionView.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: 43)
+        return CGSize(width: widthPerItem, height: 49)
     }
     
     

@@ -32,6 +32,7 @@ class ColorMenuView: UIView {
                                        orangeColorButtonOutlet])
         
         selectionView.frame = CGRect(x: -40, y: 43, width: 35, height: 3)
+        selectionView.layer.cornerRadius = 5
         selectionView.center.x = blackColorButtonOutlet.center.x
         selectionView.center.y = blackColorButtonOutlet.center.y + 20
         selectionView.alpha = 0
