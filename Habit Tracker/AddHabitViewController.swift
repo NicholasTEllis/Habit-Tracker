@@ -45,6 +45,8 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
         
+        self.view.backgroundColor = Keys.shared.background
+        
     }
     
     // MARK: -Keyboard
@@ -208,7 +210,8 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         }
         if icon == selectedIcon {
             cell?.layer.cornerRadius = 5
-            cell?.layer.backgroundColor = UIColor.white.cgColor
+            let selectColor: UIColor = UIColor(colorLiteralRed: 0/255, green: 0/255, blue: 0/255, alpha: 0.05)
+            cell?.layer.backgroundColor = selectColor.cgColor
         } else {
             cell?.layer.backgroundColor = UIColor.clear.cgColor
         }
@@ -221,7 +224,8 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.cornerRadius = 5
         let icon = imageIcon[indexPath.row]
-        cell?.layer.backgroundColor = UIColor.white.cgColor
+        let selectColor: UIColor = UIColor(colorLiteralRed: 0/255, green: 0/255, blue: 0/255, alpha: 0.05)
+        cell?.layer.backgroundColor = selectColor.cgColor
         self.icon = icon
         self.selectedIcon = icon
         collectionView.reloadData()
