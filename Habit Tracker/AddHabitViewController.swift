@@ -33,7 +33,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         iconCollectionView.delegate = self
         iconCollectionView.dataSource = self
         
-        iconCollectionView.backgroundColor = .clear
+        iconCollectionView.backgroundColor = Keys.shared.background
         iconCollectionView.allowsMultipleSelection = false
         
         
@@ -47,6 +47,11 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         
         self.view.backgroundColor = Keys.shared.background
         
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: habitNameTextField.frame.height - 1, width: (habitNameTextField.frame.width), height: 1.0)
+        bottomLine.backgroundColor = UIColor(colorLiteralRed: 3 / 255, green: 3 / 255, blue: 3 / 255, alpha: 0.5).cgColor
+        habitNameTextField.layer.addSublayer(bottomLine)
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor1, height: 1)
     }
     
     // MARK: -Keyboard
@@ -177,7 +182,7 @@ extension AddHabitViewController {
     
     func setupColorMenu() {
         self.view.addSubview(self.colorsForIconView)
-        let frame = CGRect(x: 0, y: view.frame.height - 60, width: view.frame.width, height: 46)
+        let frame = CGRect(x: 0, y: view.frame.height - 60, width: view.frame.width, height: 60)
         UIView.animate(withDuration: 0.75,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
@@ -197,21 +202,20 @@ extension AddHabitViewController {
 extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.backgroundColor = Keys.shared.alternateBackground
         return imageIcon.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as? IconsCollectionViewCell
         cell?.backgroundColor = UIColor.clear
-        cell?.iconImage.tintColor = .lightGray
         let icon = imageIcon[indexPath.row]
         if let color = self.color {
             cell?.iconImage.tintColor = color
         }
         if icon == selectedIcon {
             cell?.layer.cornerRadius = 5
-            let selectColor: UIColor = UIColor(colorLiteralRed: 0/255, green: 0/255, blue: 0/255, alpha: 0.05)
-            cell?.layer.backgroundColor = selectColor.cgColor
+            cell?.layer.backgroundColor = Keys.shared.background.cgColor
         } else {
             cell?.layer.backgroundColor = UIColor.clear.cgColor
         }
@@ -224,8 +228,7 @@ extension AddHabitViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.cornerRadius = 5
         let icon = imageIcon[indexPath.row]
-        let selectColor: UIColor = UIColor(colorLiteralRed: 0/255, green: 0/255, blue: 0/255, alpha: 0.05)
-        cell?.layer.backgroundColor = selectColor.cgColor
+        cell?.layer.backgroundColor = Keys.shared.background.cgColor
         self.icon = icon
         self.selectedIcon = icon
         collectionView.reloadData()

@@ -36,6 +36,7 @@ class ColorMenuView: UIView {
         selectionView.center.x = blackColorButtonOutlet.center.x
         selectionView.center.y = blackColorButtonOutlet.center.y + 20
         selectionView.alpha = 0
+        colorButtonTapped(blackColorButtonOutlet)
     }
     
     
