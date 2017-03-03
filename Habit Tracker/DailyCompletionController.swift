@@ -21,9 +21,11 @@ class DailyCompletionController {
     }
     
     func undoCompleteHabitForDay(habit: Habit) {
-        let undoCompleteDay = DailyCompletion(completedDay: NSDate(), habit: habit)
-        habit.managedObjectContext?.delete(undoCompleteDay)
-        habit.isCompleteToday = false
+        guard let completion = habit.habitProgress?.lastObject as? DailyCompletion else { return }
+        if let moc = completion.managedObjectContext {
+            moc.delete(completion)
+            habit.isCompleteToday = false
+        }
         HabitController.shared.saveToPersistentStore()
     }
     

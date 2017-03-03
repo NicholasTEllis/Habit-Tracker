@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,92 +22,148 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Afternoon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-dh-3m6">
-                                <rect key="frame" x="16" y="163" width="100" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4au-dC-nDs">
-                                <rect key="frame" x="16" y="72" width="100" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7x-JL-9bm">
-                                <rect key="frame" x="16" y="336" width="100" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-Wp-w8N">
+                                <rect key="frame" x="16" y="64" width="343" height="403"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4au-dC-nDs">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="45"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOR-Sx-bXU">
+                                        <rect key="frame" x="0.0" y="45" width="343" height="44.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Afternoon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-dh-3m6">
+                                        <rect key="frame" x="0.0" y="89.5" width="343" height="45"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Svx-KN-Hhv">
+                                        <rect key="frame" x="0.0" y="134.5" width="343" height="44.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frs-gH-HIp">
+                                        <rect key="frame" x="0.0" y="179" width="343" height="45"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uST-Xf-AUn">
+                                        <rect key="frame" x="0.0" y="224" width="343" height="44.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7x-JL-9bm">
+                                        <rect key="frame" x="0.0" y="268.5" width="343" height="45"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fii-TI-qWx">
+                                        <rect key="frame" x="0.0" y="313.5" width="343" height="44.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZtX-US-ASI" id="OVJ-1W-k9E"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RB-jA-j9e">
+                                        <rect key="frame" x="0.0" y="358" width="343" height="45"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                        <state key="normal" title="Enable Notifications">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="enableNotificationsButtonTapped:" destination="ZtX-US-ASI" eventType="touchUpInside" id="4l5-2M-Uzf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Svx-KN-Hhv" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="1fL-bD-PqU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fii-TI-qWx" secondAttribute="trailing" id="3CJ-rr-lvz"/>
+                                    <constraint firstItem="frs-gH-HIp" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="4pi-L8-eyx"/>
+                                    <constraint firstItem="DOR-Sx-bXU" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="6L5-GO-FpI"/>
+                                    <constraint firstAttribute="trailing" secondItem="4au-dC-nDs" secondAttribute="trailing" id="A9w-Ap-bZ4"/>
+                                    <constraint firstItem="S7x-JL-9bm" firstAttribute="top" secondItem="uST-Xf-AUn" secondAttribute="bottom" id="Bz4-05-koQ"/>
+                                    <constraint firstItem="DOR-Sx-bXU" firstAttribute="top" secondItem="4au-dC-nDs" secondAttribute="bottom" id="Ety-wc-ere"/>
+                                    <constraint firstItem="Svx-KN-Hhv" firstAttribute="top" secondItem="9fO-dh-3m6" secondAttribute="bottom" id="H4L-Zl-V6d"/>
+                                    <constraint firstItem="9fO-dh-3m6" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="H7x-rb-wDT"/>
+                                    <constraint firstItem="Svx-KN-Hhv" firstAttribute="top" secondItem="9fO-dh-3m6" secondAttribute="bottom" id="IF7-0j-BZj"/>
+                                    <constraint firstItem="uST-Xf-AUn" firstAttribute="top" secondItem="frs-gH-HIp" secondAttribute="bottom" id="IXv-nw-gtf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1RB-jA-j9e" secondAttribute="bottom" id="JBT-vi-9fQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="frs-gH-HIp" secondAttribute="trailing" id="Jud-8z-9DM"/>
+                                    <constraint firstItem="frs-gH-HIp" firstAttribute="top" secondItem="Svx-KN-Hhv" secondAttribute="bottom" id="LBX-R7-OlP"/>
+                                    <constraint firstItem="9fO-dh-3m6" firstAttribute="top" secondItem="DOR-Sx-bXU" secondAttribute="bottom" id="NYq-Wi-Vlz"/>
+                                    <constraint firstItem="Fii-TI-qWx" firstAttribute="top" secondItem="S7x-JL-9bm" secondAttribute="bottom" id="S3g-kR-Lf0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Svx-KN-Hhv" secondAttribute="trailing" id="SiJ-bW-kJK"/>
+                                    <constraint firstAttribute="trailing" secondItem="DOR-Sx-bXU" secondAttribute="trailing" id="Uhu-Oh-I5s"/>
+                                    <constraint firstItem="1RB-jA-j9e" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="VNT-8i-ViX"/>
+                                    <constraint firstItem="1RB-jA-j9e" firstAttribute="top" secondItem="Fii-TI-qWx" secondAttribute="bottom" id="XKH-QI-1F1"/>
+                                    <constraint firstItem="uST-Xf-AUn" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="bZY-ms-8cq"/>
+                                    <constraint firstItem="1RB-jA-j9e" firstAttribute="top" secondItem="Fii-TI-qWx" secondAttribute="bottom" id="f0Z-kP-0oU"/>
+                                    <constraint firstAttribute="trailing" secondItem="1RB-jA-j9e" secondAttribute="trailing" id="gIZ-Z2-Fp5"/>
+                                    <constraint firstItem="uST-Xf-AUn" firstAttribute="top" secondItem="frs-gH-HIp" secondAttribute="bottom" id="gch-aY-2nj"/>
+                                    <constraint firstItem="Fii-TI-qWx" firstAttribute="top" secondItem="S7x-JL-9bm" secondAttribute="bottom" id="j6H-sV-Ldm"/>
+                                    <constraint firstItem="4au-dC-nDs" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="mdf-1d-g30"/>
+                                    <constraint firstAttribute="trailing" secondItem="S7x-JL-9bm" secondAttribute="trailing" id="nVO-yy-wSt"/>
+                                    <constraint firstAttribute="trailing" secondItem="uST-Xf-AUn" secondAttribute="trailing" id="o9s-Wm-JH2"/>
+                                    <constraint firstItem="S7x-JL-9bm" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="rXg-XW-2mr"/>
+                                    <constraint firstItem="S7x-JL-9bm" firstAttribute="top" secondItem="uST-Xf-AUn" secondAttribute="bottom" id="s9X-Z4-kbx"/>
+                                    <constraint firstItem="4au-dC-nDs" firstAttribute="top" secondItem="M4f-Wp-w8N" secondAttribute="top" id="tLE-Wb-dVp"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fO-dh-3m6" secondAttribute="trailing" id="ueI-EI-URx"/>
+                                    <constraint firstItem="frs-gH-HIp" firstAttribute="top" secondItem="Svx-KN-Hhv" secondAttribute="bottom" id="w2W-Bp-7U1"/>
+                                    <constraint firstItem="Fii-TI-qWx" firstAttribute="leading" secondItem="M4f-Wp-w8N" secondAttribute="leading" id="yla-Hb-s6B"/>
+                                    <constraint firstItem="DOR-Sx-bXU" firstAttribute="top" secondItem="4au-dC-nDs" secondAttribute="bottom" id="ysg-y5-aXK"/>
+                                    <constraint firstItem="9fO-dh-3m6" firstAttribute="top" secondItem="DOR-Sx-bXU" secondAttribute="bottom" id="za2-v3-qPW"/>
+                                </constraints>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBP-yx-qXR">
-                                <rect key="frame" x="74" y="204" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOR-Sx-bXU">
-                                <rect key="frame" x="16" y="120" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Svx-KN-Hhv">
-                                <rect key="frame" x="16" y="212" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uST-Xf-AUn">
-                                <rect key="frame" x="16" y="298" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frs-gH-HIp">
-                                <rect key="frame" x="16" y="250" width="100" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fii-TI-qWx">
-                                <rect key="frame" x="16" y="384" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ZtX-US-ASI" id="OVJ-1W-k9E"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RB-jA-j9e">
-                                <rect key="frame" x="16" y="422" width="343" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Enable Notifications">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-Qe-NWe">
+                                <rect key="frame" x="16" y="475" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0rr-p5-M6O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Facebook Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="toSettingsAppButtonTapped:" destination="ZtX-US-ASI" eventType="touchUpInside" id="3F0-9Z-Tbp"/>
+                                    <action selector="logoutButtonTapped:" destination="ZtX-US-ASI" eventType="touchUpInside" id="AaD-X8-204"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="trailing" secondItem="7FX-Nj-K7t" secondAttribute="trailingMargin" id="0Uy-il-cUf"/>
+                            <constraint firstItem="M4f-Wp-w8N" firstAttribute="top" secondItem="LGg-rb-dfU" secondAttribute="bottom" id="Cig-tR-hBc"/>
+                            <constraint firstItem="MCD-Ly-cN1" firstAttribute="top" secondItem="M4f-Wp-w8N" secondAttribute="bottom" constant="200" id="FwV-5t-OCG"/>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="top" secondItem="M4f-Wp-w8N" secondAttribute="bottom" constant="8" id="UPg-WL-Xc7"/>
+                            <constraint firstItem="M4f-Wp-w8N" firstAttribute="leading" secondItem="7FX-Nj-K7t" secondAttribute="leadingMargin" id="ggl-hO-0a6"/>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="leading" secondItem="7FX-Nj-K7t" secondAttribute="leadingMargin" id="mm2-CZ-CDy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M4f-Wp-w8N" secondAttribute="trailing" id="zgg-rW-Pt9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="XJH-qn-OtG">
-                        <barButtonItem key="leftBarButtonItem" image="Strike" id="pnu-MR-aWB">
+                        <barButtonItem key="leftBarButtonItem" image="close" id="pnu-MR-aWB">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="ZtX-US-ASI" id="xsT-Dg-dRg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="arg-zS-oeC">
+                        <barButtonItem key="rightBarButtonItem" image="create" id="arg-zS-oeC">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="ZtX-US-ASI" id="TsS-9Q-X9D"/>
                             </connections>
@@ -115,7 +172,9 @@
                     <connections>
                         <outlet property="afternoonFirstTextField" destination="Svx-KN-Hhv" id="JKU-3J-laQ"/>
                         <outlet property="anyTextField" destination="Fii-TI-qWx" id="xXi-9n-Gkg"/>
+                        <outlet property="enableNotificationsButton" destination="1RB-jA-j9e" id="3QA-9y-grV"/>
                         <outlet property="eveningFirstTextField" destination="uST-Xf-AUn" id="Fud-fh-FmI"/>
+                        <outlet property="faceBookLogout" destination="k7t-Qe-NWe" id="tXz-Ai-6Xt"/>
                         <outlet property="morningFirstTextField" destination="DOR-Sx-bXU" id="kE6-rO-ozk"/>
                     </connections>
                 </viewController>
@@ -143,6 +202,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Strike" width="15" height="15"/>
+        <image name="close" width="20" height="20"/>
+        <image name="create" width="24" height="18"/>
     </resources>
 </document>
