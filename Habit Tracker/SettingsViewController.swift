@@ -17,22 +17,30 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     @IBOutlet weak var afternoonFirstTextField: UITextField!
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
+    @IBOutlet weak var enableNotificationsButton: UIButton!
+    @IBOutlet weak var faceBookLogout: UIButton!
     
     static var morning = TimeSettingsController.shared.morning
     static var afternoon = TimeSettingsController.shared.afternoon
     static var evening = TimeSettingsController.shared.evening
     static var any = TimeSettingsController.shared.anytime
     
+    let loginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 500, width: view.frame.width - 32, height: 50)
-        
+        //next three lines might be removed
         loginButton.delegate = self
-        //self.navigationController?.navigationBar.setbott
-        //self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
+        view.addSubview(loginButton)
+        loginButtonConstraints()
+        
+        textFieldBorders()
+        
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
+        navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: fontName]
+        self.navigationController?.navigationBar.setBottomBorderColor(color: Keys.shared.iconColor5, height: 1)
         
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
@@ -48,9 +56,20 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         
         anyTextField.delegate = self
         anyTextField.inputView = timePicker
-        
+                
         let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    //  MARK: - Facebook Constraints
+    
+    func loginButtonConstraints() {
+        //idk if we need this google it
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
     // MARK: - Keyboard
@@ -95,17 +114,70 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         }
     }
     
+    // MARK: - Text Field Bottom Lines
+    
+    func textFieldBorders() {
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: morningFirstTextField.frame.height - 1, width: morningFirstTextField.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRect(x: 0.0, y: afternoonFirstTextField.frame.height - 1, width: afternoonFirstTextField.frame.width, height: 1.0)
+        bottomLine2.backgroundColor = UIColor.black.cgColor
+        let bottomLine3 = CALayer()
+        bottomLine3.frame = CGRect(x: 0.0, y: eveningFirstTextField.frame.height - 1, width: eveningFirstTextField.frame.width, height: 1.0)
+        bottomLine3.backgroundColor = UIColor.black.cgColor
+        let bottomLine4 = CALayer()
+        bottomLine4.frame = CGRect(x: 0.0, y: anyTextField.frame.height - 1, width: anyTextField.frame.width, height: 1.0)
+        bottomLine4.backgroundColor = UIColor.black.cgColor
+        morningFirstTextField.borderStyle = .none
+        morningFirstTextField.layer.addSublayer(bottomLine)
+        afternoonFirstTextField.borderStyle = .none
+        afternoonFirstTextField.layer.addSublayer(bottomLine2)
+        eveningFirstTextField.borderStyle = .none
+        eveningFirstTextField.layer.addSublayer(bottomLine3)
+        anyTextField.borderStyle = .none
+        anyTextField.layer.addSublayer(bottomLine4)
+    }
+    
     // ACTIONS:
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
 
     }
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        let alertController = UIAlertController(title: "Logged out of Facebook", message: "You have been logged out of Facebook", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func enableNotificationsButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController (title: "Turn on notifications", message: "Go to Settings?", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out of Facebook.")
@@ -117,6 +189,4 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
             return
         }
     }
-
-    
 }
