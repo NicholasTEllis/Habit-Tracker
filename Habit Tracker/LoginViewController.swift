@@ -22,10 +22,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let loginButton = FBSDKLoginButton()
         
-        self.view.backgroundColor = .gray
+        self.view.backgroundColor = Keys.shared.iconColor8
+            
         
         view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: 250, width: view.frame.width - 32, height: 50)
+        loginButton.frame = CGRect(x: 50, y: 250, width: view.frame.width - 100, height: 50)
         
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
@@ -54,7 +55,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             self.performSegue(withIdentifier: "toHomeScreen", sender: self)
         }
         view.addSubview(twitterButton)
-        twitterButton.frame = CGRect(x: 16, y: 250 + 66, width: view.frame.width - 32, height: 50)
+        twitterButton.frame = CGRect(x: 50, y: 250 + 66, width: view.frame.width - 100, height: 50)
         
     }
     

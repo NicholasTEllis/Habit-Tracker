@@ -172,6 +172,12 @@
                     <view key="view" contentMode="scaleToFill" id="1rN-Kf-53s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bunny_720" translatesAutoresizingMaskIntoConstraints="NO" id="ELF-A6-tpy">
+                                <rect key="frame" x="72" y="422" width="269" height="263"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -180,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3r-Ip-tRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1044" y="77"/>
+            <point key="canvasLocation" x="-1046.376811594203" y="76.630434782608702"/>
         </scene>
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="Jde-XO-LU8">
@@ -364,6 +370,7 @@
     <resources>
         <image name="Checklist" width="29" height="27"/>
         <image name="Settings" width="24" height="24"/>
+        <image name="bunny_720" width="670" height="720"/>
         <image name="graph" width="25" height="18"/>
     </resources>
 </document>

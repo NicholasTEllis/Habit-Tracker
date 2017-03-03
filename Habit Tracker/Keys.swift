@@ -49,8 +49,8 @@ class Keys {
         }
     }
 
-    // Pick a color any color
-    // let icon8 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
+    // Pick a color any color 112, 166, 255
+     let iconColor8 = UIColor(colorLiteralRed: 112/255, green: 166/255, blue: 255/255, alpha: 1)
     // let icon9 = UIColor(colorLiteralRed: <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
     
     // VVV Let's pick these here now
