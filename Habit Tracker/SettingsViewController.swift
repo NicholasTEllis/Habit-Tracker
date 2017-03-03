@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     @IBOutlet weak var eveningFirstTextField: UITextField!
     @IBOutlet weak var anyTextField: UITextField!
     @IBOutlet weak var enableNotificationsButton: UIButton!
+    @IBOutlet weak var faceBookLogout: UIButton!
     
     static var morning = TimeSettingsController.shared.morning
     static var afternoon = TimeSettingsController.shared.afternoon
@@ -28,9 +29,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //next three lines might be removed
         loginButton.delegate = self
         view.addSubview(loginButton)
         loginButtonConstraints()
+        
+        enableNotificationsButton.backgroundColor = Keys.shared.iconColor2
+        faceBookLogout.backgroundColor = Keys.shared.iconColor3
         
         let navigationBarAppearance = UINavigationBar.appearance()
         guard let fontName = UIFont(name: "Avenir", size: 17) else { return }
@@ -56,7 +61,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         view.addGestureRecognizer(tap)
     }
     
+    //  MARK: - Facebook Constraints
+    
     func loginButtonConstraints() {
+        //idk if we need this google it
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         loginButton.widthAnchor.constraint(equalToConstant: 220).isActive = true
@@ -106,11 +114,29 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         }
     }
     
+    // MARK: - Text Field Bottom Lines
+    
+    func textFieldBorders() {
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: morningFirstTextField.frame.height - 1, width: morningFirstTextField.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        morningFirstTextField.borderStyle = .none
+        morningFirstTextField.layer.addSublayer(bottomLine)
+    }
+    
     // ACTIONS:
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
 
+    }
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        let alertController = UIAlertController(title: "Logged out of Facebook", message: "You have been logged out of Facebook", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {

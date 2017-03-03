@@ -30,30 +30,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
     
-        
     }
     
-    
     static let accessToken = FBSDKAccessToken.current()
-    
-    
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-//            
-//            _ = result.token
-//            
-//            let accessToken = FBSDKAccessToken.current()
-//            
-//            print(accessToken as Any)
-//            
-//            dismiss(animated: true) { 
-//                self.performSegue(withIdentifier: "toHomeScreen", sender: self.view)
-//            }
-//            
-//            
-//        }
-//    }
     
     // MARK: - Social Media Login 
     

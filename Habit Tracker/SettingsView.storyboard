@@ -132,12 +132,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-Qe-NWe">
+                                <rect key="frame" x="16" y="475" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="0rr-p5-M6O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Facebook Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="ZtX-US-ASI" eventType="touchUpInside" id="AaD-X8-204"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="trailing" secondItem="7FX-Nj-K7t" secondAttribute="trailingMargin" id="0Uy-il-cUf"/>
                             <constraint firstItem="M4f-Wp-w8N" firstAttribute="top" secondItem="LGg-rb-dfU" secondAttribute="bottom" id="Cig-tR-hBc"/>
                             <constraint firstItem="MCD-Ly-cN1" firstAttribute="top" secondItem="M4f-Wp-w8N" secondAttribute="bottom" constant="200" id="FwV-5t-OCG"/>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="top" secondItem="M4f-Wp-w8N" secondAttribute="bottom" constant="8" id="UPg-WL-Xc7"/>
                             <constraint firstItem="M4f-Wp-w8N" firstAttribute="leading" secondItem="7FX-Nj-K7t" secondAttribute="leadingMargin" id="ggl-hO-0a6"/>
+                            <constraint firstItem="k7t-Qe-NWe" firstAttribute="leading" secondItem="7FX-Nj-K7t" secondAttribute="leadingMargin" id="mm2-CZ-CDy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="M4f-Wp-w8N" secondAttribute="trailing" id="zgg-rW-Pt9"/>
                         </constraints>
                     </view>
@@ -158,6 +174,7 @@
                         <outlet property="anyTextField" destination="Fii-TI-qWx" id="xXi-9n-Gkg"/>
                         <outlet property="enableNotificationsButton" destination="1RB-jA-j9e" id="3QA-9y-grV"/>
                         <outlet property="eveningFirstTextField" destination="uST-Xf-AUn" id="Fud-fh-FmI"/>
+                        <outlet property="faceBookLogout" destination="k7t-Qe-NWe" id="tXz-Ai-6Xt"/>
                         <outlet property="morningFirstTextField" destination="DOR-Sx-bXU" id="kE6-rO-ozk"/>
                     </connections>
                 </viewController>
