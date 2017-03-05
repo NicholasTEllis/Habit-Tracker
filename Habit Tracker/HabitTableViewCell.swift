@@ -72,21 +72,23 @@ class HabitTableViewCell: UITableViewCell {
      //    TODO: - fix this to account for the current day's completion status
         switch strikes {
         case 1:
-            strike1Image.tintColor = Keys.shared.iconColor5
+            self.strike1Image.tintColor = UIColor.red
+            self.strike2Image.tintColor = Keys.shared.darkGrayAccent
+            self.strike3Image.tintColor = Keys.shared.darkGrayAccent
         case 2:
-            strike1Image.tintColor = Keys.shared.iconColor5
-            strike2Image.tintColor = Keys.shared.iconColor5
+            self.strike1Image.tintColor = UIColor.red
+            self.strike2Image.tintColor = UIColor.red
+            self.strike3Image.tintColor = Keys.shared.darkGrayAccent
         case 3:
-            strike1Image.tintColor = Keys.shared.iconColor5
-            strike2Image.tintColor = Keys.shared.iconColor5
-            strike3Image.tintColor = Keys.shared.iconColor5
-            delegate?.presentTwitterController()
+            self.strike1Image.tintColor = UIColor.red
+            self.strike2Image.tintColor = UIColor.red
+            self.strike3Image.tintColor = UIColor.red
         default:
-            return
+            self.strike1Image.tintColor = Keys.shared.darkGrayAccent
+            self.strike2Image.tintColor = Keys.shared.darkGrayAccent
+            self.strike3Image.tintColor = Keys.shared.darkGrayAccent
         }
     }
-    
-
 }
 
 protocol HabitTableViewCellDelegate {
