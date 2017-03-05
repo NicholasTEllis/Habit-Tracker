@@ -44,7 +44,6 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
-        
         self.view.backgroundColor = Keys.shared.background
         
         let bottomLine = CALayer()
@@ -99,13 +98,9 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties
     
     var index: Int = 0
-    
     var icon: String?
-    
     let imageIcon = Keys.shared.iconNames
-    
     var colorKey: String?
-    
     var color: UIColor? {
         didSet {
             self.iconCollectionView.reloadData()
@@ -126,14 +121,12 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Actions
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
         guard let name = habitNameTextField.text,
             let image = icon,
             let time = timeOfDayLabel.text,
             let colorKey = colorKey
             else {
                 return }
-        
         _ = HabitController.shared.addHabit(name: name, imageName: image, timeOfNotification: time, color: colorKey)
         dismiss(animated: true, completion: nil)
     }
@@ -179,6 +172,12 @@ extension AddHabitViewController {
         selectTime(index: index)
     }
     
+    func incompleteHabitAlert() {
+        let alert = UIAlertController(title: "Incomplete fields", message: "Make sure your habit has a name and an icon.", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        present(alert, animated: true, completion: nil)
+    }
     
     func setupColorMenu() {
         self.view.addSubview(self.colorsForIconView)
