@@ -47,6 +47,7 @@ extension Habit {
     
     var strikes: Int {
         let calendar = NSCalendar.current
+        let name = self.name
         guard let startDate = self.startDate as? Date else {
             return 0 }
         
@@ -58,8 +59,8 @@ extension Habit {
             return 0
         }
         var expectedCompletions = daysSinceStart
-        if !self.isCompleteToday {
-            expectedCompletions -= 1
+        if self.isCompleteToday {
+            expectedCompletions += 1
         }
         guard let habitCount = self.habitProgress?.count else { return 0 }
         let strikedDays = expectedCompletions - habitCount
