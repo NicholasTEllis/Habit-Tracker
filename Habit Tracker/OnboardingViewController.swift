@@ -48,7 +48,7 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
         
         (imageName: "Onboarding3", title: "You get 3 strikes", description: "If you are not able to complete the habit we give you the option of either posting to social media or donating to a charity of your choice", iconName: "", color: backgroundColorThree, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
         
-        (imageName: "notification", title: "Please allow us to notify you", description: "Turn on your notifications so that we can remind you to complete your habit challenge for that day.", iconName: "", color: backgroundColorFour, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont)
+        (imageName: "notification", title: "Please allow us to notify you", description: "Turn on your notifications so that we can remind you to complete your habit challenge for that day.", iconName: "", color: backgroundColorOne, titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont)
             ][index]
     }
     
