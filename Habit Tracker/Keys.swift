@@ -16,7 +16,7 @@ class Keys {
     var fireTimesDictionary: [String : Double] = ["morning": 1500.0,"afternoon" :3000.0,"evening" :4500.0,"anytime" :6000.0]
     
     // blue
-    let iconColor1 = UIColor(colorLiteralRed: 0 / 255, green: 118 / 255, blue: 255 / 255, alpha: 1)
+    let iconColor1 = UIColor(colorLiteralRed: 30 / 255, green: 166 / 255, blue: 255 / 255, alpha: 1)
     // salmon-ey
     let iconColor2 = UIColor(colorLiteralRed: 255 / 255, green: 97 / 255, blue: 94 / 255, alpha: 1)
     // green
