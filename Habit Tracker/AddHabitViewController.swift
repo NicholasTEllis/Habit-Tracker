@@ -18,17 +18,7 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         habitNameTextField.delegate = self
         
-        let swipeRight = UISwipeGestureRecognizer()
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
-        
-        
-        let swipeLeft = UISwipeGestureRecognizer()
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
-        swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
-        
+        setupGestures()
         
         iconCollectionView.delegate = self
         iconCollectionView.dataSource = self
@@ -41,9 +31,6 @@ class AddHabitViewController: UIViewController, UITextFieldDelegate {
         colorsForIconView.select(index: 0)
         self.setupColorMenu()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AddHabitViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        tap.cancelsTouchesInView = false
         self.view.backgroundColor = Keys.shared.background
         
         let bottomLine = CALayer()
@@ -193,6 +180,22 @@ extension AddHabitViewController {
         }, completion: nil)
     }
     
+    func setupGestures() {
+        let swipeRight = UISwipeGestureRecognizer()
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        swipeRight.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
+        
+        let swipeLeft = UISwipeGestureRecognizer()
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        swipeLeft.addTarget(self, action: #selector(respondToSwipeGesture(_:)))
+        
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(AddHabitViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
 }
 
 
