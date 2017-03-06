@@ -9,6 +9,8 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
+import TwitterKit
+import Fabric
 
 
 class HabitDetailViewController: UIViewController {
@@ -16,6 +18,9 @@ class HabitDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        twitterButton.frame = CGRect(x: view.center.x - 150, y: view.center.y + 20, width: 143, height: 36)
+        
         
         
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
@@ -26,7 +31,7 @@ class HabitDetailViewController: UIViewController {
         
         let button : FBSDKShareButton = FBSDKShareButton()
         button.shareContent = content
-        button.frame = CGRect(x: view.center.x, y: view.center.y, width: 100, height: 25) // move later
+        button.frame = CGRect(x: view.center.x, y: view.center.y + 20, width: 143, height: 36) // move later
         self.view.addSubview(button)
         
         calendarCollectionView.delegate = self
@@ -55,17 +60,13 @@ class HabitDetailViewController: UIViewController {
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        self.daysCompleted(daysCompleted: daysCompleted)
         
         let strikes = habit.strikes
         self.numberOfStrikes(from: strikes)
         
-        daysRemainingLabel.text = "\(findDaysRemaining(completedDays: daysCompleted + 1)) days remaining"
         self.title = habit.name
         
-        progressView.setProgress(Float(Float(progress.count) / 21), animated: true)
-        progressView.progressTintColor = habitIcon.tintColor
-        progressView.trackTintColor = Keys.shared.background
+
     }
     
     
@@ -131,16 +132,36 @@ class HabitDetailViewController: UIViewController {
     
     
     
+    
+    
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+        let composer = TWTRComposer()
+        
+        composer.setText("Forming newer and better habits with 21habit")
+        composer.setImage(UIImage(named: "started"))
+        
+        // Called from a UIViewController
+        composer.show(from: self) { result in
+            if (result == TWTRComposerResult.cancelled) {
+                print("Tweet composition cancelled")
+            }
+            else {
+                print("Sending tweet!")
+            }
+        }
+    }
+    
     // MARK: - Outlets
+    
+    @IBOutlet weak var twitterButton: UIButton!
+
+    
     
     @IBOutlet var habitIcon: UIImageView!
     @IBOutlet var strikeOne: UIImageView!
     @IBOutlet var strikeTwo: UIImageView!
     @IBOutlet var strikeThree: UIImageView!
     
-    @IBOutlet var progressView: UIProgressView!
-    @IBOutlet var daysCompletedLabel: UILabel!
-    @IBOutlet var daysRemainingLabel: UILabel!
     
     // calendar
     @IBOutlet var calendarCollectionView: UICollectionView!
@@ -149,6 +170,12 @@ class HabitDetailViewController: UIViewController {
     
     
 }
+
+
+
+
+
+
 
 // MARK: - Extension: UICollectionView
 
@@ -228,14 +255,6 @@ extension HabitDetailViewController {
         return (21 - (completedDays - 1))
     }
     
-    
-    func daysCompleted(daysCompleted: Int) {
-        if daysCompleted != 0 {
-            daysCompletedLabel.text = "\(daysCompleted) days completed"
-        } else {
-            daysCompletedLabel.text = ""
-        }
-    }
     
     
     func numberOfStrikes(from strikes: Int) {
