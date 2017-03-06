@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Au-M0-xtw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Habit Detail View Controller-->
+        <scene sceneID="NM1-h6-A92">
+            <objects>
+                <viewController id="9Au-M0-xtw" customClass="HabitDetailViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o95-0y-mIM"/>
+                        <viewControllerLayoutGuide type="bottom" id="zKr-bX-9ix"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3qN-Fe-okB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="days completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ak8-Ts-C1g">
+                                <rect key="frame" x="16" y="504" width="176" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="CID-gI-jWm"/>
+                                    <constraint firstAttribute="height" constant="14" id="vDf-pj-R8n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="days remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhA-Wq-Ihw">
+                                <rect key="frame" x="264" y="504" width="95" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="WX9-YP-ZH0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBg-RA-fM5">
+                                <rect key="frame" x="16" y="434" width="62" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BigStrikeForDetail" translatesAutoresizingMaskIntoConstraints="NO" id="Cs6-qE-Jhd">
+                                <rect key="frame" x="89" y="446" width="29" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BigStrikeForDetail" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-2R-saw">
+                                <rect key="frame" x="126" y="446" width="29" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BigStrikeForDetail" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-4y-yjr">
+                                <rect key="frame" x="163" y="446" width="29" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="W4q-JT-S2y">
+                                <rect key="frame" x="16" y="520" width="343" height="2"/>
+                                <color key="tintColor" red="0.09492417890105509" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </progressView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GDE-N4-ZWP">
+                                <rect key="frame" x="0.0" y="53" width="375" height="331"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O8L-4K-etf">
+                                    <size key="itemSize" width="49" height="55"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calanderDate" id="foa-Qp-HAf" customClass="CalendarCollectionViewCell" customModule="Habit_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="49" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y34-Kd-2V4">
+                                                    <rect key="frame" x="9.5" y="12.5" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeF-3v-2hf">
+                                                    <rect key="frame" x="11.5" y="15" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.36595454179999998" green="0.62067890520000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADk-YN-Bp0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="dayButton" destination="OeF-3v-2hf" id="4Il-SW-Dlm"/>
+                                            <outlet property="dayName" destination="ADk-YN-Bp0" id="Vzh-Sf-AXo"/>
+                                            <outlet property="selectionView" destination="y34-Kd-2V4" id="bIg-k6-RGO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ic-CW-dgO">
+                                <rect key="frame" x="0.0" y="392" width="375" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BhA-Wq-Ihw" firstAttribute="trailing" secondItem="3qN-Fe-okB" secondAttribute="trailingMargin" id="56h-nJ-6Ss"/>
+                            <constraint firstItem="ak8-Ts-C1g" firstAttribute="leading" secondItem="W4q-JT-S2y" secondAttribute="leading" id="6LJ-V9-k0L"/>
+                            <constraint firstItem="BhA-Wq-Ihw" firstAttribute="trailing" secondItem="W4q-JT-S2y" secondAttribute="trailing" id="DEb-jh-SPr"/>
+                            <constraint firstItem="zKr-bX-9ix" firstAttribute="top" secondItem="W4q-JT-S2y" secondAttribute="bottom" constant="369" id="E7a-zk-I5i"/>
+                            <constraint firstItem="ak8-Ts-C1g" firstAttribute="leading" secondItem="3qN-Fe-okB" secondAttribute="leadingMargin" id="FUV-dH-cvZ"/>
+                            <constraint firstItem="ak8-Ts-C1g" firstAttribute="firstBaseline" secondItem="BhA-Wq-Ihw" secondAttribute="firstBaseline" id="H2R-MK-We9"/>
+                            <constraint firstItem="W4q-JT-S2y" firstAttribute="top" secondItem="ak8-Ts-C1g" secondAttribute="bottom" constant="2" id="g7j-sx-rMn"/>
+                            <constraint firstItem="ak8-Ts-C1g" firstAttribute="baseline" secondItem="BhA-Wq-Ihw" secondAttribute="baseline" id="seq-1w-KFn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarCollectionView" destination="GDE-N4-ZWP" id="hIz-1S-qIb"/>
+                        <outlet property="daysCompletedLabel" destination="ak8-Ts-C1g" id="jzn-HS-nDH"/>
+                        <outlet property="daysRemainingLabel" destination="BhA-Wq-Ihw" id="O09-Uc-lc1"/>
+                        <outlet property="habitIcon" destination="QBg-RA-fM5" id="EF0-tq-Mjh"/>
+                        <outlet property="monthLabel" destination="9ic-CW-dgO" id="qKz-dq-dYU"/>
+                        <outlet property="progressView" destination="W4q-JT-S2y" id="RGe-GZ-eKZ"/>
+                        <outlet property="strikeOne" destination="Cs6-qE-Jhd" id="dPA-HD-man"/>
+                        <outlet property="strikeThree" destination="cRM-4y-yjr" id="3FZ-Vw-IOS"/>
+                        <outlet property="strikeTwo" destination="aRg-2R-saw" id="kJf-j6-SkU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="StP-QV-Jfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="181.59999999999999" y="157.87106446776613"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BigStrikeForDetail" width="90" height="105"/>
+    </resources>
+</document>
