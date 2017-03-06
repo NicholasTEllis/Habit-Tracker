@@ -275,7 +275,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q1G-GT-Xdd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rMU-FF-7sX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5GK-tf-Nru">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GK-tf-Nru">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -325,39 +325,19 @@
                                     <action selector="notificationButtonTapped:" destination="RBG-fb-f8y" eventType="touchUpInside" id="Jks-f1-os2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjG-KT-e2V">
-                                <rect key="frame" x="136" y="617" width="142" height="36"/>
-                                <color key="backgroundColor" red="0.14674023880000001" green="0.86841683189999996" blue="0.1228195213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="OK LETS GO">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="doneButtonTapped:" destination="RBG-fb-f8y" eventType="touchUpInside" id="Oam-FP-gad"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RjG-KT-e2V" firstAttribute="leading" secondItem="lHM-uK-j3K" secondAttribute="leadingMargin" constant="116" id="6Ft-4h-vnQ"/>
-                            <constraint firstItem="RjG-KT-e2V" firstAttribute="centerX" secondItem="lHM-uK-j3K" secondAttribute="centerX" id="6UV-Eh-FkB"/>
                             <constraint firstItem="kSu-ID-hgU" firstAttribute="leading" secondItem="lHM-uK-j3K" secondAttribute="leading" id="Bdo-yp-y8y"/>
                             <constraint firstAttribute="trailing" secondItem="kSu-ID-hgU" secondAttribute="trailing" id="JAh-Ww-n0J"/>
                             <constraint firstItem="tc4-Y3-Zgc" firstAttribute="top" secondItem="kSu-ID-hgU" secondAttribute="bottom" id="JXd-ej-5pa"/>
                             <constraint firstItem="kSu-ID-hgU" firstAttribute="top" secondItem="tSr-qP-jY3" secondAttribute="bottom" constant="-20" id="V9q-wN-tRj"/>
                             <constraint firstItem="tc4-Y3-Zgc" firstAttribute="top" secondItem="8ix-iC-CwY" secondAttribute="bottom" constant="134" id="Znw-1G-A51"/>
                             <constraint firstItem="8ix-iC-CwY" firstAttribute="centerX" secondItem="lHM-uK-j3K" secondAttribute="centerX" id="dZy-i5-HP3"/>
-                            <constraint firstItem="tc4-Y3-Zgc" firstAttribute="top" secondItem="RjG-KT-e2V" secondAttribute="bottom" constant="83" id="tvt-cI-Zaq"/>
                             <constraint firstItem="8ix-iC-CwY" firstAttribute="leading" secondItem="lHM-uK-j3K" secondAttribute="leadingMargin" constant="42" id="wkH-dk-JcC"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="doneButton" destination="RjG-KT-e2V" id="CRn-Cp-YR6"/>
                         <outlet property="notificationButton" destination="8ix-iC-CwY" id="S2k-N2-hbl"/>
                         <outlet property="onboardingView" destination="kSu-ID-hgU" id="5A3-f3-ZEw"/>
                         <segue destination="guQ-Pc-fpG" kind="show" identifier="toLoginScreen" id="UR8-N5-gBc"/>
