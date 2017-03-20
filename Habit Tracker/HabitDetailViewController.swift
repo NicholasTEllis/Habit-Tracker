@@ -235,22 +235,19 @@ extension HabitDetailViewController {
     
     
     func numberOfStrikes(from strikes: Int) {
+        let strikeColor = UIColor(red: 255/255, green: 100/255, blue: 100/255, alpha: 1)
         switch strikes {
         case 0 :
             return
         case 1:
-            strikeOne.tintColor = Keys.shared.iconColor5
+            strikeOne.tintColor = strikeColor
         case 2:
-            strikeOne.tintColor = Keys.shared.iconColor5
-            strikeTwo.tintColor = Keys.shared.iconColor5
-        case 3:
-            strikeOne.tintColor = Keys.shared.iconColor5
-            strikeTwo.tintColor = Keys.shared.iconColor5
-            strikeThree.tintColor = Keys.shared.iconColor5
+            strikeOne.tintColor = strikeColor
+            strikeTwo.tintColor = strikeColor
         default:
-            strikeOne.tintColor = Keys.shared.iconColor5
-            strikeTwo.tintColor = Keys.shared.iconColor5
-            strikeThree.tintColor = Keys.shared.iconColor5
+            strikeOne.tintColor = strikeColor
+            strikeTwo.tintColor = strikeColor
+            strikeThree.tintColor = strikeColor
         }
     }
     
