@@ -21,8 +21,6 @@ class HabitDetailViewController: UIViewController {
         
         twitterButton.frame = CGRect(x: view.center.x - 150, y: view.center.y + 20, width: 143, height: 36)
         
-        
-        
         let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
         content.contentURL = URL(string: "")
         content.contentTitle = "I started a new habit with 21habit"
@@ -40,7 +38,7 @@ class HabitDetailViewController: UIViewController {
         
         habitLengthInDays()
         addDatesSinceSunday()
-        
+        calendarCollectionView.center.x = self.view.center.x
         monthLabel.text = monthFormatter.string(from: Date())
     }
     
@@ -60,13 +58,10 @@ class HabitDetailViewController: UIViewController {
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
         
-        
         let strikes = habit.strikes
         self.numberOfStrikes(from: strikes)
         
         self.title = habit.name
-        
-
     }
     
     
@@ -105,25 +100,19 @@ class HabitDetailViewController: UIViewController {
     //  MARK: - Properties
     
     var habit: Habit?
-    
     var habitDuration = [Date]()
-    
     let calendar = Calendar.current
-    
     let sectionInsets = UIEdgeInsets(top: 30.0, left: 20.0, bottom: 30.0, right: 20.0) // for colelction view
-    
     let dayNameFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
         return dateFormatter
     }()
-    
     let dayFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
         return dateFormatter
     }()
-    
     let monthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM  yyyy"
@@ -131,15 +120,11 @@ class HabitDetailViewController: UIViewController {
     }()
     
     
-    
-    
-    
     @IBAction func twitterButtonTapped(_ sender: Any) {
         let composer = TWTRComposer()
-        
         composer.setText("Forming newer and better habits with 21habit")
         composer.setImage(UIImage(named: "started"))
-        
+    
         // Called from a UIViewController
         composer.show(from: self) { result in
             if (result == TWTRComposerResult.cancelled) {
@@ -151,12 +136,11 @@ class HabitDetailViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Outlets
     
     @IBOutlet weak var twitterButton: UIButton!
 
-    
-    
     @IBOutlet var habitIcon: UIImageView!
     @IBOutlet var strikeOne: UIImageView!
     @IBOutlet var strikeTwo: UIImageView!
@@ -170,11 +154,6 @@ class HabitDetailViewController: UIViewController {
     
     
 }
-
-
-
-
-
 
 
 // MARK: - Extension: UICollectionView
@@ -194,11 +173,9 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         let day = dayFormatter.string(from: date)
         
         cell.dayName.text = dayName
-        
         if date <= Date() {
             for dayCompleted in daysCompleted {
                 if let completedDay = dayCompleted.completedDay as? Date {
-                    
                     let complete = calendar.startOfDay(for: completedDay)
                     let startOfDate = calendar.startOfDay(for: date)
                     
@@ -259,6 +236,8 @@ extension HabitDetailViewController {
     
     func numberOfStrikes(from strikes: Int) {
         switch strikes {
+        case 0 :
+            return
         case 1:
             strikeOne.tintColor = Keys.shared.iconColor5
         case 2:
@@ -269,7 +248,9 @@ extension HabitDetailViewController {
             strikeTwo.tintColor = Keys.shared.iconColor5
             strikeThree.tintColor = Keys.shared.iconColor5
         default:
-            return
+            strikeOne.tintColor = Keys.shared.iconColor5
+            strikeTwo.tintColor = Keys.shared.iconColor5
+            strikeThree.tintColor = Keys.shared.iconColor5
         }
     }
     
