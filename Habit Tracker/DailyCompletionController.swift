@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DailyCompletionController {
     
@@ -39,8 +40,10 @@ class DailyCompletionController {
                 addToUserPerfectStreak = false
             }
             guard let completedDays = habit.habitProgress?.count else { return }
-            if (completedDays + habit.strikes) == 21 {
-            finalHabitCompletion(habit: habit)
+            if habit.strikes >= 3 {
+                strikeOutCompletion(habit: habit)
+            } else if (completedDays + habit.strikes) >= 21 {
+                finalHabitCompletion(habit: habit)
             } else {
                 habit.isCompleteToday = false
             }
@@ -65,8 +68,93 @@ class DailyCompletionController {
     func finalHabitCompletion(habit: Habit) {
         let user = UserController.shared.user
         user.completedHabits += 1
+
         if habit.habitProgress?.count == 21 {
             user.perfectDays += 1
+            
+            let perfectCompletionAlert = UIAlertController(title: "Wow! Way to go!", message: "You finished your habit titled \(habit.name) without missing a single day!", preferredStyle: .alert)
+            let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+                // TODO: - share to facebook here
+                
+                if let moc = habit.managedObjectContext {
+                    moc.delete(habit)
+                }
         }
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                if let moc = habit.managedObjectContext {
+                    moc.delete(habit)
+                }
+            }
+            
+            perfectCompletionAlert.addAction(shareAction)
+            perfectCompletionAlert.addAction(okAction)
+            
+            var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+            if let navigationController = rootViewController as? UINavigationController {
+                rootViewController = navigationController.viewControllers.first
+            }
+            if let tabBarController = rootViewController as? UITabBarController {
+                rootViewController = tabBarController.selectedViewController
+            }
+            rootViewController?.present(perfectCompletionAlert, animated: true)
+            return
+        }
+        
+        let completionAlert = UIAlertController(title: "Good work!", message: "You finished your habit titled \(habit.name)!", preferredStyle: .alert)
+        let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
+            // TODO: - share to facebook here
+            
+            if let moc = habit.managedObjectContext {
+                moc.delete(habit)
+            }
+        }
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            if let moc = habit.managedObjectContext {
+                moc.delete(habit)
+            }
+        }
+        
+        completionAlert.addAction(shareAction)
+        completionAlert.addAction(okAction)
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(completionAlert, animated: true)
+    }
+
+    func strikeOutCompletion(habit: Habit) {
+        let youFailAlert = UIAlertController(title: "Oh No!", message: "You got 3 strikes on your habit titled \(habit.name). Would you like to re-start?", preferredStyle: .alert)
+        let giveUpAction = UIAlertAction(title: "Give up", style: .destructive) { (_) in
+            if let moc = habit.managedObjectContext {
+                moc.delete(habit)
+            }
+        }
+        let restartAction = UIAlertAction(title: "Restart", style: .default) { (_) in
+            guard let color = habit.color,
+            let timeOfNotification = habit.timeOfNotification,
+            let icon = habit.icon,
+            let name = habit.name else { return }
+            HabitController.shared.addHabit(name: name, imageName: icon, timeOfNotification: timeOfNotification, color: color)
+            if let moc = habit.managedObjectContext {
+                moc.delete(habit)
+            }
+        }
+        
+        youFailAlert.addAction(giveUpAction)
+        youFailAlert.addAction(restartAction)
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        rootViewController?.present(youFailAlert, animated: true)
     }
 }
