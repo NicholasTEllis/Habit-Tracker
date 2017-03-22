@@ -40,6 +40,14 @@ class HabitDetailViewController: UIViewController {
         addDatesSinceSunday()
         calendarCollectionView.center.x = self.view.center.x
         monthLabel.text = monthFormatter.string(from: Date())
+        
+        let share = UIButton()
+        share.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        share.addTarget(self, action: #selector(actionSheet), for: .touchUpInside)
+//        share.image
+        let item = UIBarButtonItem(customView: share)
+        self.navigationItem.setRightBarButtonItems([item], animated: true)
+
     }
     
     
@@ -54,9 +62,17 @@ class HabitDetailViewController: UIViewController {
             let progress = habit.habitProgress?.array as? [DailyCompletion],
             let colorKey = habit.color else { return }
         
+        guard let currentStreak = habit.streaks.first,
+            let bestStreak = habit.streaks.last else { return }
+        
+        
+        
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
         habitIcon.tintColor = self.colorFrom(colorKey: colorKey)
+        
+        streaksLabel.text = "current streak: \(currentStreak)"
+        bestStreaksLabel.text = "best streak: \(bestStreak)"
         
         let strikes = habit.strikes
         self.numberOfStrikes(from: strikes)
@@ -74,7 +90,6 @@ class HabitDetailViewController: UIViewController {
             habitDuration.append(daysBetween)
         }
     }
-    
     
     // if the start date of your habit isn't a sunday, this will at the days before it from sunday
     func addDatesSinceSunday() {
@@ -151,6 +166,9 @@ class HabitDetailViewController: UIViewController {
     @IBOutlet var calendarCollectionView: UICollectionView!
     @IBOutlet var calendarHeader: UIView!
     @IBOutlet var monthLabel: UILabel!
+    
+    @IBOutlet var streaksLabel: UILabel!
+    @IBOutlet var bestStreaksLabel: UILabel!
     
     
 }
@@ -233,7 +251,6 @@ extension HabitDetailViewController {
     }
     
     
-    
     func numberOfStrikes(from strikes: Int) {
         let strikeColor = UIColor(red: 255/255, green: 100/255, blue: 100/255, alpha: 1)
         switch strikes {
@@ -306,6 +323,15 @@ extension HabitDetailViewController {
             break
         }
         return weekdayComponent
+    }
+    
+    func actionSheet() {
+        let actionSheet = UIAlertController(title: "Share", message: "Chose where to share it", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: nil)
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+        
     }
 }
 
