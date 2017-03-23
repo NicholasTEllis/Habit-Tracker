@@ -49,8 +49,14 @@ class HabitController {
     
     // MARK: - Local Notifications
     
+    func updateLocalNotifcations(habit: Habit, fireTime: TimeInterval) {
+       // habit.fireTimeOfNotification = fireTime
+        scheduleLocalNotifications(habit)
+        saveToPersistentStore()
+    }
+    
     func scheduleLocalNotifications(_ habit: Habit) {
-        //let body = qoutes[0]
+        
         guard let name = habit.name,
             let fireDate = habit.fireDate  else {
                 return
