@@ -24,16 +24,12 @@ class HabitDetailViewController: UIViewController {
         
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
+        
         updateWith()
         
         habitLengthInDays()
         addDatesSinceSunday()
-        calendarCollectionView.center.x = self.view.center.x
-        calendarCollectionView.frame.origin.y = monthLabel.frame.origin.y + monthLabel.frame.height
-        
-        iconStrikesStackView.frame.origin.y = (twitterButton.frame.origin.y + twitterButton.frame.height) + self.view.frame.height / 10
-        streaksLabel.frame.origin.y = iconStrikesStackView.frame.origin.y + iconStrikesStackView.frame.height
-        bestStreaksLabel.frame.origin.y = streaksLabel.frame.origin.y + streaksLabel.frame.height
+        setupRectsForUIObjects()
     }
     
     
@@ -278,6 +274,20 @@ extension HabitDetailViewController {
             print("false")
             return false
         }
+    }
+    
+    func setupRectsForUIObjects() {
+        calendarCollectionView.center.x = self.view.center.x
+        calendarCollectionView.frame.origin.y = monthLabel.frame.origin.y + monthLabel.frame.height
+        
+        iconStrikesStackView.frame.origin.y = (twitterButton.frame.origin.y + twitterButton.frame.height) + (self.view.frame.height / 20)
+        iconStrikesStackView.center.x = self.view.center.x
+        
+        streaksLabel.center.x = self.view.center.x
+        streaksLabel.frame.origin.y = (iconStrikesStackView.frame.origin.y + iconStrikesStackView.frame.height) + (self.view.frame.height / 40)
+        
+        bestStreaksLabel.center.x = self.view.center.x
+        bestStreaksLabel.frame.origin.y = (streaksLabel.frame.origin.y + streaksLabel.frame.height) + (self.view.frame.height / 40)
     }
     
     func setupTwitterButton() {
