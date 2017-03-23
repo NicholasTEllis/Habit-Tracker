@@ -162,7 +162,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
+        
     }
 
     @IBAction func enableNotificationsButtonTapped(_ sender: Any) {
