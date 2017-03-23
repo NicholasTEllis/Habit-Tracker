@@ -145,6 +145,7 @@
                         <outlet property="bestStreaksLabel" destination="na6-PZ-aga" id="DHA-wo-jQU"/>
                         <outlet property="calendarCollectionView" destination="GDE-N4-ZWP" id="hIz-1S-qIb"/>
                         <outlet property="habitIcon" destination="QBg-RA-fM5" id="EF0-tq-Mjh"/>
+                        <outlet property="iconStrikesStackView" destination="hV7-n7-V5K" id="tkr-Hs-18S"/>
                         <outlet property="monthLabel" destination="9ic-CW-dgO" id="qKz-dq-dYU"/>
                         <outlet property="streaksLabel" destination="60E-1h-LQ1" id="fRw-7c-Rpm"/>
                         <outlet property="strikeOne" destination="Cs6-qE-Jhd" id="dPA-HD-man"/>

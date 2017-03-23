@@ -19,18 +19,8 @@ class HabitDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        twitterButton.frame = CGRect(x: view.center.x - 150, y: view.center.y + 20, width: 143, height: 36)
-        
-        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
-        content.contentURL = URL(string: "")
-        content.contentTitle = "I started a new habit with 21habit"
-        content.contentDescription = "Create better habits for yourself with 21habit. It's free on the app store!"
-        content.imageURL = URL(string:"https://c1.staticflickr.com/1/746/33188446556_33c998f0a9_b.jpg")
-        
-        let button : FBSDKShareButton = FBSDKShareButton()
-        button.shareContent = content
-        button.frame = CGRect(x: view.center.x, y: view.center.y + 20, width: 143, height: 36) // move later
-        self.view.addSubview(button)
+        setupFacebookButton()
+        setupTwitterButton()
         
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
@@ -39,33 +29,24 @@ class HabitDetailViewController: UIViewController {
         habitLengthInDays()
         addDatesSinceSunday()
         calendarCollectionView.center.x = self.view.center.x
-        monthLabel.text = monthFormatter.string(from: Date())
+        calendarCollectionView.frame.origin.y = monthLabel.frame.origin.y + monthLabel.frame.height
         
-        let share = UIButton()
-        share.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        share.addTarget(self, action: #selector(actionSheet), for: .touchUpInside)
-//        share.image
-        let item = UIBarButtonItem(customView: share)
-        self.navigationItem.setRightBarButtonItems([item], animated: true)
-
+        iconStrikesStackView.frame.origin.y = (twitterButton.frame.origin.y + twitterButton.frame.height) + self.view.frame.height / 10
+        streaksLabel.frame.origin.y = iconStrikesStackView.frame.origin.y + iconStrikesStackView.frame.height
+        bestStreaksLabel.frame.origin.y = streaksLabel.frame.origin.y + streaksLabel.frame.height
     }
     
     
     //  MARK: - Main Methods
     
     func updateWith() {
-        guard let habit = habit else {
-            return }
+        guard let habit = habit else { return }
         
         guard let icon = habit.icon,
-            let daysCompleted = habit.habitProgress?.count,
-            let progress = habit.habitProgress?.array as? [DailyCompletion],
             let colorKey = habit.color else { return }
         
         guard let currentStreak = habit.streaks.first,
             let bestStreak = habit.streaks.last else { return }
-        
-        
         
         habitIcon.image = UIImage(named: icon)
         self.habitIcon.backgroundColor = .clear
@@ -77,6 +58,7 @@ class HabitDetailViewController: UIViewController {
         let strikes = habit.strikes
         self.numberOfStrikes(from: strikes)
         
+        monthLabel.text = monthFormatter.string(from: Date())
         self.title = habit.name
     }
     
@@ -91,7 +73,7 @@ class HabitDetailViewController: UIViewController {
         }
     }
     
-    // if the start date of your habit isn't a sunday, this will at the days before it from sunday
+    // if the start date of your habit isn't a sunday, this will add the days before it from sunday
     func addDatesSinceSunday() {
         guard let startDate = habit?.startDate else { return }
         var sundayOnward: [Date] = []
@@ -170,6 +152,9 @@ class HabitDetailViewController: UIViewController {
     @IBOutlet var streaksLabel: UILabel!
     @IBOutlet var bestStreaksLabel: UILabel!
     
+    @IBOutlet var iconStrikesStackView: UIStackView!
+    
+    
     
 }
 
@@ -181,7 +166,6 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return habitDuration.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calanderDate", for: indexPath) as? CalendarCollectionViewCell, let habit = habit, let startDate = self.habit?.startDate, let daysCompleted = habit.habitProgress?.array as? [DailyCompletion] else { return UICollectionViewCell() }
@@ -230,11 +214,9 @@ extension HabitDetailViewController: UICollectionViewDelegateFlowLayout, UIColle
         return CGSize(width: widthPerItem, height: 49)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
@@ -249,7 +231,6 @@ extension HabitDetailViewController {
     func findDaysRemaining(completedDays: Int) -> Int {
         return (21 - (completedDays - 1))
     }
-    
     
     func numberOfStrikes(from strikes: Int) {
         let strikeColor = UIColor(red: 255/255, green: 100/255, blue: 100/255, alpha: 1)
@@ -267,7 +248,6 @@ extension HabitDetailViewController {
             strikeThree.tintColor = strikeColor
         }
     }
-    
     
     func colorFrom(colorKey: String) -> UIColor {
         switch colorKey {
@@ -288,7 +268,6 @@ extension HabitDetailViewController {
         }
     }
     
-    
     func isDateSunday(date: Date) -> Bool {
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: date)
@@ -299,6 +278,25 @@ extension HabitDetailViewController {
             print("false")
             return false
         }
+    }
+    
+    func setupTwitterButton() {
+        twitterButton.frame = CGRect(x: view.center.x - 150, y: view.center.y + 20, width: 143, height: 36)
+        twitterButton.frame.origin.y = calendarCollectionView.frame.origin.y + calendarCollectionView.frame.height
+    }
+    
+    func setupFacebookButton() {
+        let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+        content.contentURL = URL(string: "")
+        content.contentTitle = "I started a new habit with 21habit"
+        content.contentDescription = "Create better habits for yourself with 21habit. It's free on the app store!"
+        content.imageURL = URL(string:"https://c1.staticflickr.com/1/746/33188446556_33c998f0a9_b.jpg")
+        
+        let facebookShare : FBSDKShareButton = FBSDKShareButton()
+        facebookShare.shareContent = content
+        facebookShare.frame = CGRect(x: view.center.x, y: view.center.y + 20, width: 143, height: 36) // move later
+        facebookShare.frame.origin.y = calendarCollectionView.frame.origin.y + calendarCollectionView.frame.height
+        self.view.addSubview(facebookShare)
     }
     
     
@@ -323,15 +321,6 @@ extension HabitDetailViewController {
             break
         }
         return weekdayComponent
-    }
-    
-    func actionSheet() {
-        let actionSheet = UIAlertController(title: "Share", message: "Chose where to share it", preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let twitterAction = UIAlertAction(title: "Twitter", style: .default, handler: nil)
-        actionSheet.addAction(cancelAction)
-        present(actionSheet, animated: true, completion: nil)
-        
     }
 }
 
