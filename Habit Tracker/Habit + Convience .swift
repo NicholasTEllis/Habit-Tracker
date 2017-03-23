@@ -47,7 +47,6 @@ extension Habit {
     
     var strikes: Int {
         let calendar = NSCalendar.current
-        let name = self.name
         guard let startDate = self.startDate as? Date else {
             return 0 }
         

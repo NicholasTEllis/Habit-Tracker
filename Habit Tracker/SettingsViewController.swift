@@ -102,6 +102,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         }
         
         if sender == morningFirstTextField.inputView {
+            HabitController.shared.cancelLocalNotifications()
             morningFirstTextField.text = formatter.string(from: sender.date)
             let morning = sender.date.timeIntervalSince(timeinterval)
             TimeSettingsController.shared.morning = morning
@@ -162,7 +163,9 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
+        
     }
 
     @IBAction func enableNotificationsButtonTapped(_ sender: Any) {

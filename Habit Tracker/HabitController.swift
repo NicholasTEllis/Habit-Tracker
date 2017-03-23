@@ -50,7 +50,7 @@ class HabitController {
     // MARK: - Local Notifications
     
     func scheduleLocalNotifications(_ habit: Habit) {
-        //let body = qoutes[0]
+        
         guard let name = habit.name,
             let fireDate = habit.fireDate  else {
                 return
@@ -58,7 +58,7 @@ class HabitController {
         let content = UNMutableNotificationContent()
         content.title = "\(name)"
         content.body = "Finish Your Habit Today!"
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate as Date)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: fireDate as Date)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: HabitController.userNotificationIdentifier, content: content, trigger: dateTrigger)
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -70,12 +70,12 @@ class HabitController {
         }
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                print("\(request.trigger)")
+                print("HABIT TITLE \(request.content.title) --- HABIT TIME \(request.trigger)")
             }
         }
     }
     
-    func cancelLocalNotifications(_ habit: Habit) {
+    func cancelLocalNotifications() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [HabitController.userNotificationIdentifier])
     }
     
