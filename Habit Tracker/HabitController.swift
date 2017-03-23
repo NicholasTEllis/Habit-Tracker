@@ -49,12 +49,6 @@ class HabitController {
     
     // MARK: - Local Notifications
     
-    func updateLocalNotifcations(habit: Habit, fireTime: TimeInterval) {
-       // habit.fireTimeOfNotification = fireTime
-        scheduleLocalNotifications(habit)
-        saveToPersistentStore()
-    }
-    
     func scheduleLocalNotifications(_ habit: Habit) {
         
         guard let name = habit.name,
@@ -76,12 +70,12 @@ class HabitController {
         }
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                print("\(request.trigger)")
+                print("HABIT TITLE \(request.content.title) --- HABIT TIME \(request.trigger)")
             }
         }
     }
     
-    func cancelLocalNotifications(_ habit: Habit) {
+    func cancelLocalNotifications() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [HabitController.userNotificationIdentifier])
     }
     

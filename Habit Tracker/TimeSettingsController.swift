@@ -42,7 +42,6 @@ class TimeSettingsController {
     }
     
     init() {
-        
         self.morning = UserDefaults.standard.object(forKey: kMorning) as? TimeInterval ?? 32400.0 //9 AM
         self.afternoon = UserDefaults.standard.object(forKey: kAfternoon) as? TimeInterval ?? 43200.0//12PM
         self.evening = UserDefaults.standard.object(forKey: kEvening) as? TimeInterval ?? 61200.0//5PM

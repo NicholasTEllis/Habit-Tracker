@@ -37,7 +37,6 @@ class OnboardingViewController: UIViewController, PaperOnboardingDataSource, Pap
         let backgroundColorOne = Keys.shared.iconColor8
         let backgroundColorTwo = Keys.shared.iconColor2
         let backgroundColorThree = Keys.shared.iconColor9
-        let backgroundColorFour = UIColor.white
         
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descriptionFont = UIFont(name: "AvenirNext-Regular", size: 18)!

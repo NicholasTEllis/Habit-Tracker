@@ -102,6 +102,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, FBSDKLoginB
         }
         
         if sender == morningFirstTextField.inputView {
+            HabitController.shared.cancelLocalNotifications()
             morningFirstTextField.text = formatter.string(from: sender.date)
             let morning = sender.date.timeIntervalSince(timeinterval)
             TimeSettingsController.shared.morning = morning
