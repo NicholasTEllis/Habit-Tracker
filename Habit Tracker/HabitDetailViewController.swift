@@ -52,8 +52,6 @@ class HabitDetailViewController: UIViewController {
             return }
         
         guard let icon = habit.icon,
-            let daysCompleted = habit.habitProgress?.count,
-            let progress = habit.habitProgress?.array as? [DailyCompletion],
             let colorKey = habit.color else { return }
         
         habitIcon.image = UIImage(named: icon)

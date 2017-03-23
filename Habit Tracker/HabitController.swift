@@ -70,7 +70,7 @@ class HabitController {
         }
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             for request in requests {
-                print("\(request.trigger)")
+                print("HABIT TITLE \(request.content.title) --- HABIT TIME \(request.trigger)")
             }
         }
     }
