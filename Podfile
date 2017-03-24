@@ -15,5 +15,6 @@ pod 'Firebase/Auth'
 use_frameworks!
 pod 'Fabric'
 pod 'TwitterKit'
+pod 'paper-onboarding'
 
 end

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PaperOnboarding
+import paper_onboarding
 import UserNotifications
 
 class OnboardingViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate {

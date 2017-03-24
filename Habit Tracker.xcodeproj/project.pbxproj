@@ -27,12 +27,10 @@
 		8DB8C2231E53CCAA0048EA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8C2221E53CCAA0048EA67 /* Assets.xcassets */; };
 		8DDA397C1E5F557300216CD2 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA397B1E5F557300216CD2 /* UserController.swift */; };
 		8DF8EFEB1E5F52F70059EF54 /* User + Convience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8EFEA1E5F52F70059EF54 /* User + Convience.swift */; };
-		A4DA81B6525D8244C3C3B5C3 /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */; };
+		9607F19C5870D2D96EE1C1E9 /* Pods_Habit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C2C43A186E730AE00B5367 /* Pods_Habit_Tracker.framework */; };
 		C05C72841E5A183D000DFF91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C72831E5A183D000DFF91 /* LoginViewController.swift */; };
 		C05C72881E5A3905000DFF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */; };
 		C099742C1E5F61B900CAC072 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */; };
-		C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; };
-		C099742F1E5F61D200CAC072 /* PaperOnboarding.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C09974321E5F621000CAC072 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09974311E5F621000CAC072 /* OnboardingView.swift */; };
 		FD2FE1491E60DBDB0001A18A /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */; };
 		FD8821F21E5B4E7E001BD0CA /* ColorMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */; };
@@ -54,7 +52,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C099742F1E5F61D200CAC072 /* PaperOnboarding.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,13 +59,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53933E871E54BFB900BECC3F /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = "Habit Tracker/Keys.swift"; sourceTree = SOURCE_ROOT; };
 		53933E891E54CE8400BECC3F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		539342F41E5B649F00BECC3F /* DailyCompletionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCompletionController.swift; sourceTree = "<group>"; };
 		53DAE7FA1E609DF8003DA0E4 /* UserStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatsViewController.swift; sourceTree = "<group>"; };
 		53DAE7FC1E60ADE8003DA0E4 /* StatsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsListTableViewController.swift; sourceTree = "<group>"; };
-		5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		76C2C43A186E730AE00B5367 /* Pods_Habit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FA1E537C2E00FBAA55 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2998001E65D66E0082A90F /* TimeSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSettingsController.swift; sourceTree = "<group>"; };
@@ -87,12 +83,13 @@
 		8DB8C2241E53CCB80048EA67 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Habit Tracker/Info.plist"; sourceTree = SOURCE_ROOT; };
 		8DDA397B1E5F557300216CD2 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		8DF8EFEA1E5F52F70059EF54 /* User + Convience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User + Convience.swift"; sourceTree = "<group>"; };
+		9D28E06779776CCCB1D3EC78 /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		C05C63DF1E848E3B00AEACA9 /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKStrings.bundle; path = Pods/FBSDKCoreKit/FacebookSDKStrings.bundle; sourceTree = "<group>"; };
 		C05C72831E5A183D000DFF91 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C05C72871E5A3905000DFF91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C099742B1E5F61B900CAC072 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaperOnboarding.framework; path = Carthage/Build/iOS/PaperOnboarding.framework; sourceTree = "<group>"; };
 		C09974311E5F621000CAC072 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		CE5310036D5DAB6CDDDAA098 /* Pods-Habit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habit Tracker/Pods-Habit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2FE1481E60DBDB0001A18A /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD8821F11E5B4E7E001BD0CA /* ColorMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMenuView.swift; sourceTree = "<group>"; };
 		FD8821F31E5B56CD001BD0CA /* HabitDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HabitDetail.storyboard; sourceTree = "<group>"; };
@@ -111,8 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C099742E1E5F61D200CAC072 /* PaperOnboarding.framework in Frameworks */,
-				A4DA81B6525D8244C3C3B5C3 /* Pods_Habit_Tracker.framework in Frameworks */,
+				9607F19C5870D2D96EE1C1E9 /* Pods_Habit_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,13 +127,13 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		821136A9245C9BCC9D1DD887 /* Frameworks */ = {
+		89EAACD68E5E90A110B54B50 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C099742D1E5F61D200CAC072 /* PaperOnboarding.framework */,
-				0D20E61FFA1F2267C2FA3E66 /* Pods_Habit_Tracker.framework */,
+				CE5310036D5DAB6CDDDAA098 /* Pods-Habit Tracker.debug.xcconfig */,
+				9D28E06779776CCCB1D3EC78 /* Pods-Habit Tracker.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		8D0686F11E537C2E00FBAA55 = {
@@ -145,8 +141,8 @@
 			children = (
 				8D0686FC1E537C2E00FBAA55 /* Habit Tracker */,
 				8D0686FB1E537C2E00FBAA55 /* Products */,
-				F5A5F54AC2FDBE7BB4F4A89E /* Pods */,
-				821136A9245C9BCC9D1DD887 /* Frameworks */,
+				C05C63DE1E848E3A00AEACA9 /* Frameworks */,
+				89EAACD68E5E90A110B54B50 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,13 +230,13 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		F5A5F54AC2FDBE7BB4F4A89E /* Pods */ = {
+		C05C63DE1E848E3A00AEACA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */,
-				D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */,
+				C05C63DF1E848E3B00AEACA9 /* FacebookSDKStrings.bundle */,
+				76C2C43A186E730AE00B5367 /* Pods_Habit_Tracker.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FDBB28FF1E53C14600B3687D /* Storyboards  */ = {
@@ -294,7 +290,7 @@
 				TargetAttributes = {
 					8D0686F91E537C2E00FBAA55 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XSV88KY8NF;
+						DevelopmentTeam = J5HBDYC8AZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -576,14 +572,26 @@
 		};
 		8D06870D1E537C2E00FBAA55 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EC0454F668C99ACE1A82D0B /* Pods-Habit Tracker.debug.xcconfig */;
+			baseConfigurationReference = CE5310036D5DAB6CDDDAA098 /* Pods-Habit Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = XSV88KY8NF;
+				DEVELOPMENT_TEAM = J5HBDYC8AZ;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKShareKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/paper-onboarding\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/TwitterCore/iOS\"",
+					"\"${PODS_ROOT}/TwitterKit/iOS\"",
 				);
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -596,14 +604,152 @@
 		};
 		8D06870E1E537C2E00FBAA55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D59F5564402B865F109FD81D /* Pods-Habit Tracker.release.xcconfig */;
+			baseConfigurationReference = 9D28E06779776CCCB1D3EC78 /* Pods-Habit Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = XSV88KY8NF;
+				DEVELOPMENT_TEAM = J5HBDYC8AZ;
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKShareKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/paper-onboarding\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/TwitterCore/iOS\"",
+					"\"${PODS_ROOT}/TwitterKit/iOS\"\nGCC_PREPROCESSOR_DEFINITIONS",
+					"=",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"COCOAPODS=1\nHEADER_SEARCH_PATHS",
+					"=",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/TwitterCore\"",
+					"\"${PODS_ROOT}/Headers/Public/TwitterKit\"\nLD_RUNPATH_SEARCH_PATHS",
+					"=",
+					"$(inherited)",
+					"'@executable_path/Frameworks'",
+					"'@loader_path/Frameworks'\nOTHER_CFLAGS",
+					"=",
+					"$(inherited)",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts/Bolts.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"-iquote",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/paper-onboarding/paper_onboarding.framework/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TwitterCore\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TwitterKit\"\nOTHER_LDFLAGS",
+					"=",
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accounts\"",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleToolboxForMac\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Social\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TwitterCore\"",
+					"-framework",
+					"\"TwitterKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"paper_onboarding\"\nOTHER_SWIFT_FLAGS",
+					"=",
+					"$(inherited)",
+					"\"-D\"",
+					"\"COCOAPODS\"\nPODS_BUILD_DIR",
+					"=",
+					"$BUILD_DIR\nPODS_CONFIGURATION_BUILD_DIR",
+					"=",
+					"$PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\nPODS_ROOT",
+					"=",
+					"${SRCROOT}/Pods\n",
 				);
 				INFOPLIST_FILE = "Habit Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
