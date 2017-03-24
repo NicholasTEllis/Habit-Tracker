@@ -71,7 +71,6 @@
 		8D56BBB31E54B17500B662C0 /* SettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
 		8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListTableViewController.swift; sourceTree = "<group>"; };
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		8D6552311E56296000E61BB6 /* Habit Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habit Tracker.entitlements"; sourceTree = "<group>"; };
 		8D7EFCCF1E678001008CBD86 /* qoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = qoutes.json; path = "Habit Tracker/qoutes.json"; sourceTree = SOURCE_ROOT; };
 		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
 		8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 		8D0686FC1E537C2E00FBAA55 /* Habit Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				8D6552311E56296000E61BB6 /* Habit Tracker.entitlements */,
 				8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */,
 				FDBB28FF1E53C14600B3687D /* Storyboards  */,
 				8D89C6C01E538891004FA6E3 /* CoreData */,
@@ -290,7 +288,7 @@
 				TargetAttributes = {
 					8D0686F91E537C2E00FBAA55 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = J5HBDYC8AZ;
+						DevelopmentTeam = XSV88KY8NF;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -576,7 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = J5HBDYC8AZ;
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
@@ -608,7 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Habit Tracker/Habit Tracker.entitlements";
-				DEVELOPMENT_TEAM = J5HBDYC8AZ;
+				DEVELOPMENT_TEAM = XSV88KY8NF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
