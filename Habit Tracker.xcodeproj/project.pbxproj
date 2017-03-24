@@ -72,6 +72,7 @@
 		8D56BBB51E54B1A600B662C0 /* HabitListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitListTableViewController.swift; sourceTree = "<group>"; };
 		8D56BBB71E54B22F00B662C0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8D7EFCCF1E678001008CBD86 /* qoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = qoutes.json; path = "Habit Tracker/qoutes.json"; sourceTree = SOURCE_ROOT; };
+		8D851B861E857633002D7A08 /* Habit Tracker.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Habit Tracker.entitlements"; sourceTree = "<group>"; };
 		8D89C6AF1E538408004FA6E3 /* HabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitController.swift; sourceTree = "<group>"; };
 		8D89C6B81E5385FE004FA6E3 /* HabitTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HabitTracker.xcdatamodel; sourceTree = "<group>"; };
 		8D89C6BA1E5387FA004FA6E3 /* Habit + Convience .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Habit + Convience .swift"; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0686FD1E537C2E00FBAA55 /* AppDelegate.swift */,
+				8D851B861E857633002D7A08 /* Habit Tracker.entitlements */,
 				FDBB28FF1E53C14600B3687D /* Storyboards  */,
 				8D89C6C01E538891004FA6E3 /* CoreData */,
 				8D89C6B11E53840B004FA6E3 /* Model */,
