@@ -71,8 +71,8 @@ class DailyCompletionController {
 
         if habit.habitProgress?.count == 21 {
             user.perfectDays += 1
-            
-            let perfectCompletionAlert = UIAlertController(title: "Wow! Way to go!", message: "You finished your habit titled \(habit.name) without missing a single day!", preferredStyle: .alert)
+            guard let habitNameString = habit.name else { return }
+            let perfectCompletionAlert = UIAlertController(title: "Wow! Way to go!", message: "You finished your habit titled \(habitNameString) without missing a single day!", preferredStyle: .alert)
             let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
                 // TODO: - share to facebook here
                 
@@ -99,8 +99,8 @@ class DailyCompletionController {
             rootViewController?.present(perfectCompletionAlert, animated: true)
             return
         }
-        
-        let completionAlert = UIAlertController(title: "Good work!", message: "You finished your habit titled \(habit.name)!", preferredStyle: .alert)
+        guard let habitNameString = habit.name else { return }
+        let completionAlert = UIAlertController(title: "Good work!", message: "You finished your habit titled \(habitNameString)!", preferredStyle: .alert)
         let shareAction = UIAlertAction(title: "Share", style: .default) { (_) in
             // TODO: - share to facebook here
             
@@ -128,7 +128,8 @@ class DailyCompletionController {
     }
 
     func strikeOutCompletion(habit: Habit) {
-        let youFailAlert = UIAlertController(title: "Oh No!", message: "You got 3 strikes on your habit titled \(habit.name). Would you like to re-start?", preferredStyle: .alert)
+        guard let habitNameString = habit.name else { return }
+        let youFailAlert = UIAlertController(title: "Oh No!", message: "You got 3 strikes on your habit titled \(habitNameString). Would you like to re-start?", preferredStyle: .alert)
         let giveUpAction = UIAlertAction(title: "Give up", style: .destructive) { (_) in
             if let moc = habit.managedObjectContext {
                 moc.delete(habit)
